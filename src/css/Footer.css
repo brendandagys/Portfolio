@@ -1,0 +1,36 @@
+.footer {
+  position: relative;
+  background: black;
+  min-height: 125px;
+  padding: 2rem 0 3rem;
+}
+
+.footer-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer-row img {
+  background-color: var(--text-white);
+  width: 50px;
+  margin: 0 .45rem;
+}
+
+.footer-row img.extra-padding {
+  padding: 4px;
+}
+
+.footer-hover-grow {
+  display: inline-block;
+  -webkit-transform: translateZ(0);
+  transform: scale(0.96) translateZ(0) translateX(0%) translateY(0%);
+  -webkit-transition: transform 100ms;
+  transition: transform 100ms;
+}
+
+.footer-hover-grow:hover,
+.footer-hover-grow:focus,
+.footer-hover-grow:active {
+  transform: scale(1);
+}

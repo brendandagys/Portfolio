@@ -1,0 +1,139 @@
+.about-section {
+  display: flex;
+  position: relative;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+  margin: auto;
+  max-width: var(--max-width);
+}
+
+.aws-section {
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  margin-top: 7rem;
+  /* padding: 0 1rem; */
+  /* margin: auto; */
+  /* max-width: var(--max-width); */
+}
+
+.about-card {
+  flex: 1;
+  max-width: 50%;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0);
+  border-radius: 10px;
+}
+
+.about-card h2,
+.aws-section h2 {
+  margin-bottom: 15px;
+  color: white;
+}
+
+.about-card p,
+.aws-section p {
+  line-height: 1.6;
+  color: white;
+}
+
+.about-card h2 {
+  font-size: 28px;
+}
+
+.aws-section h2 {
+  font-size: 24px;
+}
+
+.about-card p {
+  font-size: 17px;
+}
+
+.aws-section p {
+  font-size: 16px;
+}
+
+.about-icon-clusters {
+  max-width: 40%;
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.about-icon-cluster-tech {
+  display: flex;
+}
+
+.about-icon-cluster-aws {
+  display: flex;
+  margin: 1.5rem 0 15rem;
+  position: relative;
+}
+
+.about-icon-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.about-icon-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.about-icon-cluster-tech img {
+  animation: slow-bobbing 6s ease-in-out infinite;
+  width: 75px;
+}
+
+.about-icon-cluster-tech img.spin {
+  animation: slow-bob-spin 10s linear infinite;
+}
+
+.about-icon-cluster-tech img.spin-reverse {
+  animation: slow-bob-spin 10s linear infinite;
+  animation-direction: reverse;
+}
+
+.about-icon-cluster-aws img {
+  width: 120px;
+  animation: subtle-wobble 3s linear infinite;
+  transform-origin: center;
+}
+
+.about-icon-cluster-tech img,
+.about-icon-cluster-aws img {
+  /* animation: gentle-float 4s ease-in-out infinite; */
+  /* animation: hover-sway 5s ease-in-out infinite; */
+  /* animation: wobble 3s ease-in-out infinite; */
+
+  margin: 1rem;
+  /* font-size: 40px;
+  color: #333;
+  transition: color 0.3s ease; */
+}
+
+/* .icon-cluster img:hover {
+  color: #007bff;
+} */
+
+@media (max-width: 768px) {
+  .about-section {
+    flex-direction: column;
+  }
+
+  /* .about-card,
+  .about-icon-cluster-tech,
+  .about-icon-cluster-aws {
+    max-width: 100%;
+    margin-bottom: 20px;
+  } */
+}
