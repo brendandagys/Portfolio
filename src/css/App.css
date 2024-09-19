@@ -153,10 +153,10 @@
 } */
 
 .main-bg {
-  height: 100vh;
+  height: 100%;
   position: fixed;
   top: 0;
-  width: 100vh;
+  width: 100%;
 }
 
 /* .canvas { */

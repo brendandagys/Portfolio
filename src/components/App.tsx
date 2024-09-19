@@ -28,9 +28,7 @@ export const App: React.FC = () => {
       <Navbar />
 
       <div id="home" className="hero">
-        <div>
-          <canvas className="canvas-1"></canvas>
-        </div>
+        <canvas className="canvas-1"></canvas>
 
         <div className="hero-content">
           <h1>{"Hello, I'm Brendan."}</h1>
