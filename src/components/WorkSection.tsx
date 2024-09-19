@@ -8,6 +8,7 @@ export const WorkSection: React.FC = () => {
     <>
       <section className="work-section">
         <h1 className="mb-5">My Work</h1>
+
         <div className="work-cards">
           <div className="work-card">
             <div className="work-image-card">
