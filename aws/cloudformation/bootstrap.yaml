@@ -28,10 +28,12 @@ Parameters:
   CreatePipelineArtifactsBucket:
     Type: String
     Default: 'false'
+    AllowedValues: ['true', 'false']
   
   CreateCloudFrontLoggingBucketAndPolicy:
     Type: String
     Default: 'false'
+    AllowedValues: ['true', 'false']
   
   IAMUser:
     Type: String

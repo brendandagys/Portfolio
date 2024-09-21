@@ -25,6 +25,7 @@ Parameters:
   CreateDeployBucketAndPolicy:
     Type: String
     Default: 'false'
+    AllowedValues: ['true', 'false']
 
   Domain:
     Type: String
@@ -33,6 +34,7 @@ Parameters:
   DnsRecordWwwFlag:
     Type: String
     Default: 'true'
+    AllowedValues: ['true', 'false']
 
   DistributionHomePage:
     Type: String
