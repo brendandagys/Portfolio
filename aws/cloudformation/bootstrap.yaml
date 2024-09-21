@@ -278,7 +278,7 @@ Resources:
               OutputArtifacts:
                 - Name: !Sub ${AWS::StackName}-code
               Configuration:
-                ConnectionArn: {{resolve:secretsmanager:my-secrets:SecretString:GITHUB_CODE_CONNECTION_ARN}}
+                ConnectionArn: '{{resolve:secretsmanager:my-secrets:SecretString:GITHUB_CODE_CONNECTION_ARN}}'
                 FullRepositoryId: !Sub ${GitHubRepositoryOwner}/${Repository}
                 BranchName: !Ref Branch
                 # OutputArtifactFormat: ZIP
