@@ -1,0 +1,339 @@
+AWSTemplateFormatVersion: 2010-09-09
+
+Description: >
+  Sets up a pipeline that will deploy CloudFormation templates
+  from a GitHub repository. Also can create/manage buckets for pipeline
+  artifacts and storage of CloudFront logs. Both buckets are exported and can
+  be referenced from other CloudFormation stacks.
+
+Conditions:
+  CreatePipelineArtifactsBucket: !Equals [!Ref CreatePipelineArtifactsBucket, 'true']
+  CreateCloudFrontLoggingBucketAndPolicy: !Equals [!Ref CreateCloudFrontLoggingBucketAndPolicy, 'true']
+
+Parameters:
+  GitHubRepositoryOwner:
+    Type: String
+    Default: brendandagys
+  Repository:
+    Type: String
+    Default: Portfolio
+  Branch:
+    Type: String
+    Default: main
+  TemplatePath:
+    Type: String
+    Default: aws/cloudformation/infrastructure.yaml
+    Description: Path to the CloudFormation template file
+
+  CreatePipelineArtifactsBucket:
+    Type: String
+    Default: 'false'
+  
+  CreateCloudFrontLoggingBucketAndPolicy:
+    Type: String
+    Default: 'false'
+  
+  IAMUser:
+    Type: String
+    Default: brendandagys
+    Description: IAM user that may pass the CloudFormation role to CodePipeline
+
+  # Domain:
+  #   Type: String
+  #   Default: brendandagys.com
+  #   Description: Domain for the assets bucket
+
+Resources:
+  # GitHubConnection
+  #   Type: AWS::CodeStarConnections::Connection
+  #     Properties:
+  #       ConnectionName: github-connection
+  #       HostArn: !Sub arn:aws:codeconnections:us-east-1:${AWS::AccountId}:connection/1bbc32fa-72b0-4c2a-9ba0-8e9dd35d697f
+  #       # HostArn: arn:aws:codeconnections:us-east-1:708746137251:connection/1bbc32fa-72b0-4c2a-9ba0-8e9dd35d697f
+  #       ProviderType: GitHub
+
+  CloudFormationRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: 2012-10-17
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: cloudformation.amazonaws.com
+            Action: sts:AssumeRole
+      Policies:
+        - PolicyName: CloudFormation-permissions
+          PolicyDocument:
+            Version: 2012-10-17
+            Statement:
+              - Effect: Allow
+                Action:
+                  - iam:GetRole
+                  - iam:CreateRole
+                  - iam:DeleteRole
+                  - iam:GetRolePolicy
+                  - iam:PutRolePolicy
+                  - iam:DeleteRolePolicy
+                Resource: !Sub arn:aws:iam::${AWS::AccountId}:role/*
+              - Effect: Allow
+                Action: iam:PassRole
+                Resource:
+                  - !Sub arn:aws:iam::${AWS::AccountId}:role/service-role/*CodeBuildRole*
+                  - !Sub arn:aws:iam::${AWS::AccountId}:role/service-role/*PipelineRole*
+              - Effect: Allow
+                Action:
+                  - acm:RequestCertificate
+                  - acm:DescribeCertificate
+                  - acm:DeleteCertificate
+                Resource: !Sub arn:aws:acm:${AWS::Region}:${AWS::AccountId}:certificate/*
+              - Effect: Allow
+                Action:
+                  - cloudfront:CreateFunction
+                  - cloudfront:DescribeFunction
+                  - cloudfront:PublishFunction
+                  - cloudfront:DeleteFunction
+                  - cloudfront:UpdateFunction
+                Resource: !Sub arn:aws:cloudfront::${AWS::AccountId}:function/*
+              - Effect: Allow
+                Action:
+                  - cloudfront:GetOriginAccessControl
+                  - cloudfront:CreateOriginAccessControl
+                  - cloudfront:DeleteOriginAccessControl
+                Resource: !Sub arn:aws:cloudfront::${AWS::AccountId}:origin-access-control/*
+              - Effect: Allow
+                Action:
+                  - cloudfront:GetDistribution
+                  - cloudfront:TagDistribution
+                  - cloudfront:CreateDistribution
+                  - cloudfront:UpdateDistribution
+                  - cloudfront:DeleteDistribution
+                  - cloudfront:TagResource
+                Resource: !Sub arn:aws:cloudfront::${AWS::AccountId}:distribution/*
+              - Effect: Allow
+                Action:
+                  - codepipeline:GetPipeline
+                  - codepipeline:GetPipelineState
+                  - codepipeline:CreatePipeline
+                  - codepipeline:UpdatePipeline
+                  - codepipeline:DeletePipeline
+                Resource: !Sub arn:aws:codepipeline:${AWS::Region}:${AWS::AccountId}:*CodePipeline*
+              - Effect: Allow
+                Action:
+                  - codebuild:CreateProject
+                  - codebuild:DeleteProject
+                Resource: !Sub arn:aws:codebuild:${AWS::Region}:${AWS::AccountId}:project/*
+              - Effect: Allow
+                Action:
+                  - route53:ListResourceRecordSets
+                  - route53:ChangeResourceRecordSets
+                  - route53:GetHostedZone
+                Resource: '*'
+                # Resource: !Sub arn:aws:route53:::hostedzone/${HostedZoneId}
+              - Effect: Allow
+                Action: route53:GetChange
+                Resource: !Sub arn:aws:route53:::change/*
+              - Effect: Allow
+                Action:
+                  - s3:GetBucketAcl
+                  - s3:PutBucketAcl
+                Resource: !Sub arn:aws:s3:::${AWS::AccountId}-cloudfront-logs
+              # - Effect: Allow
+              #   Action:
+              #     - s3:CreateBucket
+              #     - s3:DeleteBucket
+              #     - s3:DeleteBucketPolicy
+              #     - s3:GetBucketPublicAccessBlock
+              #     - s3:PutBucketCORS
+              #     - s3:PutBucketOwnershipControls
+              #     - s3:PutBucketPolicy
+              #     - s3:PutBucketPublicAccessBlock
+              #   Resource:
+              #     - !Sub arn:aws:s3:::${Domain}
+
+  PassCloudFormationRolePolicy:
+    Type: AWS::IAM::Policy
+    Properties:
+      PolicyName: PassCloudFormationRole
+      PolicyDocument:
+        Version: 2012-10-17
+        Statement:
+          - Effect: Allow
+            Action: iam:PassRole
+            Resource: !GetAtt CloudFormationRole.Arn
+            Condition:
+              StringEquals:
+                iam:PassedToService: codepipeline.amazonaws.com
+              StringLike:
+                iam:AssociatedResourceARN: !Ref Pipeline
+      Users:
+        - !Ref IAMUser
+
+  PipelineArtifactsBucket:
+    Type: AWS::S3::Bucket
+    Condition: CreatePipelineArtifactsBucket
+    DeletionPolicy: Retain
+    Properties:
+      BucketName: !Sub ${AWS::AccountId}-pipeline-artifacts
+      OwnershipControls:
+        Rules: [ObjectOwnership: BucketOwnerEnforced]
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+
+  CloudFrontLoggingBucket:
+    Type: AWS::S3::Bucket
+    Condition: CreateCloudFrontLoggingBucketAndPolicy
+    DeletionPolicy: Retain
+    Properties:
+      BucketName: !Sub ${AWS::AccountId}-cloudfront-logs
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+
+  CloudFrontLoggingBucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Condition: CreateCloudFrontLoggingBucketAndPolicy
+    DeletionPolicy: Retain
+    Properties:
+      Bucket: !Sub ${AWS::AccountId}-cloudfront-logs
+      PolicyDocument:
+        Id: !Sub ${AWS::StackName}-logging-bucket-policy
+        Version: 2012-10-17
+        Statement:
+          - Sid: Policy-for-CloudFront-logging
+            Effect: Allow
+            Principal:
+              Service: cloudfront.amazonaws.com
+            Action: [s3:GetBucketAcl, s3:PutBucketAcl]
+            Resource: !Sub arn:aws:s3:::${AWS::AccountId}-cloudfront-logs
+            Condition:
+              StringLike:
+                AWS:SourceArn: !Sub arn:aws:cloudfront::${AWS::AccountId}:distribution/*
+
+  PipelineRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: 2012-10-17
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: codepipeline.amazonaws.com
+            Action: sts:AssumeRole
+      Path: /service-role/
+      Policies:
+        - PolicyName: pipeline-permissions
+          PolicyDocument:
+            Version: 2012-10-17
+            Statement:
+              - Effect: Allow
+                Action:
+                  - cloudformation:DescribeStacks
+                  - cloudformation:CreateStack
+                  - cloudformation:UpdateStack
+                Resource: !Sub arn:aws:cloudformation:${AWS::Region}:${AWS::AccountId}:stack/*
+              - Effect: Allow
+                Action: iam:PassRole
+                Resource: !Sub arn:aws:iam::${AWS::AccountId}:role/*CloudFormationRole*
+              # - Effect: Allow
+              #   Action:
+              #     - codecommit:UploadArchive
+              #     - codecommit:GetCommit
+              #     - codecommit:GetUploadArchiveStatus
+              #     - codecommit:GetBranch
+              #     - codecommit:CancelUploadArchive
+              #   Resource: !Sub arn:aws:codecommit:${AWS::Region}:${AWS::AccountId}:${Repository}
+              - Effect: Allow
+                Action:
+                  - s3:GetObject
+                  - s3:GetObjectVersion
+                  - s3:GetBucketVersioning
+                  - s3:PutObject
+                Resource:
+                  - !Sub arn:aws:s3:::${AWS::AccountId}-pipeline-artifacts
+                  - !Sub arn:aws:s3:::${AWS::AccountId}-pipeline-artifacts/*
+
+  Pipeline:
+    Type: AWS::CodePipeline::Pipeline
+    Properties:
+      ArtifactStore:
+        Location: !Ref PipelineArtifactsBucket
+        # Location: !Sub ${AWS::AccountId}-pipeline-artifacts
+        Type: S3
+      RoleArn: !GetAtt PipelineRole.Arn
+      Stages:
+        - Name: Source
+          Actions:
+            - Name: !Sub ${Repository}@${Branch}
+              ActionTypeId:
+                Category: Source
+                Owner: AWS
+                Provider: CodeStarSourceConnection
+                Version: 1
+              OutputArtifacts:
+                - Name: !Sub ${AWS::StackName}-code
+              Configuration:
+                ConnectionArn: {{resolve:secretsmanager:my-secrets:SecretString:GITHUB_CODE_CONNECTION_ARN}}
+                FullRepositoryId: !Sub ${GitHubRepositoryOwner}/${Repository}
+                BranchName: !Ref Branch
+                # OutputArtifactFormat: ZIP
+
+                # Authentication: !Ref GitHubOAuthToken
+                # Owner: !Ref GitHubRepositoryOwner
+                # Repo: !Ref Repository
+                # Branch: !Ref Branch
+                # OAuthToken: !Ref GitHubOAuthToken
+                # PollForSourceChanges: false
+        # - Name: Build
+                # Owner: !Ref GitHubRepositoryOwner
+                # Repo: !Ref Repository
+                # Branch: !Ref Branch
+                # OAuthToken: !Ref GitHubOAuthToken
+                # PollForSourceChanges: false
+        - Name: Approval
+          Actions:
+            - Name: Make-infrastructure-pipeline
+              ActionTypeId:
+                Category: Approval
+                Owner: AWS
+                Provider: Manual
+                Version: 1
+        - Name: Deploy
+          Actions:
+            - Name: !Sub Make-${AWS::StackName}-infrastructure
+              ActionTypeId: 
+                Category: Deploy
+                Owner: AWS
+                Provider: CloudFormation
+                Version: 1
+              InputArtifacts:
+                - Name: !Sub ${AWS::StackName}-code
+              OutputArtifacts:
+                - Name: !Sub ${AWS::StackName}-changeset
+              Configuration:
+                ActionMode: CREATE_UPDATE
+                StackName: !Sub ${AWS::StackName}-infrastructure
+                TemplatePath: !Sub ${AWS::StackName}-code::${TemplatePath}
+                RoleArn: !GetAtt CloudFormationRole.Arn
+                Capabilities: CAPABILITY_IAM
+
+  Outputs:
+    MasterStackName:
+      Value: !Ref AWS::StackName
+      Export:
+        Name: MasterStackName
+
+    PipelineArtifactsBucketArn:
+      Value: !Sub arn:aws:s3:::${AWS::AccountId}-pipeline-artifacts
+      Export:
+        Name: PipelineArtifactsBucketArn
+  
+    CloudFrontLoggingBucketDomain:
+      Value: !Sub ${AWS::AccountId}-cloudfront-logs.s3.amazonaws.com
+      Export:
+        Name: CloudFrontLoggingBucketDomain

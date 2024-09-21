@@ -1,0 +1,73 @@
+AWSTemplateFormatVersion: 2010-09-09
+
+Description: >
+  Creates an SNS Topic that will email me when published to.
+  A Lambda function is also created. It's invoked from the application
+  when users fill out a contact form. The Lambda function uses Rust
+  to process an HTTP request and invoke the SNS Publish API.
+
+Parameters:
+  SnsTopicName:
+    Type: String
+    Description: The name of the SNS topic
+
+  TopicSubscriber1:
+    Type: String
+    Description: Email address to receive SNS messages
+  
+  ZippedRustBinaryBucket:
+    Type: String
+    Description: The S3 bucket with the zipped `bootstrap` binary for the Lambda function
+  
+  ZippedRustBinaryFile:
+    Type: String
+    Description: The zipped `bootstrap` binary for the Lambda function
+
+Resources:
+  SnsTopic:
+    Type: AWS::SNS::Topic
+    Properties:
+      Subscription:
+        - Endpoint: !Ref TopicSubscriber1
+          Protocol: email
+      TopicName: !Ref SnsTopicName
+      Tags:
+        - Key: project
+          Value: !Ref ProjectName
+  
+  LambdaExecutionRole:
+    Type: AWS::IAM::Role
+    Properties: 
+      AssumeRolePolicyDocument:
+        Version: 2012-10-17
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: lambda.amazonaws.com
+            Action: sts:AssumeRole
+      Policies:
+        - PolicyName: LambdaSNSPublishPolicy
+          PolicyDocument:
+            Version: 2012-10-17
+            Statement:
+              - Effect: Allow
+                Action: sns:Publish
+                Resource: !Ref SnsTopic
+
+  LambdaFunction:
+    Type: AWS::Lambda::Function
+    Properties:
+      FunctionName: PublishToPortfolioSNSLambda
+      Code:
+        S3Bucket: !Ref ZippedRustBinaryBucket
+        S3Key: !Ref ZippedRustBinaryFile
+      Architectures:
+        - arm64
+      Runtime: provided.al2023
+      Handler: bootstrap
+      MemorySize: 128
+      Timeout: 10
+      Role: !GetAtt LambdaExecutionRole.Arn
+      Environment:
+        Variables:
+          SNS_TOPIC_ARN: !Ref SnsTopic
