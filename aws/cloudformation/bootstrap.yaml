@@ -242,6 +242,12 @@ Resources:
               - Effect: Allow
                 Action: iam:PassRole
                 Resource: !Sub arn:aws:iam::${AWS::AccountId}:role/*CloudFormationRole*
+              - Effect: Allow
+                Action: codeconnections:PassConnection
+                Resource: '{{resolve:secretsmanager:my-secrets:SecretString:GITHUB_CODE_CONNECTION_ARN}}'
+                Condition:
+                  ForAllValues:StringEquals:
+                    codeconnections:PassedToService: codepipeline.amazonaws.com
               # - Effect: Allow
               #   Action:
               #     - codecommit:UploadArchive
@@ -264,8 +270,7 @@ Resources:
     Type: AWS::CodePipeline::Pipeline
     Properties:
       ArtifactStore:
-        Location: !Ref PipelineArtifactsBucket
-        # Location: !Sub ${AWS::AccountId}-pipeline-artifacts
+        Location: !Sub ${AWS::AccountId}-pipeline-artifacts
         Type: S3
       RoleArn: !GetAtt PipelineRole.Arn
       Stages:
@@ -299,7 +304,7 @@ Resources:
                 # PollForSourceChanges: false
         - Name: Approval
           Actions:
-            - Name: Make-infrastructure-pipeline
+            - Name: make-infrastructure-pipeline
               ActionTypeId:
                 Category: Approval
                 Owner: AWS
@@ -307,7 +312,7 @@ Resources:
                 Version: 1
         - Name: Deploy
           Actions:
-            - Name: !Sub Make-${AWS::StackName}-infrastructure
+            - Name: !Sub make-${AWS::StackName}-infrastructure
               ActionTypeId: 
                 Category: Deploy
                 Owner: AWS
