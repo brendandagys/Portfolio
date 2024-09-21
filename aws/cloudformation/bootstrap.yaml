@@ -243,19 +243,11 @@ Resources:
                 Action: iam:PassRole
                 Resource: !Sub arn:aws:iam::${AWS::AccountId}:role/*CloudFormationRole*
               - Effect: Allow
-                Action: codeconnections:PassConnection
+                Action: codestar-connections:UseConnection
                 Resource: '{{resolve:secretsmanager:my-secrets:SecretString:GITHUB_CODE_CONNECTION_ARN}}'
                 Condition:
                   ForAllValues:StringEquals:
                     codeconnections:PassedToService: codepipeline.amazonaws.com
-              # - Effect: Allow
-              #   Action:
-              #     - codecommit:UploadArchive
-              #     - codecommit:GetCommit
-              #     - codecommit:GetUploadArchiveStatus
-              #     - codecommit:GetBranch
-              #     - codecommit:CancelUploadArchive
-              #   Resource: !Sub arn:aws:codecommit:${AWS::Region}:${AWS::AccountId}:${Repository}
               - Effect: Allow
                 Action:
                   - s3:GetObject
@@ -269,6 +261,7 @@ Resources:
   Pipeline:
     Type: AWS::CodePipeline::Pipeline
     Properties:
+      PipelineType: V2  # https://aws.amazon.com/codepipeline/pricing/
       ArtifactStore:
         Location: !Sub ${AWS::AccountId}-pipeline-artifacts
         Type: S3
