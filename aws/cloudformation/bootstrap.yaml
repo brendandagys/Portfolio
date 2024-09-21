@@ -322,18 +322,13 @@ Resources:
                 RoleArn: !GetAtt CloudFormationRole.Arn
                 Capabilities: CAPABILITY_IAM
 
-  Outputs:
-    MasterStackName:
-      Value: !Ref AWS::StackName
-      Export:
-        Name: MasterStackName
+Outputs:
+  PipelineArtifactsBucketArn:
+    Value: !Sub arn:aws:s3:::${AWS::AccountId}-pipeline-artifacts
+    Export:
+      Name: PipelineArtifactsBucketArn
 
-    PipelineArtifactsBucketArn:
-      Value: !Sub arn:aws:s3:::${AWS::AccountId}-pipeline-artifacts
-      Export:
-        Name: PipelineArtifactsBucketArn
-  
-    CloudFrontLoggingBucketDomain:
-      Value: !Sub ${AWS::AccountId}-cloudfront-logs.s3.amazonaws.com
-      Export:
-        Name: CloudFrontLoggingBucketDomain
+  CloudFrontLoggingBucketDomain:
+    Value: !Sub ${AWS::AccountId}-cloudfront-logs.s3.amazonaws.com
+    Export:
+      Name: CloudFrontLoggingBucketDomain
