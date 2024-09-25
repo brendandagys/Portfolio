@@ -52,7 +52,7 @@
   cursor: pointer;
   flex-direction: column;
   gap: 5px;
-  padding: .9rem 0;
+  padding: 1.2rem 0;
 }
 
 .hamburger .bar {
