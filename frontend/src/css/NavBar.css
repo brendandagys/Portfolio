@@ -1,11 +1,17 @@
 .navbar {
-  position: sticky;
+  position: fixed;
   top: 0;
   width: 100%;
   background-color: #262626;
-  padding: 0 3rem 0;
+  padding: 0 3rem;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.3);
   z-index: 1000;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 0 1.7rem;
+  }
 }
 
 .navbar-container {
@@ -23,7 +29,6 @@
 /* Desktop Links */
 .nav-links {
   display: flex;
-  /* gap: 1rem; */
 }
 
 .nav-links button {
@@ -39,7 +44,6 @@
 
 .nav-links button:hover {
   color: #64ffcf;
-  /* color: #ffcc00; */
 }
 
 /* Hamburger Menu for Mobile */
@@ -48,6 +52,7 @@
   cursor: pointer;
   flex-direction: column;
   gap: 5px;
+  padding: .9rem 0;
 }
 
 .hamburger .bar {
@@ -70,9 +75,14 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 2rem;
     transform: translateX(100%);
     transition: transform 0.3s ease;
+  }
+
+  .nav-links button {
+    font-size: 2rem;
+    padding: 1.5rem 3rem;
+    transition: color 0.3s ease;
   }
 
   .nav-links.open {
