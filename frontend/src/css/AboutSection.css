@@ -1,3 +1,7 @@
+.about-section-container {
+  overflow-x: clip;
+}
+
 .about-section {
   display: flex;
   position: relative;
