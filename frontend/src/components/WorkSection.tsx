@@ -14,13 +14,14 @@ export const WorkSection: React.FC = () => {
             <div className="work-image-card">
               <img src={financesScreenshot} alt="Project 1" />
             </div>
+
             <div className="work-text-card">
               <h3>C Compiler</h3>
               <p>
                 {
                   "A C compiler, written in C. Lexes program tokens, parses them \
                 into an Abstract Syntax Tree using Pratt parsing, and generates \
-                x64-64 assembly code."
+                x86-64 assembly code."
                 }
               </p>
               <a
@@ -34,6 +35,10 @@ export const WorkSection: React.FC = () => {
           </div>
 
           <div className="work-card">
+            <div className="work-image-card">
+              <img src={vacationRentalSiteScreenshot} alt="Project 2" />
+            </div>
+
             <div className="work-text-card">
               <h3>Vacation Rental Website</h3>
               <p>
@@ -50,15 +55,13 @@ export const WorkSection: React.FC = () => {
                 View Website
               </a>
             </div>
-            <div className="work-image-card">
-              <img src={vacationRentalSiteScreenshot} alt="Project 2" />
-            </div>
           </div>
 
           <div className="work-card">
             <div className="work-image-card">
               <img src={serverlessMergeSortScreenshot} alt="Project 3" />
             </div>
+
             <div className="work-text-card">
               <h3>Text Editor</h3>
               <p>
