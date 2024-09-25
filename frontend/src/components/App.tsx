@@ -1,6 +1,6 @@
 import "../css/App.css";
 
-import canvasDots from "../js/heroCanvas.ts";
+import { heroAnimation } from "../js/heroCanvas.ts";
 import canvasDotsBg from "../js/bgCanvas.ts";
 import { ContactForm } from "./ContactForm.tsx";
 import { AboutSection } from "./AboutSection.tsx";
@@ -9,12 +9,11 @@ import { Footer } from "./footer/Footer.tsx";
 import Navbar from "./NavBar.tsx";
 
 import { useScrollTo } from "../hooks/useScrollTo.tsx";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-window.onload = function () {
-  canvasDots();
+window.addEventListener("load", function () {
   canvasDotsBg();
-};
+});
 
 export const App: React.FC = () => {
   const [configs] = useState({
@@ -22,6 +21,10 @@ export const App: React.FC = () => {
   });
 
   const scrollTo = useScrollTo(configs);
+
+  useEffect(() => {
+    heroAnimation();
+  }, []);
 
   return (
     <>
