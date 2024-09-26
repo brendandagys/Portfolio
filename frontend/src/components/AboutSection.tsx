@@ -90,7 +90,6 @@ export const AboutSection: React.FC = () => {
 
         <div className="aws-section">
           <div>
-            {/* <h2>AWS</h2> */}
             <p>
               {
                 "I'm a huge AWS fan and use their services to build my projects. I hold the following certifications:"
