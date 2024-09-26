@@ -1,7 +1,9 @@
 import "../css/WorkSection.css";
-import financesScreenshot from "../images/finances-app-screenshot.png";
-import serverlessMergeSortScreenshot from "../images/serverless-merge-sort-screenshot.png";
+import cCompiler from "../images/c-compiler.png";
 import vacationRentalSiteScreenshot from "../images/vacation-rental-site-screenshot.png";
+import textEditorScreenshot from "../images/text-editor-screenshot.png";
+import serverlessMergeSortScreenshot from "../images/serverless-merge-sort-screenshot.png";
+import financesScreenshot from "../images/finances-app-screenshot.png";
 
 export const WorkSection: React.FC = () => {
   return (
@@ -12,7 +14,11 @@ export const WorkSection: React.FC = () => {
         <div className="work-cards">
           <div className="work-card">
             <div className="work-image-card">
-              <img src={financesScreenshot} alt="Project 1" />
+              <img
+                src={cCompiler}
+                style={{ maxHeight: 325 }}
+                alt="C compiler"
+              />
             </div>
 
             <div className="work-text-card">
@@ -36,7 +42,10 @@ export const WorkSection: React.FC = () => {
 
           <div className="work-card">
             <div className="work-image-card">
-              <img src={vacationRentalSiteScreenshot} alt="Project 2" />
+              <img
+                src={vacationRentalSiteScreenshot}
+                alt="Vacation rental site"
+              />
             </div>
 
             <div className="work-text-card">
@@ -59,13 +68,66 @@ export const WorkSection: React.FC = () => {
 
           <div className="work-card">
             <div className="work-image-card">
-              <img src={serverlessMergeSortScreenshot} alt="Project 3" />
+              <img src={textEditorScreenshot} alt="Text editor" />
             </div>
 
             <div className="work-text-card">
               <h3>Text Editor</h3>
               <p>
                 A text editor with syntax highlighting and search capabilities.
+              </p>
+              <a
+                href="https://github.com/brendandagys/Text-Editor"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                View on GitHub
+              </a>
+            </div>
+          </div>
+
+          <div className="work-card">
+            <div className="work-image-card">
+              <img
+                src={serverlessMergeSortScreenshot}
+                alt="Serverless merge sort application"
+              />
+            </div>
+
+            <div className="work-text-card">
+              <h3>Serverless Merge Sort Application</h3>
+              <p>
+                A serverless application that performs a merge sort on the
+                provided input array. Deployed with AWS SAM and a Rust&nbsp;
+                <a
+                  href="https://github.com/brendandagys/Serverless-Merge-Sort-Frontend-Yew-App"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  front-end
+                </a>
+                &nbsp;using the Yew crate.
+              </p>
+              <a
+                href="https://github.com/brendandagys/Serverless-Merge-Sort-with-AWS-SAM"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                View on GitHub
+              </a>
+            </div>
+          </div>
+          <div className="work-card">
+            <div className="work-image-card">
+              <img src={financesScreenshot} alt="Finances tracker" />
+            </div>
+
+            <div className="work-text-card">
+              <h3>Finances Tracker</h3>
+              <p>
+                A tool to manage, track and visualize spending habits. Built
+                with a Node.js back-end deployed on AWS Fargate, and a React
+                TypeScript front-end served from CloudFront edge locations.
               </p>
               <a
                 href="https://github.com/brendandagys/Text-Editor"
