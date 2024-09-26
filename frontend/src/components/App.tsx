@@ -58,10 +58,10 @@ export const App: React.FC = () => {
       <div id="about" className="mt-10">
         <AboutSection />
       </div>
-      <div id="work" className="mt-10">
+      <div id="work">
         <WorkSection />
       </div>
-      <div id="contact" className="mt-10 mb-10">
+      <div id="contact" className="mt-15 mb-10">
         <ContactForm />
       </div>
 
