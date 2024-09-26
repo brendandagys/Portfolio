@@ -23,7 +23,10 @@ const Navbar: React.FC = () => {
   return (
     <nav className="navbar">
       <div className="navbar-container">
-        <div className={`nav-links ${isOpen ? "open" : ""}`}>
+        <div
+          className={`nav-links${isOpen ? " open" : ""}`}
+          onClick={toggleMenu}
+        >
           <button
             onClick={() => {
               scrollTo("home");
