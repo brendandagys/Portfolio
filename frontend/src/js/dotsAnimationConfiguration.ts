@@ -37,7 +37,7 @@ const dotsConfiguration: Record<number, DotsConfiguration> = {
   }
 };
 
-export const getDotsConfiguration = (): DotsConfiguration => ({
+export const getDotsAnimationConfiguration = (): DotsConfiguration => ({
   ...dotsConfiguration[
   Object.keys(dotsConfiguration) // Returns keys as strings, in increasing order
     .map(Number)

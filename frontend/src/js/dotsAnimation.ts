@@ -1,4 +1,4 @@
-import { getDotsConfiguration } from "./heroDotsConfiguration";
+import { getDotsAnimationConfiguration } from "./dotsAnimationConfiguration";
 
 const mousePosition = { x: 0, y: 0 };
 
@@ -67,7 +67,7 @@ class Dot {
   }
 }
 
-export const heroAnimation = (selector: string, showLines: boolean) => {
+export const dotsAnimation = (selector: string, showLines: boolean) => {
   let animation: number;  // Handler returned by `requestAnimationFrame(callback)`
 
   const canvas = document.querySelector<HTMLCanvasElement>(selector);
@@ -103,7 +103,7 @@ export const heroAnimation = (selector: string, showLines: boolean) => {
       this.#ctx = ctx;
       this.#width = width;
       this.#height = height;
-      this.#dotsConfiguration = getDotsConfiguration();
+      this.#dotsConfiguration = getDotsAnimationConfiguration();
       this.#showLines = showLines;
       this.#lastTimestamp = 0;
       this.#timer = 0;

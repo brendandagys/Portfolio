@@ -1,6 +1,6 @@
 import "../css/App.css";
 
-import { heroAnimation } from "../js/heroCanvas.ts";
+import { dotsAnimation } from "../js/dotsAnimation.ts";
 import { ContactForm } from "./ContactForm.tsx";
 import { AboutSection } from "./AboutSection.tsx";
 import { WorkSection } from "./WorkSection.tsx";
@@ -18,8 +18,8 @@ export const App: React.FC = () => {
   const scrollTo = useScrollTo(configs);
 
   useEffect(() => {
-    heroAnimation(".canvas-1", true);
-    heroAnimation(".canvas-2", false);
+    dotsAnimation(".canvas-1", true);
+    dotsAnimation(".canvas-2", false);
   }, []);
 
   return (
