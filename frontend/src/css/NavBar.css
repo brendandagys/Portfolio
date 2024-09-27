@@ -87,7 +87,7 @@
 
   .nav-links.open {
     transform: translateX(0);
-    transition: transform 0.3s ease;
+    transition: transform 0.15s ease;
     /* transition: opacity 0.3s ease; */
     /* opacity: 100; */
   }
