@@ -37,16 +37,15 @@ const dotsConfiguration: Record<number, DotsConfiguration> = {
   }
 };
 
-export const getDotsConfiguration = (): DotsConfiguration => {
-  return {
-    ...dotsConfiguration[
-    Object.keys(dotsConfiguration)
-      .map(Number)
-      .sort((a, b) => b - a) // Sort descending; numeric keys are returned in increasing order
-      .find((width) => window.innerWidth >= width) ?? 0
-    ],
-  };
-};
+export const getDotsConfiguration = (): DotsConfiguration => ({
+  ...dotsConfiguration[
+  Object.keys(dotsConfiguration) // Returns keys as strings, in increasing order
+    .map(Number)
+    .sort((a, b) => b - a) // Sort descending
+    .find((width) => window.innerWidth >= width) ?? 0
+  ]
+});
+
 
 // decided to turn off connecting dots under 1100px
 
