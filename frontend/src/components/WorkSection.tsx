@@ -15,34 +15,6 @@ export const WorkSection: React.FC = () => {
           <div className="work-card">
             <div className="work-image-card">
               <img
-                src={cCompiler}
-                style={{ maxHeight: 325 }}
-                alt="C compiler"
-              />
-            </div>
-
-            <div className="work-text-card">
-              <h3>C Compiler</h3>
-              <p>
-                {
-                  "A C compiler, written in C. Lexes program tokens, parses them \
-                into an Abstract Syntax Tree using Pratt parsing, and generates \
-                x86-64 assembly code."
-                }
-              </p>
-              <a
-                href="https://github.com/brendandagys/C-compiler"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                View on GitHub
-              </a>
-            </div>
-          </div>
-
-          <div className="work-card">
-            <div className="work-image-card">
-              <img
                 src={vacationRentalSiteScreenshot}
                 alt="Vacation rental site"
               />
@@ -78,6 +50,34 @@ export const WorkSection: React.FC = () => {
               </p>
               <a
                 href="https://github.com/brendandagys/Text-Editor"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                View on GitHub
+              </a>
+            </div>
+          </div>
+
+          <div className="work-card">
+            <div className="work-image-card">
+              <img
+                src={cCompiler}
+                style={{ maxHeight: 325 }}
+                alt="C compiler"
+              />
+            </div>
+
+            <div className="work-text-card">
+              <h3>C Compiler</h3>
+              <p>
+                {
+                  "A C compiler, written in C. Lexes program tokens, parses them \
+                into an Abstract Syntax Tree using Pratt parsing, and generates \
+                x86-64 assembly code."
+                }
+              </p>
+              <a
+                href="https://github.com/brendandagys/C-compiler"
                 target="_blank"
                 rel="noopener noreferrer"
               >
