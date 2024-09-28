@@ -27,7 +27,12 @@ class Dot {
   canvasHeight: number;
   appearOnlyNearMouse: boolean;
 
-  constructor(ctx: CanvasRenderingContext2D, canvasWidth: number, canvasHeight: number, appearOnlyNearMouse: boolean) {
+  constructor(
+    ctx: CanvasRenderingContext2D,
+    canvasWidth: number,
+    canvasHeight: number,
+    appearOnlyNearMouse: boolean
+  ) {
     this.ctx = ctx;
     this.canvasWidth = canvasWidth;
     this.canvasHeight = canvasHeight;
@@ -53,7 +58,11 @@ class Dot {
     if (this.appearOnlyNearMouse) {
       // make the dot colour fade out the further they are from the mouse
       const dotDistance = (
-        ((this.x - mousePosition.x) ** 2 + (this.y - mousePosition.y + window.scrollY) ** 2) ** 0.5
+        (
+          (this.x - mousePosition.x) ** 2
+          + (this.y - mousePosition.y + window.scrollY) ** 2
+        )
+        ** 0.5
       );
       const distanceRatio = dotDistance / (window.innerWidth / 1.7);
 
@@ -68,7 +77,8 @@ class Dot {
 }
 
 export const dotsAnimation = (selector: string, showLines: boolean) => {
-  let animation: number;  // Handler returned by `requestAnimationFrame(callback)`
+  // Handler returned by `requestAnimationFrame(callback)`
+  let animation: number;
 
   const canvas = document.querySelector<HTMLCanvasElement>(selector);
   if (canvas === null) return;
@@ -114,7 +124,8 @@ export const dotsAnimation = (selector: string, showLines: boolean) => {
 
     createDots() {
       for (let i = 0; i < this.#dotsConfiguration.nb; i++) {
-        this.dots.push((new Dot(this.#ctx, this.#width, this.#height, this.#showLines)));
+        this.dots.push(
+          new Dot(this.#ctx, this.#width, this.#height, this.#showLines));
       }
     }
 
@@ -146,7 +157,8 @@ export const dotsAnimation = (selector: string, showLines: boolean) => {
               const mp = mousePosition;
 
               let distanceRatio = (
-                (((dot1.x - mp.x) ** 2 + (dot1.y - mp.y) ** 2) ** 0.5)  // Dot distance from mouse
+                // Dot distance from mouse
+                (((dot1.x - mp.x) ** 2 + (dot1.y - mp.y) ** 2) ** 0.5)
                 /
                 this.#dotsConfiguration.d_radius
               );
@@ -184,7 +196,10 @@ export const dotsAnimation = (selector: string, showLines: boolean) => {
         if (this.#showLines) this.calculateLines();
 
         else this.dots.forEach((d, i) => {
-          if (d.y >= window.innerHeight - window.scrollY || i > this.dots.length * .7) d.paint();
+          if (
+            d.y >= window.innerHeight - window.scrollY
+            || i > this.dots.length * .7
+          ) d.paint();
         });
 
         this.setNextDotPositions();
@@ -199,7 +214,9 @@ export const dotsAnimation = (selector: string, showLines: boolean) => {
   }
 
 
-  let dotsAnimation = new DotsAnimation(ctx, canvas.width, canvas.height, showLines);
+  let dotsAnimation = (
+    new DotsAnimation(ctx, canvas.width, canvas.height, showLines)
+  );
 
   window.addEventListener("mousemove", function (e) {
     dotsAnimation.dots[0].x = e.clientX;
@@ -219,7 +236,9 @@ export const dotsAnimation = (selector: string, showLines: boolean) => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
 
-      dotsAnimation = new DotsAnimation(ctx, canvas.width, canvas.height, showLines);
+      dotsAnimation = (
+        new DotsAnimation(ctx, canvas.width, canvas.height, showLines)
+      );
       dotsAnimation.animate(0);
     }, 250);
   });

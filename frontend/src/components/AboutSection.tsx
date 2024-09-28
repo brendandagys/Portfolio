@@ -1,3 +1,5 @@
+/* eslint-disable max-len */
+
 import "../css/AboutSection.css";
 
 import dopBadge from "../images/dop.png";
@@ -45,34 +47,41 @@ export const AboutSection: React.FC = () => {
           <div className="about-icon-clusters">
             <div className="about-icon-cluster-tech">
               <div className="about-icon-column">
-                <img src={aws} alt="AWS icon" className="icon-aws" />
-                <img src={react} className="spin icon-react" alt="" />
-                <img src={terraform} alt="" className="icon-terraform" />
-                <img src={cpp} alt="" className="icon-cpp" />
+                <img src={aws} className="icon-aws" alt="AWS icon" />
+                <img src={react} className="spin icon-react" alt="React icon" />
+                {/* prettier-ignore */}
+                <img src={terraform} className="icon-terraform" alt="Terraform icon" />
+                <img src={cpp} className="icon-cpp" alt="C++ icon" />
               </div>
               <div className="about-icon-column">
-                <img src={python} alt="" className="icon-python" />
-                <img src={vue} alt="" className="icon-vue" />
-                <img src={docker} alt="" className="icon-docker" />
-                <img src={redis} alt="" className="icon-redis" />
+                <img src={python} className="icon-python" alt="Python icon" />
+                <img src={vue} className="icon-vue" alt="Vue icon" />
+                <img src={docker} className="icon-docker" alt="Docker icon" />
+                <img src={redis} className="icon-redis" alt="Redis icon" />
               </div>
               <div className="about-icon-column">
-                <img src={rust} className="spin icon-rust" alt="" />
-                <img src={graphql} alt="" className="icon-graphql" />
-                <img src={kubernetes} className="spin-reverse icon-k8" alt="" />
-                <img src={bootstrap} alt="" className="icon-bootstrap" />
+                <img src={rust} className="spin icon-rust" alt="Rust icon" />
+                {/* prettier-ignore */}
+                <img src={graphql} className="icon-graphql" alt="GraphQL icon" />
+                {/* prettier-ignore */}
+                <img src={kubernetes} className="spin-reverse icon-k8" alt="Kubernetes icon" />
+                {/* prettier-ignore */}
+                <img src={bootstrap} className="icon-bootstrap" alt="Bootstrap icon" />
               </div>
               <div className="about-icon-column">
-                <img src={typescript} alt="" className="icon-typescript" />
-                <img src={django} alt="" className="icon-django" />
-                <img src={postgresql} alt="" className="icon-postgresql" />
-                <img src={html} alt="" className="icon-html" />
+                {/* prettier-ignore */}
+                <img src={typescript} className="icon-typescript" alt="TypeScript icon" />
+                <img src={django} className="icon-django" alt="Django icon" />
+                {/* prettier-ignore */}
+                <img src={postgresql} className="icon-postgresql" alt="PostgreSQL icon" />
+                <img src={html} className="icon-html" alt="HTML icon" />
               </div>
               <div className="about-icon-column">
-                <img src={javascript} alt="" className="icon-javascript" />
-                <img src={nodejs} alt="" className="icon-nodejs" />
-                <img src={git} alt="" className="icon-git" />
-                <img src={css} alt="" className="icon-css" />
+                {/* prettier-ignore */}
+                <img src={javascript} className="icon-javascript" alt="JavaScript icon" />
+                <img src={nodejs} className="icon-nodejs" alt="NodeJS icon" />
+                <img src={git} className="icon-git" alt="Git icon" />
+                <img src={css} className="icon-css" alt="CSS icon" />
               </div>
             </div>
           </div>
