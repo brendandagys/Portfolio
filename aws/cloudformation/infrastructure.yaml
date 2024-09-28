@@ -57,11 +57,6 @@ Resources:
   SNSTopicWithLambdaPublisherStack:
     Type: AWS::CloudFormation::Stack
     Properties:
-      # Description: >
-      #   Creates an SNS Topic that will email me when published to.
-      #   A Lambda function is also created. It's invoked from the application
-      #   when users fill out a contact form. The Lambda function uses Rust
-      #   to process an HTTP request and invoke the SNS Publish API.
       Parameters:
         SnsTopicName: portfolio-contact-form
         TopicSubscriber1: brendandagys@gmail.com
