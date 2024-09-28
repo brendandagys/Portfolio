@@ -1,4 +1,5 @@
 import "../css/App.css";
+import "../css/Animations.css";
 
 import { dotsAnimation } from "../js/dotsAnimation.ts";
 import { ContactForm } from "./ContactForm.tsx";
