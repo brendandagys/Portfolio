@@ -47,7 +47,7 @@ const icons = [
 const spinIcons = ["icon-k8", "icon-react", "icon-rust"];
 
 export const initializeContentAnimations = () => {
-  const observer = new IntersectionObserver(techIconsFadeIn, { root: null, rootMargin: '0px', threshold: 0.1 });
+  const observer = new IntersectionObserver(techIconsFadeIn, { root: null, rootMargin: '0px', threshold: 0.5 });
 
   const aboutSection = document.querySelector("#about");
   if (aboutSection) observer.observe(aboutSection);
