@@ -1,5 +1,6 @@
 import "../css/App.css";
 import "../css/Animations.css";
+import { initializeContentAnimations } from "../js/contentAnimations.ts";
 
 import { dotsAnimation } from "../js/dotsAnimation.ts";
 import { ContactForm } from "./ContactForm.tsx";
@@ -21,6 +22,7 @@ export const App: React.FC = () => {
   useEffect(() => {
     dotsAnimation(".canvas-1", true);
     dotsAnimation(".canvas-2", false);
+    initializeContentAnimations();
   }, []);
 
   return (

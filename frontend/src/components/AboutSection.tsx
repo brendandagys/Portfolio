@@ -1,5 +1,4 @@
 import "../css/AboutSection.css";
-import { initializeContentAnimations } from "../js/contentAnimations.ts";
 
 import dopBadge from "../images/dop.png";
 import ccpBadge from "../images/ccp.png";
@@ -29,13 +28,7 @@ import terraform from "../images/terraform-icon.svg";
 import typescript from "../images/typescript-icon.svg";
 import vue from "../images/vue-icon.svg";
 
-import { useEffect } from "react";
-
 export const AboutSection: React.FC = () => {
-  useEffect(() => {
-    initializeContentAnimations();
-  }, []);
-
   return (
     <>
       <section className="about-section-container">
