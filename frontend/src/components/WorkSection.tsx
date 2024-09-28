@@ -31,7 +31,7 @@ export const WorkSection: React.FC = () => {
               <a
                 href="https://calaceite.holiday"
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="noreferrer"
               >
                 View Website
               </a>
@@ -51,7 +51,7 @@ export const WorkSection: React.FC = () => {
               <a
                 href="https://github.com/brendandagys/Text-Editor"
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="noreferrer"
               >
                 View on GitHub
               </a>
@@ -79,7 +79,7 @@ export const WorkSection: React.FC = () => {
               <a
                 href="https://github.com/brendandagys/C-compiler"
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="noreferrer"
               >
                 View on GitHub
               </a>
@@ -102,7 +102,7 @@ export const WorkSection: React.FC = () => {
                 <a
                   href="https://github.com/brendandagys/Serverless-Merge-Sort-Frontend-Yew-App"
                   target="_blank"
-                  rel="noopener noreferrer"
+                  rel="noreferrer"
                 >
                   front-end
                 </a>
@@ -111,7 +111,7 @@ export const WorkSection: React.FC = () => {
               <a
                 href="https://github.com/brendandagys/Serverless-Merge-Sort-with-AWS-SAM"
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="noreferrer"
               >
                 View on GitHub
               </a>
@@ -132,7 +132,7 @@ export const WorkSection: React.FC = () => {
               <a
                 href="https://github.com/brendandagys/Text-Editor"
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="noreferrer"
               >
                 View on GitHub
               </a>
