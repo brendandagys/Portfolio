@@ -95,15 +95,32 @@
   padding: 0 1rem;
 }
 
-.about-icon-cluster-tech img {
-  animation: slow-bobbing 6s ease-in-out infinite;
+.about-icon-cluster-tech img:not(.spin):not(.spin-reverse) {
+  opacity: 0;
+  /* animation-name: slow-bobbing, fade-in; */
+  animation-duration: 6s, 1s;
+  animation-fill-mode: both;
+  animation-iteration-count: infinite, 1;
+  animation-timing-function: ease-in-out, linear;
+  animation-delay: 0s, 100s;
+  width: 75px;
+}
+
+.about-icon-cluster-tech img.spin,
+.about-icon-cluster-tech img.spin-reverse {
+  opacity: 0;
+  /* animation-name: slow-bob-spin, fade-in; */
+  animation-duration: 10s, 1.2s;
+  animation-fill-mode: both;
+  animation-iteration-count: infinite, 1;
+  animation-timing-function: linear, linear;
+  animation-delay: 0s, 100s;
   width: 75px;
 }
 
 .about-icon-cluster-aws img {
   width: 120px;
   animation: subtle-wobble 3s linear infinite;
-  transform-origin: center;
 }
 
 @media (max-width: 1250px) {
@@ -201,15 +218,6 @@
   .about-card {
     font-size: 1.05rem;
   }
-}
-
-.about-icon-cluster-tech img.spin {
-  animation: slow-bob-spin 10s linear infinite;
-}
-
-.about-icon-cluster-tech img.spin-reverse {
-  animation: slow-bob-spin 10s linear infinite;
-  animation-direction: reverse;
 }
 
 .about-icon-cluster-tech img,

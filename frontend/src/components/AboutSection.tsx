@@ -1,4 +1,5 @@
 import "../css/AboutSection.css";
+import { initializeContentAnimations } from "../js/contentAnimations.ts";
 
 import dopBadge from "../images/dop.png";
 import ccpBadge from "../images/ccp.png";
@@ -32,11 +33,7 @@ import { useEffect } from "react";
 
 export const AboutSection: React.FC = () => {
   useEffect(() => {
-    document
-      .querySelectorAll<HTMLImageElement>(".about-section-container img")
-      .forEach((icon) => {
-        icon.style.animationDelay = `${Math.random() * 3}s`; // eslint-disable-line @typescript-eslint/restrict-template-expressions
-      });
+    initializeContentAnimations();
   }, []);
 
   return (
@@ -55,34 +52,34 @@ export const AboutSection: React.FC = () => {
           <div className="about-icon-clusters">
             <div className="about-icon-cluster-tech">
               <div className="about-icon-column">
-                <img src={aws} alt="AWS icon" />
-                <img src={bootstrap} alt="" />
-                <img src={cpp} alt="" />
-                <img src={django} alt="" />
+                <img src={aws} alt="AWS icon" className="icon-aws" />
+                <img src={react} className="spin icon-react" alt="" />
+                <img src={terraform} alt="" className="icon-terraform" />
+                <img src={cpp} alt="" className="icon-cpp" />
               </div>
               <div className="about-icon-column">
-                <img src={docker} alt="" />
-                <img src={git} alt="" />
-                <img src={graphql} alt="" />
-                <img src={html} alt="" />
+                <img src={python} alt="" className="icon-python" />
+                <img src={vue} alt="" className="icon-vue" />
+                <img src={docker} alt="" className="icon-docker" />
+                <img src={redis} alt="" className="icon-redis" />
               </div>
               <div className="about-icon-column">
-                <img src={css} alt="" />
-                <img src={javascript} alt="" />
-                <img src={kubernetes} className="spin-reverse" alt="" />
-                <img src={react} className="spin" alt="" />
+                <img src={rust} className="spin icon-rust" alt="" />
+                <img src={graphql} alt="" className="icon-graphql" />
+                <img src={kubernetes} className="spin-reverse icon-k8" alt="" />
+                <img src={bootstrap} alt="" className="icon-bootstrap" />
               </div>
               <div className="about-icon-column">
-                <img src={nodejs} alt="" />
-                <img src={postgresql} alt="" />
-                <img src={python} alt="" />
-                <img src={redis} alt="" />
+                <img src={typescript} alt="" className="icon-typescript" />
+                <img src={django} alt="" className="icon-django" />
+                <img src={postgresql} alt="" className="icon-postgresql" />
+                <img src={html} alt="" className="icon-html" />
               </div>
               <div className="about-icon-column">
-                <img src={vue} alt="" />
-                <img src={rust} className="spin" alt="" />
-                <img src={terraform} alt="" />
-                <img src={typescript} alt="" />
+                <img src={javascript} alt="" className="icon-javascript" />
+                <img src={nodejs} alt="" className="icon-nodejs" />
+                <img src={git} alt="" className="icon-git" />
+                <img src={css} alt="" className="icon-css" />
               </div>
             </div>
           </div>
