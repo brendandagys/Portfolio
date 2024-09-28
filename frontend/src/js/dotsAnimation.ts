@@ -128,14 +128,14 @@ export const dotsAnimation = (selector: string, showLines: boolean) => {
 
           if (
             dot1.x - dot2.x < this.#dotsConfiguration.distance &&
-            dot1.y - dot2.y < this.#dotsConfiguration.distance &&
             dot1.x - dot2.x > -this.#dotsConfiguration.distance &&
+            dot1.y - dot2.y < this.#dotsConfiguration.distance &&
             dot1.y - dot2.y > -this.#dotsConfiguration.distance
           ) {
             if (
               dot1.x - mousePosition.x < this.#dotsConfiguration.d_radius &&
-              dot1.y - mousePosition.y < this.#dotsConfiguration.d_radius &&
               dot1.x - mousePosition.x > -this.#dotsConfiguration.d_radius &&
+              dot1.y - mousePosition.y < this.#dotsConfiguration.d_radius &&
               dot1.y - mousePosition.y > -this.#dotsConfiguration.d_radius
             ) {
               this.#ctx.beginPath();
@@ -208,14 +208,20 @@ export const dotsAnimation = (selector: string, showLines: boolean) => {
 
   dotsAnimation.animate(0);
 
+  let resizeTimeout: number;
+
   window.addEventListener("resize", function () {
-    cancelAnimationFrame(animation);
+    this.clearTimeout(resizeTimeout);
 
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    resizeTimeout = setTimeout(() => {
+      cancelAnimationFrame(animation);
 
-    dotsAnimation = new DotsAnimation(ctx, canvas.width, canvas.height, showLines);
-    dotsAnimation.animate(0);
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      dotsAnimation = new DotsAnimation(ctx, canvas.width, canvas.height, showLines);
+      dotsAnimation.animate(0);
+    }, 250);
   });
 };
 
