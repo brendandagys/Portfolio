@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useScrollTo } from "../hooks/useScrollTo";
 import "../css/Navbar.css";
+// import resumePdf from "../documents/brendan-dagys-resume.pdf";
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -34,6 +35,7 @@ const Navbar: React.FC = () => {
           >
             Home
           </button>
+
           <button
             onClick={() => {
               scrollTo("about");
@@ -41,6 +43,7 @@ const Navbar: React.FC = () => {
           >
             About
           </button>
+
           <button
             onClick={() => {
               scrollTo("work");
@@ -48,6 +51,7 @@ const Navbar: React.FC = () => {
           >
             Work
           </button>
+
           <button
             onClick={() => {
               scrollTo("contact");
@@ -55,6 +59,10 @@ const Navbar: React.FC = () => {
           >
             Contact
           </button>
+
+          {/* <a href={resumePdf} rel="noreferrer" target="_blank">
+            <button>Resume</button>
+          </a> */}
         </div>
         <div className="hamburger" onClick={toggleMenu}>
           <span className="bar"></span>
