@@ -58,7 +58,7 @@ class Dot {
       const distanceRatio = dotDistance / (window.innerWidth / 1.7);
 
       // this chops the bracket off the rgb colour and ads an opacity
-      this.ctx.fillStyle = this.colour.slice(0, -1) + `,${1 - distanceRatio})`;  // eslint-disable-line @typescript-eslint/restrict-template-expressions
+      this.ctx.fillStyle = this.colour.slice(0, -1) + `,${1 - distanceRatio})`;
     } else {
       this.ctx.fillStyle = this.colour;
     }
@@ -154,7 +154,7 @@ export const dotsAnimation = (selector: string, showLines: boolean) => {
               // Prevent it from fading out completely
               distanceRatio = Math.max(distanceRatio - 0.3, 0);
 
-              this.#ctx.strokeStyle = `rgb(81, 162, 233, ${1 - distanceRatio})`;  // eslint-disable-line @typescript-eslint/restrict-template-expressions
+              this.#ctx.strokeStyle = `rgb(81, 162, 233, ${1 - distanceRatio})`;
 
               this.#ctx.stroke();
               this.#ctx.closePath();
