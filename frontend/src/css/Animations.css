@@ -1,4 +1,4 @@
-@keyframes moveInLeft {
+@keyframes slide-from-left {
   0% {
     opacity: 0;
     transform: translateX(-10rem);
@@ -10,7 +10,7 @@
   }
 }
 
-@keyframes moveInRight {
+@keyframes slide-from-right {
   0% {
     opacity: 0;
     transform: translateX(10rem);
@@ -22,7 +22,7 @@
   }
 }
 
-@keyframes moveInBottom {
+@keyframes slide-from-bottom {
   0% {
     opacity: 0;
     transform: translateY(4rem);

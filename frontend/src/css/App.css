@@ -143,13 +143,13 @@
 }
 
 .hero-content>h1 {
-  animation-name: moveInLeft;
+  animation-name: slide-from-left;
   animation-duration: 1s;
   animation-fill-mode: forwards;
 }
 
 .hero-content>h2 {
-  animation-name: moveInRight;
+  animation-name: slide-from-right;
   animation-duration: 1s;
   animation-fill-mode: forwards;
 }
