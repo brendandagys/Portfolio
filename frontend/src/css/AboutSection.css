@@ -110,7 +110,7 @@
 .about-icon-cluster-tech img.spin-reverse {
   opacity: 0;
   /* animation-name: slow-bob-spin, fade-in; */
-  animation-duration: 10s, 1.2s;
+  animation-duration: 12s, 1.2s;
   animation-fill-mode: both;
   animation-iteration-count: infinite, 1;
   animation-timing-function: linear, linear;
