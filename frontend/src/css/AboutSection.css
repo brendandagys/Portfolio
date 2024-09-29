@@ -92,8 +92,6 @@
 }
 
 .about-icon-cluster-tech img:not(.spin):not(.spin-reverse) {
-  width: 75px;
-
   opacity: 0;
   /* animation-name: slow-bobbing, fade-in; */
   animation-duration: 6s, 0.25s;
@@ -104,14 +102,16 @@
 
 .about-icon-cluster-tech img.spin,
 .about-icon-cluster-tech img.spin-reverse {
-  width: 75px;
-
   opacity: 0;
   /* animation-name: slow-bob-spin, fade-in; */
   animation-duration: 12s, 1.2s;
   animation-fill-mode: both;
   animation-iteration-count: infinite, 1;
   animation-timing-function: linear, linear;
+}
+
+.about-icon-cluster-tech img {
+  width: 75px;
 }
 
 .about-icon-cluster-aws img {
