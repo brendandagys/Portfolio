@@ -37,6 +37,10 @@
   color: var(--text-gray);
 }
 
+.text-gray--dark {
+  color: var(--text-gray--dark);
+}
+
 .hero {
   position: relative;
   display: flex;

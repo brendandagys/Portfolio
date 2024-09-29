@@ -34,7 +34,7 @@ export const App: React.FC = () => {
 
         <div className="hero-content">
           <h1>{"Hello, I'm Brendan."}</h1>
-          <h2 className="text-gray mt-1">
+          <h2 className="text-gray--dark mt-1">
             {"I'm a software engineer and AWS architect."}
           </h2>
           <a className="button-container">

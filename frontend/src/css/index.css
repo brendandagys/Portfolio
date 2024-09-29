@@ -11,8 +11,8 @@
 :root {
   --max-width: 1250px;
   --text-white: rgba(255, 255, 255, 0.87);
-  --text-gray: #b3b1b1;
-  /* --text-gray: #9a9999; */
+  --text-gray: #c9c8c8;
+  --text-gray--dark: #b3b1b1;
   --text-black: black;
   --link-color: #646cff;
   --link-color-hover: #535bf2;
