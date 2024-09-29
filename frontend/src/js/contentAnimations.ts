@@ -33,7 +33,7 @@ const awsIcons = [
   "icon-ccp",
 ];
 
-function aboutSectionAnimations(
+function aboutSectionTopAnimations(
   entries: IntersectionObserverEntry[],
   observer: IntersectionObserver
 ) {
@@ -58,17 +58,14 @@ function aboutSectionAnimations(
       });
 
       const aboutCard = document.querySelector<HTMLDivElement>(".about-card");
-      if (aboutCard) {
-        aboutCard.style.animationName = "slide-from-left";
-        aboutCard.style.animationDelay = "0s";
-      }
+      if (aboutCard) aboutCard.style.animationName = "slide-from-left";
 
       observer.unobserve(entry.target);
     }
   });
 }
 
-function awsAnimations(
+function aboutSectionAwsAnimations(
   entries: IntersectionObserverEntry[],
   observer: IntersectionObserver
 ) {
@@ -101,18 +98,42 @@ function awsAnimations(
   });
 }
 
+function contactSectionAnimations(
+  entries: IntersectionObserverEntry[],
+  observer: IntersectionObserver
+) {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      const contactElement = document.querySelector<HTMLDivElement>("#contact");
+      if (contactElement) {
+        contactElement.style.animationName = "bounce";
+      }
+
+      observer.unobserve(entry.target);
+    }
+  });
+}
+
 export const initializeContentAnimations = () => {
   const config = { root: null, rootMargin: "0px", threshold: 0.5 };
 
   const aboutSection = document.querySelector("#about");
   if (aboutSection) {
-    (new IntersectionObserver(aboutSectionAnimations, config))
+    (new IntersectionObserver(aboutSectionTopAnimations, config))
       .observe(aboutSection);
   }
 
   const awsSection = document.querySelector(".aws-icons-title-container");
   if (awsSection) {
-    (new IntersectionObserver(awsAnimations, { ...config, threshold: 0.8 }))
-      .observe(awsSection);
+    (new IntersectionObserver(
+      aboutSectionAwsAnimations, { ...config, threshold: 0.8 })
+    ).observe(awsSection);
+  }
+
+  const contactSection = document.querySelector("#contact");
+  if (contactSection) {
+    (new IntersectionObserver(
+      contactSectionAnimations, { ...config, threshold: 1 })
+    ).observe(contactSection);
   }
 };

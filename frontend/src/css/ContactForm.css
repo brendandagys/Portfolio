@@ -1,3 +1,10 @@
+#contact {
+  /* animation-name: bounce; */
+  animation-duration: 1.4s;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in-out;
+}
+
 .contact-form {
   position: relative;
   width: 100%;

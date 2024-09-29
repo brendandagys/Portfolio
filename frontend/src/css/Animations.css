@@ -34,19 +34,62 @@
   }
 }
 
-/* @keyframes bounce {
+@keyframes bounce {
   0% {
     transform: translateY(0);
   }
 
+  10% {
+    transform: translateY(-4rem);
+    /* First bounce */
+  }
+
+  20% {
+    transform: translateY(0);
+    /* Fall back down */
+  }
+
+  30% {
+    transform: translateY(-3rem);
+    /* Second bounce */
+  }
+
+  40% {
+    transform: translateY(0);
+    /* Fall back down */
+  }
+
   50% {
+    transform: translateY(-2rem);
+    /* Third bounce */
+  }
+
+  60% {
+    transform: translateY(0);
+    /* Fall back down */
+  }
+
+  70% {
     transform: translateY(-1rem);
+    /* Fourth bounce */
+  }
+
+  80% {
+    transform: translateY(0);
+    /* Fall back down */
+  }
+
+  90% {
+    transform: translateY(-.5rem);
+    /* Fifth bounce */
   }
 
   100% {
     transform: translateY(0);
+    /* Final position */
   }
-} */
+}
+
 
 @keyframes fade-in {
   0% {
