@@ -107,6 +107,7 @@ function contactSectionAnimations(
       const contactElement = document.querySelector<HTMLDivElement>("#contact");
       if (contactElement) {
         contactElement.style.animationName = "bounce";
+        contactElement.style.animationDelay = "0.5s";
       }
 
       observer.unobserve(entry.target);
