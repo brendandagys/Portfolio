@@ -38,9 +38,14 @@
   padding: .9rem 1.25rem;
 }
 
-.nav-links>button:hover,
 .nav-links>button.nav-button--active {
   color: #64ffcf;
+}
+
+.nav-links>button:hover:not(.nav-button--active) {
+  transform: scale(1.05);
+  transition: transform 100ms;
+  transition-timing-function: ease-in;
 }
 
 /* Hamburger Menu for Mobile */
