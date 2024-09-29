@@ -114,6 +114,22 @@ function contactSectionAnimations(
   });
 }
 
+function navButtonHighlight(entries: IntersectionObserverEntry[]) {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      const navButtons =
+        document.querySelectorAll<HTMLButtonElement>(".nav-button");
+
+      navButtons.forEach((button) => {
+        button.classList.remove("nav-button--active");
+      });
+
+      const activeButton = document.querySelector(`#${entry.target.id}-button`);
+      if (activeButton) activeButton.classList.add("nav-button--active");
+    }
+  });
+}
+
 export const initializeContentAnimations = () => {
   const config = { root: null, rootMargin: "0px", threshold: 0.5 };
 
@@ -136,4 +152,21 @@ export const initializeContentAnimations = () => {
       contactSectionAnimations, { ...config, threshold: 1 })
     ).observe(contactSection);
   }
+
+  // Highlight appropriate NavBar link
+  const observerNav =
+    new IntersectionObserver(navButtonHighlight, { ...config, threshold: 0.5 });
+
+  const homeSection = document.querySelector("#home");
+
+  if (homeSection) observerNav.observe(homeSection);
+  if (aboutSection) observerNav.observe(aboutSection);
+  if (contactSection) observerNav.observe(contactSection);
+
+  const observerNavProjects =
+    new IntersectionObserver(navButtonHighlight, { ...config, threshold: 0.3 });
+
+  const workSection = document.querySelector("#work");
+
+  if (workSection) observerNavProjects.observe(workSection);
 };

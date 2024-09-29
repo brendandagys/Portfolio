@@ -29,6 +29,8 @@ const Navbar: React.FC = () => {
           onClick={toggleMenu}
         >
           <button
+            id="home-button"
+            className="nav-button"
             onClick={() => {
               scrollTo("home");
             }}
@@ -37,6 +39,8 @@ const Navbar: React.FC = () => {
           </button>
 
           <button
+            id="about-button"
+            className="nav-button"
             onClick={() => {
               scrollTo("about");
             }}
@@ -45,6 +49,8 @@ const Navbar: React.FC = () => {
           </button>
 
           <button
+            id="work-button"
+            className="nav-button"
             onClick={() => {
               scrollTo("work");
             }}
@@ -53,6 +59,8 @@ const Navbar: React.FC = () => {
           </button>
 
           <button
+            id="contact-button"
+            className="nav-button"
             onClick={() => {
               scrollTo("contact");
             }}
@@ -61,7 +69,7 @@ const Navbar: React.FC = () => {
           </button>
 
           {/* <a href={resumePdf} rel="noreferrer" target="_blank">
-            <button>Resume</button>
+            <button className="nav-button">Resume</button>
           </a> */}
         </div>
         <div className="hamburger" onClick={toggleMenu}>
