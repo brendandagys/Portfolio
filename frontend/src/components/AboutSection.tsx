@@ -87,7 +87,7 @@ export const AboutSection: React.FC = () => {
           </div>
         </div>
 
-        <div className="aws-section">
+        <div className="aws-icons-title-container">
           <div>
             <p>
               {
@@ -99,13 +99,20 @@ export const AboutSection: React.FC = () => {
 
         <div className="about-icon-cluster-aws">
           <div className="about-icon-row">
-            <img src={sapBadge} alt="Solutions Architect - Professional" />
-            <img src={dopBadge} alt="DevOps Engineer - Professional" />
-            <img src={scsBadge} alt="Security - Specialty" />
-            <img src={saaBadge} alt="Solutions Architect - Associate" />
-            <img src={dvaBadge} alt="Developer - Associate" />
-            <img src={soaBadge} alt="SysOps Administrator - Associate" />
-            <img src={ccpBadge} alt="Cloud Practitioner - Foundational" />
+            {/* prettier-ignore */}
+            <img src={sapBadge} className="icon-sap" alt="Solutions Architect - Professional" />
+            {/* prettier-ignore */}
+            <img src={dopBadge} className="icon-dop" alt="DevOps Engineer - Professional" />
+            {/* prettier-ignore */}
+            <img src={scsBadge} className="icon-scs" alt="Security - Specialty" />
+            {/* prettier-ignore */}
+            <img src={saaBadge} className="icon-saa" alt="Solutions Architect - Associate" />
+            {/* prettier-ignore */}
+            <img src={dvaBadge} className="icon-dva" alt="Developer - Associate" />
+            {/* prettier-ignore */}
+            <img src={soaBadge} className="icon-soa" alt="SysOps Administrator - Associate" />
+            {/* prettier-ignore */}
+            <img src={ccpBadge} className="icon-ccp" alt="Cloud Practitioner - Foundational" />
           </div>
         </div>
       </section>

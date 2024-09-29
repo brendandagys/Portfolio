@@ -14,17 +14,19 @@
   max-width: var(--max-width);
 }
 
-.aws-section {
-  display: flex;
-  position: relative;
-  align-items: center;
-  justify-content: center;
+.aws-icons-title-container {
+  text-align: center;
   padding: 0 2rem;
   margin-top: 7rem;
   font-size: 1.15rem;
-  /* padding: 0 1rem; */
-  /* margin: auto; */
-  /* max-width: var(--max-width); */
+
+  opacity: 0;
+
+  /* animation-name: fade-in; */
+  animation-duration: 0.75s;
+  animation-iteration-count: 1;
+  animation-timing-function: linear;
+  animation-fill-mode: both;
 }
 
 .about-card {
@@ -35,6 +37,7 @@
   font-size: 1.25rem;
 
   opacity: 0;
+
   /* animation-name: slide-from-left; */
   animation-fill-mode: both;
   animation-duration: 0.7s;
@@ -42,29 +45,16 @@
   animation-timing-function: ease-in-out;
 }
 
-.about-card h2,
-.aws-section h2 {
+.about-card h2 {
   margin-bottom: 15px;
   color: white;
 }
 
 .about-card p,
-.aws-section p {
+.aws-icons-title-container p {
   line-height: 1.6;
   color: white;
 }
-
-/* .about-card h2 {
-  font-size: 28px;
-} */
-
-/* .about-card p {
-  font-size: 17px;
-} */
-
-/* .aws-section p {
-  font-size: 16px;
-} */
 
 .about-icon-clusters {
   max-width: 40%;
@@ -106,11 +96,10 @@
 
   opacity: 0;
   /* animation-name: slow-bobbing, fade-in; */
-  animation-duration: 6s, 1s;
+  animation-duration: 6s, 0.25s;
   animation-fill-mode: both;
   animation-iteration-count: infinite, 1;
   animation-timing-function: ease-in-out, linear;
-  animation-delay: 0s, 1000s;
 }
 
 .about-icon-cluster-tech img.spin,
@@ -123,12 +112,18 @@
   animation-fill-mode: both;
   animation-iteration-count: infinite, 1;
   animation-timing-function: linear, linear;
-  animation-delay: 0s, 100s;
 }
 
 .about-icon-cluster-aws img {
   width: 120px;
-  animation: subtle-wobble 3s linear infinite;
+
+  opacity: 0;
+
+  /* animation-name: subtle-wobble, bounce-in-from-right; */
+  animation-duration: 3s, 1.5s;
+  animation-fill-mode: backwards;
+  animation-iteration-count: infinite, 1;
+  animation-timing-function: linear, ease-in-out;
 }
 
 @media (max-width: 1250px) {
@@ -148,7 +143,7 @@
     width: 110px;
   }
 
-  .aws-section {
+  .aws-icons-title-container {
     font-size: 1.05rem;
   }
 }
@@ -170,7 +165,7 @@
     width: 100px;
   }
 
-  .aws-section {
+  .aws-icons-title-container {
     font-size: 1rem;
   }
 }
@@ -195,7 +190,7 @@
     width: 120px;
   }
 
-  .aws-section {
+  .aws-icons-title-container {
     font-size: 1.1rem;
   }
 }
@@ -213,7 +208,7 @@
     width: 100px;
   }
 
-  .aws-section {
+  .aws-icons-title-container {
     font-size: 1rem;
   }
 }
@@ -230,19 +225,8 @@
 
 .about-icon-cluster-tech img,
 .about-icon-cluster-aws img {
-  /* animation: gentle-float 4s ease-in-out infinite; */
-  /* animation: hover-sway 5s ease-in-out infinite; */
-  /* animation: wobble 3s ease-in-out infinite; */
-
   margin: 1rem;
-  /* font-size: 40px;
-  color: #333;
-  transition: color 0.3s ease; */
 }
-
-/* .icon-cluster img:hover {
-  color: #007bff;
-} */
 
 @media (max-width: 768px) {
   .about-section {
