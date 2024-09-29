@@ -20,7 +20,7 @@ export const App: React.FC = () => {
   const scrollTo = useScrollTo(configs);
 
   useEffect(() => {
-    dotsAnimation(".canvas-1", true);
+    // dotsAnimation(".canvas-1", true);
     dotsAnimation(".canvas-2", false);
     initializeContentAnimations();
   }, []);
@@ -37,14 +37,15 @@ export const App: React.FC = () => {
           <h2 className="text-gray mt-1">
             {"I'm a software engineer and AWS architect."}
           </h2>
-          <button
-            onClick={() => {
-              scrollTo("work");
-            }}
-            className="button mt-4"
-          >
-            See my work
-          </button>
+          <a className="button-container">
+            {/* prettier-ignore */}
+            <span
+              onClick={() => { scrollTo("work"); }}
+              className="button-span mt-4"
+            >
+              <span className="button-span-inner">See my work</span>
+            </span>
+          </a>
         </div>
       </div>
 
