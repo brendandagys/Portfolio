@@ -1,8 +1,8 @@
 import "../css/WorkSection.css";
 import cCompiler from "../images/c-compiler.png";
-import vacationRentalSiteScreenshot from "../images/vacation-rental-site-screenshot.png";
+import vacationRentalSiteScreenshot from "../images/vacation-rental-site-screenshot.png"; // eslint-disable-line max-len
 import textEditorScreenshot from "../images/text-editor-screenshot.png";
-import serverlessMergeSortScreenshot from "../images/serverless-merge-sort-screenshot.png";
+import serverlessMergeSortScreenshot from "../images/serverless-merge-sort-screenshot.png"; // eslint-disable-line max-len
 import financesScreenshot from "../images/finances-app-screenshot.png";
 
 export const WorkSection: React.FC = () => {
@@ -71,9 +71,9 @@ export const WorkSection: React.FC = () => {
               <h3>C Compiler</h3>
               <p>
                 {
-                  "A C compiler, written in C. Lexes program tokens, parses them \
-                into an Abstract Syntax Tree using Pratt parsing, and generates \
-                x86-64 assembly code."
+                  "A C compiler, written in C. Lexes program tokens, parses \
+                  them into an Abstract Syntax Tree using Pratt parsing, and \
+                  generates x86-64 assembly code."
                 }
               </p>
               <a
@@ -98,22 +98,28 @@ export const WorkSection: React.FC = () => {
               <h3>Serverless Merge Sort Application</h3>
               <p>
                 A serverless application that performs a merge sort on the
-                provided input array. Deployed with AWS SAM and a Rust&nbsp;
-                <a
-                  href="https://github.com/brendandagys/Serverless-Merge-Sort-Frontend-Yew-App"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  front-end
-                </a>
-                &nbsp;using the Yew crate.
+                provided input array. Deployed using AWS SAM and front-end
+                written in Rust.
               </p>
               <a
-                href="https://github.com/brendandagys/Serverless-Merge-Sort-with-AWS-SAM"
+                href={
+                  "https://github.com/brendandagys/" +
+                  "Serverless-Merge-Sort-Frontend-Yew-App"
+                }
                 target="_blank"
                 rel="noreferrer"
               >
-                View on GitHub
+                View the front-end on GitHub
+              </a>
+              <a
+                href={
+                  "https://github.com/brendandagys/" +
+                  "Serverless-Merge-Sort-with-AWS-SAM"
+                }
+                target="_blank"
+                rel="noreferrer"
+              >
+                View the back-end on GitHub
               </a>
             </div>
           </div>

@@ -212,3 +212,9 @@
     transform: rotate(2deg);
   }
 }
+
+@keyframes button-border-flow {
+  to {
+    transform: translateX(-50%);
+  }
+}
