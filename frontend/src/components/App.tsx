@@ -20,7 +20,7 @@ export const App: React.FC = () => {
   const scrollTo = useScrollTo(configs);
 
   useEffect(() => {
-    // dotsAnimation(".canvas-1", true);
+    dotsAnimation(".canvas-1", true);
     dotsAnimation(".canvas-2", false);
     initializeContentAnimations();
   }, []);
