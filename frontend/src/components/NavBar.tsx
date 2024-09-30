@@ -6,10 +6,6 @@ import "../css/Navbar.css";
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
-
   const [configs] = useState({
     configs: [
       { targetId: "home", offset: -100 },
@@ -24,16 +20,15 @@ const Navbar: React.FC = () => {
   return (
     <nav className="navbar">
       <div className="navbar-container">
+        {/* prettier-ignore */}
         <div
           className={`nav-links${isOpen ? " open" : ""}`}
-          onClick={toggleMenu}
+          onClick={() => { setIsOpen(false); }}
         >
           <button
             id="home-button"
             className="nav-button"
-            onClick={() => {
-              scrollTo("home");
-            }}
+            onClick={() => { scrollTo("home"); }}
           >
             Home
           </button>
@@ -41,9 +36,7 @@ const Navbar: React.FC = () => {
           <button
             id="about-button"
             className="nav-button"
-            onClick={() => {
-              scrollTo("about");
-            }}
+            onClick={() => { scrollTo("about"); }}
           >
             About
           </button>
@@ -51,9 +44,7 @@ const Navbar: React.FC = () => {
           <button
             id="work-button"
             className="nav-button"
-            onClick={() => {
-              scrollTo("work");
-            }}
+            onClick={() => { scrollTo("work"); }}
           >
             Work
           </button>
@@ -61,9 +52,7 @@ const Navbar: React.FC = () => {
           <button
             id="contact-button"
             className="nav-button"
-            onClick={() => {
-              scrollTo("contact");
-            }}
+            onClick={() => { scrollTo("contact"); }}
           >
             Contact
           </button>
@@ -72,7 +61,11 @@ const Navbar: React.FC = () => {
             <button className="nav-button">Resume</button>
           </a> */}
         </div>
-        <div className="hamburger" onClick={toggleMenu}>
+        {/* prettier-ignore */}
+        <div
+          className="hamburger"
+          onClick={() => { setIsOpen(!isOpen); }}
+        >
           <span className="bar"></span>
           <span className="bar"></span>
           <span className="bar"></span>

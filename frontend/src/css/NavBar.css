@@ -78,7 +78,6 @@
     align-items: center;
     justify-content: center;
     transform: translateX(100%);
-    /* opacity: 0; */
   }
 
   .nav-links button {
@@ -90,8 +89,6 @@
   .nav-links.open {
     transform: translateX(0);
     transition: transform 0.15s ease;
-    /* transition: opacity 0.3s ease; */
-    /* opacity: 100; */
   }
 
   .hamburger {
