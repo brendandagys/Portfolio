@@ -60,14 +60,16 @@
 
 .hero-content>h1 {
   animation-name: slide-from-left;
-  animation-duration: 1s;
+  animation-duration: 1.2s;
   animation-fill-mode: forwards;
+  animation-timing-function: cubic-bezier(0.21, 1.11, 0.81, 0.99);
 }
 
 .hero-content>h2 {
   animation-name: slide-from-right;
-  animation-duration: 1s;
+  animation-duration: 1.2s;
   animation-fill-mode: forwards;
+  animation-timing-function: cubic-bezier(0.21, 1.11, 0.81, 0.99);
 }
 
 /* .hero-content button::before {

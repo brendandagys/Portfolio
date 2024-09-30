@@ -1,7 +1,7 @@
 @keyframes slide-from-left {
   0% {
     opacity: 0;
-    transform: translateX(-20rem);
+    transform: translateX(-10rem);
   }
 
   100% {
