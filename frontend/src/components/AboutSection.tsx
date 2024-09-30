@@ -88,13 +88,11 @@ export const AboutSection: React.FC = () => {
         </div>
 
         <div className="aws-icons-title-container">
-          <div>
-            <p>
-              {
-                "I'm a huge AWS fan and use their services to build my projects. I hold the following certifications:"
-              }
-            </p>
-          </div>
+          <p>
+            {
+              "I'm a huge AWS fan and use their services to build my projects. I hold the following certifications:"
+            }
+          </p>
         </div>
 
         <div className="about-icon-cluster-aws">

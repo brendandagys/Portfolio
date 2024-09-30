@@ -18,7 +18,7 @@
   text-align: center;
   padding: 0 2rem;
   margin-top: 7rem;
-  font-size: 1.15rem;
+  font-size: 1.2rem;
 
   opacity: 0;
 
@@ -30,6 +30,7 @@
 }
 
 .about-card {
+  color: white;
   max-width: 40%;
   padding: 20px;
   background-color: rgba(0, 0, 0, 0);
@@ -46,14 +47,13 @@
 }
 
 .about-card h2 {
+  font-size: 1.7em;
   margin-bottom: 15px;
-  color: white;
 }
 
 .about-card p,
 .aws-icons-title-container p {
   line-height: 1.6;
-  color: white;
 }
 
 .about-icon-clusters {
@@ -139,12 +139,16 @@
     font-size: 1.15rem;
   }
 
+  .about-card h2 {
+    font-size: 1.67em;
+  }
+
   .about-icon-cluster-aws img {
     width: 110px;
   }
 
   .aws-icons-title-container {
-    font-size: 1.05rem;
+    font-size: 1.13rem;
   }
 }
 
@@ -161,12 +165,16 @@
     font-size: 1.05rem;
   }
 
+  .about-card h2 {
+    font-size: 1.6em;
+  }
+
   .about-icon-cluster-aws img {
     width: 100px;
   }
 
   .aws-icons-title-container {
-    font-size: 1rem;
+    font-size: 1.08rem;
   }
 }
 
@@ -186,12 +194,20 @@
     max-width: unset;
   }
 
+  .about-card h2 {
+    font-size: 2em;
+  }
+
+  .about-card p {
+    margin-top: 2rem;
+  }
+
   .about-icon-cluster-aws img {
     width: 120px;
   }
 
   .aws-icons-title-container {
-    font-size: 1.1rem;
+    font-size: 1.12rem;
   }
 }
 
@@ -204,12 +220,16 @@
     font-size: 1.1rem;
   }
 
+  .about-card h2 {
+    font-size: 1.75em;
+  }
+
   .about-icon-cluster-aws img {
     width: 100px;
   }
 
   .aws-icons-title-container {
-    font-size: 1rem;
+    font-size: 1.07rem;
   }
 }
 
@@ -220,6 +240,14 @@
 
   .about-card {
     font-size: 1.05rem;
+  }
+
+  .about-card h2 {
+    font-size: 1.5em;
+  }
+
+  .aws-icons-title-container {
+    font-size: 1.03rem;
   }
 }
 
