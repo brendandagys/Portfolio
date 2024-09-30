@@ -13,7 +13,8 @@ export const ContactForm: React.FC = () => {
           <h1 className="mb-2">{"Connect with me"}</h1>
           <p className="mb-5 text-gray">
             {
-              "Have a question or want to work together? Leave your details and I'll get back to you as soon as possible."
+              "Have a question or want to work together? Leave your details \
+              and I'll get back to you as soon as possible."
             }
           </p>
         </div>

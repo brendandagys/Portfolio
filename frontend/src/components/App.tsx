@@ -55,7 +55,7 @@ export const App: React.FC = () => {
         </div>
       </div>
 
-      <div id="about" className="mt-10">
+      <div id="about">
         <AboutSection />
       </div>
       <div id="work">

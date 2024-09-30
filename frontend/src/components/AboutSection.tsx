@@ -34,7 +34,7 @@ export const AboutSection: React.FC = () => {
   return (
     <>
       <section className="about-section-container">
-        <div className="about-section">
+        <div className="about-top-section">
           <div className="about-card">
             <h2>About Me</h2>
             <p>

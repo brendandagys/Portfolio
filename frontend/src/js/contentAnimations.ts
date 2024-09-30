@@ -132,18 +132,18 @@ function navButtonHighlight(entries: IntersectionObserverEntry[]) {
 }
 
 export const initializeContentAnimations = () => {
-  const config = { root: null, rootMargin: "0px", threshold: 0.5 };
+  const config = { root: null, rootMargin: "0px", threshold: 1 };
 
-  const aboutSection = document.querySelector("#about");
+  const aboutSection = document.querySelector(".about-top-section");
   if (aboutSection) {
     (new IntersectionObserver(aboutSectionTopAnimations, config))
       .observe(aboutSection);
   }
 
-  const awsSection = document.querySelector(".aws-icons-title-container");
+  const awsSection = document.querySelector(".about-icon-cluster-aws");
   if (awsSection) {
     (new IntersectionObserver(
-      aboutSectionAwsAnimations, { ...config, threshold: 0.8 })
+      aboutSectionAwsAnimations, { ...config, threshold: 1 })
     ).observe(awsSection);
   }
 

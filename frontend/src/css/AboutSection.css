@@ -2,7 +2,7 @@
   overflow-x: clip;
 }
 
-.about-section {
+.about-top-section {
   display: flex;
   position: relative;
   flex-wrap: wrap;
@@ -131,7 +131,7 @@
     width: 60px;
   }
 
-  .about-section {
+  .about-top-section {
     gap: 3rem;
   }
 
@@ -153,7 +153,7 @@
     width: 47px;
   }
 
-  .about-section {
+  .about-top-section {
     gap: 3rem;
   }
 
@@ -175,7 +175,7 @@
     width: 75px;
   }
 
-  .about-section {
+  .about-top-section {
     gap: 1rem;
     padding: 1rem;
   }
@@ -229,7 +229,7 @@
 }
 
 @media (max-width: 768px) {
-  .about-section {
+  .about-top-section {
     flex-direction: column;
   }
 
