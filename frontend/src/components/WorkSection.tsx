@@ -118,6 +118,7 @@ export const WorkSection: React.FC = () => {
                 }
                 target="_blank"
                 rel="noreferrer"
+                style={{ marginTop: 6 }}
               >
                 View the back-end on GitHub
               </a>
