@@ -134,10 +134,10 @@ function navButtonHighlight(entries: IntersectionObserverEntry[]) {
 export const initializeContentAnimations = () => {
   const config = { root: null, rootMargin: "0px", threshold: 1 };
 
-  const aboutSection = document.querySelector(".about-top-section");
-  if (aboutSection) {
+  const aboutTopSection = document.querySelector(".about-top-section");
+  if (aboutTopSection) {
     (new IntersectionObserver(aboutSectionTopAnimations, config))
-      .observe(aboutSection);
+      .observe(aboutTopSection);
   }
 
   const awsSection = document.querySelector(".about-icon-cluster-aws");
@@ -159,6 +159,7 @@ export const initializeContentAnimations = () => {
     new IntersectionObserver(navButtonHighlight, { ...config, threshold: 0.5 });
 
   const homeSection = document.querySelector("#home");
+  const aboutSection = document.querySelector("#about");
 
   if (homeSection) observerNav.observe(homeSection);
   if (aboutSection) observerNav.observe(aboutSection);
