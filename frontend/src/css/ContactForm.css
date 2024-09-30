@@ -67,18 +67,3 @@
 .contact-form textarea::placeholder {
   font-family: var(--font);
 }
-
-/* .contact-form button {
-  padding: 10px 15px;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-  
-  background-color: #007bff;
-}
-
-.contact-form button:hover {
-  background-color: #0056b3;
-} */
