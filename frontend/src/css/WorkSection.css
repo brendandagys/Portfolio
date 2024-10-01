@@ -42,6 +42,10 @@
   max-width: 500px;
 }
 
+.work-text-card a {
+  font-size: 1.2rem;
+}
+
 @media (max-width: 1200px) {
   .work-text-card {
     max-width: 400px;
@@ -99,13 +103,17 @@
   text-decoration: underline;
 }
 
-@media (max-width: 1250px) {
+@media (max-width: 1200px) {
   .work-text-card h3 {
     font-size: 2rem;
   }
 
   .work-text-card p {
     font-size: 1.15rem;
+  }
+
+  .work-text-card a {
+    font-size: 1.1rem;
   }
 }
 
@@ -117,6 +125,10 @@
   .work-text-card p {
     font-size: 1.05rem;
     margin: 0.8rem 0;
+  }
+
+  .work-text-card a {
+    font-size: 1.05rem;
   }
 }
 
