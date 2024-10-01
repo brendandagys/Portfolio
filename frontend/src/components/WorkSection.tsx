@@ -4,6 +4,7 @@ import vacationRentalSiteScreenshot from "../images/vacation-rental-site-screens
 import textEditorScreenshot from "../images/text-editor-screenshot.png";
 import serverlessMergeSortScreenshot from "../images/serverless-merge-sort-screenshot.png"; // eslint-disable-line max-len
 import financesScreenshot from "../images/finances-app-screenshot.png";
+import { Pills } from "./Pills";
 
 export const WorkSection: React.FC = () => {
   return (
@@ -35,6 +36,18 @@ export const WorkSection: React.FC = () => {
               >
                 View Website
               </a>
+
+              <div className="mt-4"></div>
+              <Pills
+                content={[
+                  "TypeScript",
+                  "React",
+                  "Rust",
+                  "AWS SAM",
+                  "Bootstrap",
+                  "Google Analytics",
+                ]}
+              />
             </div>
           </div>
 
@@ -55,6 +68,9 @@ export const WorkSection: React.FC = () => {
               >
                 View on GitHub
               </a>
+
+              <div className="mt-4"></div>
+              <Pills content={["C", "Make"]} />
             </div>
           </div>
 
@@ -83,6 +99,9 @@ export const WorkSection: React.FC = () => {
               >
                 View on GitHub
               </a>
+
+              <div className="mt-4"></div>
+              <Pills content={["C", "Make", "Assembly"]} />
             </div>
           </div>
 
@@ -122,6 +141,11 @@ export const WorkSection: React.FC = () => {
               >
                 View the back-end on GitHub
               </a>
+
+              <div className="mt-4"></div>
+              <Pills
+                content={["Rust", "AWS SAM", "AWS CloudFormation", "Yew"]}
+              />
             </div>
           </div>
           <div className="work-card">
@@ -143,6 +167,17 @@ export const WorkSection: React.FC = () => {
               >
                 View on GitHub
               </a>
+
+              <div className="mt-4"></div>
+              <Pills
+                content={[
+                  "React",
+                  "TypeScript",
+                  "Bootstrap",
+                  "Node.js",
+                  "Docker",
+                ]}
+              />
             </div>
           </div>
         </div>

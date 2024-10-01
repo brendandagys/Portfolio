@@ -1,0 +1,15 @@
+.pills-container {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.pill {
+  background: rgba(64, 64, 70, 0.95);
+  border-radius: 15px;
+  font-size: 0.85rem;
+  padding: 0.25rem 0.8rem;
+}
