@@ -87,7 +87,7 @@ export const WorkSection: React.FC = () => {
               <h3>C Compiler</h3>
               <p>
                 {
-                  "A C compiler, written in C. Lexes program tokens, parses \
+                  "A C compiler, written in C! It lexes program tokens, parses \
                   them into an Abstract Syntax Tree using Pratt parsing, and \
                   generates x86-64 assembly code."
                 }
