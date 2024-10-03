@@ -1,11 +1,24 @@
-import { FormEvent } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 import "../css/ContactForm.css";
 
-const onSubmit = (e: FormEvent<HTMLFormElement>) => {
-  e.preventDefault();
-};
-
 export const ContactForm: React.FC = () => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+
+  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    void fetch("https://endpoint.com", {
+      method: "POST",
+      body: JSON.stringify({ name, email, message }),
+    });
+
+    setName("");
+    setEmail("");
+    setMessage("");
+  };
+
   return (
     <>
       <section className="contact-form">
@@ -18,44 +31,57 @@ export const ContactForm: React.FC = () => {
             }
           </p>
         </div>
-        <div>
-          <form onSubmit={onSubmit}>
-            <div className="contact-form-row">
-              <div className="contact-form-col">
-                <input
-                  required
-                  type="text"
-                  id="name"
-                  name="name"
-                  placeholder="Name*"
-                />
-              </div>
 
-              <div className="contact-form-col">
-                <input
-                  required
-                  type="email"
-                  id="email"
-                  name="email"
-                  placeholder="Email*"
-                />
-              </div>
-            </div>
-
-            <div className="contact-form-row">
-              <textarea
+        <form onSubmit={onSubmit}>
+          <div className="contact-form-row">
+            <div className="contact-form-col">
+              <input
                 required
-                id="message"
-                name="message"
-                placeholder="Message*"
-              ></textarea>
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Name*"
+                value={name}
+                onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                  setName(e.target.value);
+                }}
+              />
             </div>
 
-            <button type="submit" className="button">
-              Send Message
-            </button>
-          </form>
-        </div>
+            <div className="contact-form-col">
+              <input
+                required
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Email*"
+                value={email}
+                onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                  setEmail(e.target.value);
+                }}
+              />
+            </div>
+          </div>
+
+          <div className="contact-form-row">
+            <textarea
+              required
+              id="message"
+              name="message"
+              placeholder="Message*"
+              value={message}
+              onChange={(e: ChangeEvent<HTMLTextAreaElement>) => {
+                setMessage(e.target.value);
+              }}
+            ></textarea>
+          </div>
+
+          <button type="submit" className="button">
+            Send Message
+          </button>
+        </form>
+
+        <div></div>
       </section>
     </>
   );
