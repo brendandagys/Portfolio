@@ -1,22 +1,58 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import "../css/ContactForm.css";
 
-export const ContactForm: React.FC = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
+interface FormData {
+  name: string;
+  email: string;
+  message: string;
+}
 
-  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+enum AlertState {
+  none = "none",
+  success = "success",
+  error = "error",
+}
+
+export const ContactForm: React.FC = () => {
+  const [formData, setFormData] = useState<FormData>({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  const [alertMessage, setAlertMessage] = useState<string | null>(null);
+  const [alertState, setAlertState] = useState(AlertState.none);
+
+  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    void fetch("https://endpoint.com", {
-      method: "POST",
-      body: JSON.stringify({ name, email, message }),
-    });
+    try {
+      await fetch("https://endpoint.com", {
+        method: "POST",
+        body: JSON.stringify(formData),
+      });
 
-    setName("");
-    setEmail("");
-    setMessage("");
+      setAlertState(AlertState.success);
+      setAlertMessage("Thank you! I will get back to you soon.");
+    } catch (e) {
+      setAlertState(AlertState.error);
+      setAlertMessage(
+        "Something went wrong. Please try again later or email \
+        me at brendandagys@gmail.com."
+      );
+      console.error(e);
+    } finally {
+      setFormData({
+        name: "",
+        email: "",
+        message: "",
+      });
+
+      setTimeout(() => {
+        setAlertState(AlertState.none);
+        setAlertMessage(null);
+      }, 5000);
+    }
   };
 
   return (
@@ -32,7 +68,11 @@ export const ContactForm: React.FC = () => {
           </p>
         </div>
 
-        <form onSubmit={onSubmit}>
+        <form
+          onSubmit={(e) => {
+            void onSubmit(e);
+          }}
+        >
           <div className="contact-form-row">
             <div className="contact-form-col">
               <input
@@ -41,9 +81,9 @@ export const ContactForm: React.FC = () => {
                 id="name"
                 name="name"
                 placeholder="Name*"
-                value={name}
+                value={formData.name}
                 onChange={(e: ChangeEvent<HTMLInputElement>) => {
-                  setName(e.target.value);
+                  setFormData((old) => ({ ...old, name: e.target.value }));
                 }}
               />
             </div>
@@ -55,9 +95,9 @@ export const ContactForm: React.FC = () => {
                 id="email"
                 name="email"
                 placeholder="Email*"
-                value={email}
+                value={formData.email}
                 onChange={(e: ChangeEvent<HTMLInputElement>) => {
-                  setEmail(e.target.value);
+                  setFormData((old) => ({ ...old, email: e.target.value }));
                 }}
               />
             </div>
@@ -69,9 +109,9 @@ export const ContactForm: React.FC = () => {
               id="message"
               name="message"
               placeholder="Message*"
-              value={message}
+              value={formData.message}
               onChange={(e: ChangeEvent<HTMLTextAreaElement>) => {
-                setMessage(e.target.value);
+                setFormData((old) => ({ ...old, message: e.target.value }));
               }}
             ></textarea>
           </div>
@@ -81,7 +121,9 @@ export const ContactForm: React.FC = () => {
           </button>
         </form>
 
-        <div></div>
+        <div className={`contact-form-alert contact-form-alert--${alertState}`}>
+          {alertMessage}
+        </div>
       </section>
     </>
   );

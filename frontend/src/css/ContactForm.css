@@ -35,6 +35,29 @@
   margin-right: 10px;
 }
 
+.contact-form-alert {
+  border-radius: 12px;
+  margin-top: 25px;
+  min-height: 70px;
+  padding: 1rem;
+  transition: background-color 0.3s ease, opacity 0.3s ease;
+}
+
+.contact-form-alert--none {
+  opacity: 0;
+}
+
+.contact-form-alert--success {
+  background: green;
+  opacity: 1;
+}
+
+.contact-form-alert--error {
+  background: #d32f2f;
+  color: white;
+  opacity: 1;
+}
+
 .contact-form-col:last-child {
   margin-right: 0;
 }

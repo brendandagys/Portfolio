@@ -61,7 +61,7 @@ export const App: React.FC = () => {
       <div id="work">
         <WorkSection />
       </div>
-      <div id="contact" className="mt-15 mb-10">
+      <div id="contact" className="mt-15 mb-8">
         <ContactForm />
       </div>
 
