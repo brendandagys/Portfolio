@@ -49,39 +49,6 @@
   z-index: 999;
 }
 
-.hero-content {
-  position: absolute;
-  top: 30%;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  overflow-x: hidden;
-}
-
-.hero-content>h1 {
-  animation-name: slide-from-left;
-  animation-duration: 1.2s;
-  animation-fill-mode: forwards;
-  animation-timing-function: cubic-bezier(0.21, 1.11, 0.81, 0.99);
-}
-
-.hero-content>h2 {
-  animation-name: slide-from-right;
-  animation-duration: 1.2s;
-  animation-fill-mode: forwards;
-  animation-timing-function: cubic-bezier(0.21, 1.11, 0.81, 0.99);
-}
-
-@media (max-width: 575px) {
-  .hero-content h1 {
-    font-size: 2.5rem;
-  }
-
-  .hero-content>h2 {
-    font-size: 1.2rem;
-  }
-}
-
 .main-bg {
   height: 100%;
   position: fixed;
