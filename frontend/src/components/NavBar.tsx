@@ -3,7 +3,7 @@ import { useScrollTo } from "../hooks/useScrollTo";
 import "../css/Navbar.css";
 // import resumePdf from "../documents/brendan-dagys-resume.pdf";
 
-const Navbar: React.FC = () => {
+export const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const [configs] = useState({
@@ -74,5 +74,3 @@ const Navbar: React.FC = () => {
     </nav>
   );
 };
-
-export default Navbar;
