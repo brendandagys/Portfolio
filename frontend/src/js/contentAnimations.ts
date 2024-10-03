@@ -143,8 +143,9 @@ export const initializeContentAnimations = () => {
   const awsSection = document.querySelector(".about-icon-cluster-aws");
   if (awsSection) {
     (new IntersectionObserver(
-      aboutSectionAwsAnimations, { ...config, threshold: 1 })
-    ).observe(awsSection);
+      aboutSectionAwsAnimations,
+      { ...config, threshold: window.innerWidth < 415 ? 0.25 : 1 }
+    )).observe(awsSection);
   }
 
   const contactSection = document.querySelector("#contact");
