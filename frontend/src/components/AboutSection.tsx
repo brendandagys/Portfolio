@@ -90,7 +90,7 @@ export const AboutSection: React.FC = () => {
         <div className="aws-icons-title-container">
           <p>
             {
-              "I'm a huge AWS fan and use their services to build my projects. I hold the following certifications:"
+              "I'm a huge AWS fan and use services including CloudFront, ECS, Lambda, API Gateway, and Route 53 to build my projects. I hold the following certifications:"
             }
           </p>
         </div>
