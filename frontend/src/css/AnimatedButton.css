@@ -1,0 +1,49 @@
+.button-container {
+  /* position: relative; */
+  width: 8.9rem;
+  display: block;
+  /* overflow: hidden; */
+  padding: 3px;
+  margin: 0 auto;
+}
+
+.button-container:hover {
+  cursor: pointer;
+}
+
+.button-span {
+  position: relative;
+  padding: 1.1rem 0;
+  overflow: hidden;
+  border-radius: 6px;
+  display: block;
+}
+
+.button-span-inner {
+  position: relative;
+  background: black;
+  padding: 1rem;
+  border-radius: 6px;
+  color: white;
+  white-space: nowrap;
+  user-select: none;
+}
+
+.button-span::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 100%;
+}
+
+.button-span::before,
+.button-span:hover::before {
+  background: linear-gradient(115deg, #4fcf70, #fad648, #a767e5, #12bcfe, #44ce7b);
+  background-size: 50% 100%;
+}
+
+.button-span:hover::before {
+  animation: button-border-flow 1s linear infinite;
+}
