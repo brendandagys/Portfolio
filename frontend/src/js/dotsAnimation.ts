@@ -8,11 +8,12 @@ window.addEventListener("mousemove", function (e) {
 });
 
 const colorDot = [
-  'rgb(81, 162, 233)',
-  'rgb(81, 162, 233)',
-  'rgb(81, 162, 233)',
-  'rgb(81, 162, 233)',
+  // "#433878",
   'rgb(255, 77, 90)',
+  "#7e60bf",
+  "#e4b1f0",
+  "#ffe1ff",
+  'rgb(81, 162, 233)',
 ];
 
 class Dot {
@@ -22,7 +23,7 @@ class Dot {
   vx: number;
   vy: number;
   radius: number;
-  colour: string;
+  color: string;
   canvasWidth: number;
   canvasHeight: number;
   appearOnlyNearMouse: boolean;
@@ -45,10 +46,9 @@ class Dot {
     this.vx = -0.5 + Math.random();
     this.vy = -0.5 + Math.random();
 
-    this.radius = Math.random() * 1.5;
+    this.radius = Math.max(0.5, Math.random() * 1.5);
 
-    // this.colour = 'hsl(' + 360 * Math.random() + ', 50%, 50%)';
-    this.colour = colorDot[Math.floor(Math.random() * colorDot.length)];
+    this.color = colorDot[Math.floor(Math.random() * colorDot.length)];
   }
 
   paint() {
@@ -56,7 +56,6 @@ class Dot {
     this.ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI, false);
 
     if (this.appearOnlyNearMouse) {
-      // make the dot colour fade out the further they are from the mouse
       const dotDistance = (
         (
           (this.x - mousePosition.x) ** 2
@@ -64,12 +63,11 @@ class Dot {
         )
         ** 0.5
       );
-      const distanceRatio = dotDistance / (window.innerWidth / 1.7);
 
-      // this chops the bracket off the rgb colour and ads an opacity
-      this.ctx.fillStyle = this.colour.slice(0, -1) + `,${1 - distanceRatio})`;
+      const distanceRatio = dotDistance / (window.innerWidth / 1.7);
+      this.ctx.fillStyle = this.color.slice(0, -1) + `,${1 - distanceRatio})`;
     } else {
-      this.ctx.fillStyle = this.colour;
+      this.ctx.fillStyle = this.color;
     }
 
     this.ctx.fill();
