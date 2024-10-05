@@ -58,15 +58,14 @@ class Dot {
     //   this.appearOnlyNearMouse && this.y < this.canvasHeight - window.scrollY
     // ) {
     //   const dotDistance = (
-    //     (
+    //     Math.sqrt(
     //       (this.x - mousePosition.x) ** 2
     //       + (this.y - mousePosition.y + window.scrollY) ** 2
     //     )
-    //     ** 0.5
     //   );
 
     //   const distanceRatio = dotDistance / (window.innerWidth / 2);
-    //   this.ctx.fillStyle = this.color.slice(0, -1) + `,${1 - distanceRatio})`;
+    //   this.ctx.fillStyle = this.color.slice(0, -1) +`,${1 - distanceRatio})`;
     // } else {
     this.ctx.fillStyle = this.color;
     // }
@@ -162,7 +161,7 @@ export const dotsAnimation = (selector: string, showLines: boolean) => {
               const mouse = mousePosition;
 
               let distanceRatio = (
-                (((dot1.x - mouse.x) ** 2 + (dot1.y - mouse.y) ** 2) ** 0.5)
+                Math.sqrt((dot1.x - mouse.x) ** 2 + (dot1.y - mouse.y) ** 2)
                 /
                 this.#dotsConfiguration.linkRadiusFromMouse
               );
