@@ -11,11 +11,13 @@ import { Navbar } from "./NavBar.tsx";
 import { WorkSection } from "./WorkSection.tsx";
 
 import { useEffect } from "react";
+import { initializeTextGlowAnimation } from "../js/textGlowAnimation.ts";
 
 export const App: React.FC = () => {
   useEffect(() => {
     dotsAnimation(".canvas", true);
     initializeContentAnimations();
+    initializeTextGlowAnimation();
   }, []);
 
   return (

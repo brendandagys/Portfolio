@@ -14,7 +14,7 @@ export const Hero: React.FC = () => {
   return (
     <>
       <div className="hero-content">
-        <h1>{"Hello, I'm Brendan."}</h1>
+        <h1 className="hero-content__title">{"Hello, I'm Brendan."}</h1>
         <h2 className="text-gray--dark mt-2">
           {"I'm a software engineer and AWS architect."}
         </h2>
