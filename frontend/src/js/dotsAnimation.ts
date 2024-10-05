@@ -8,11 +8,10 @@ window.addEventListener("mousemove", function (e) {
 });
 
 const colorDot = [
-  // "#433878",
   'rgb(255, 77, 90)',
-  "#7e60bf",
-  "#e4b1f0",
-  "#ffe1ff",
+  "rgb(126, 96, 191)",
+  "rgb(228, 177, 240)",
+  "rgb(255, 225, 255)",
   'rgb(81, 162, 233)',
 ];
 
@@ -46,7 +45,7 @@ class Dot {
     this.vx = -0.5 + Math.random();
     this.vy = -0.5 + Math.random();
 
-    this.radius = Math.max(0.5, Math.random() * 1.5);
+    this.radius = Math.max(0.5, Math.random() * 1.75);
 
     this.color = colorDot[Math.floor(Math.random() * colorDot.length)];
   }
@@ -55,20 +54,22 @@ class Dot {
     this.ctx.beginPath();
     this.ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI, false);
 
-    if (this.appearOnlyNearMouse) {
-      const dotDistance = (
-        (
-          (this.x - mousePosition.x) ** 2
-          + (this.y - mousePosition.y + window.scrollY) ** 2
-        )
-        ** 0.5
-      );
+    // if (
+    //   this.appearOnlyNearMouse && this.y < this.canvasHeight - window.scrollY
+    // ) {
+    //   const dotDistance = (
+    //     (
+    //       (this.x - mousePosition.x) ** 2
+    //       + (this.y - mousePosition.y + window.scrollY) ** 2
+    //     )
+    //     ** 0.5
+    //   );
 
-      const distanceRatio = dotDistance / (window.innerWidth / 1.7);
-      this.ctx.fillStyle = this.color.slice(0, -1) + `,${1 - distanceRatio})`;
-    } else {
-      this.ctx.fillStyle = this.color;
-    }
+    //   const distanceRatio = dotDistance / (window.innerWidth / 2);
+    //   this.ctx.fillStyle = this.color.slice(0, -1) + `,${1 - distanceRatio})`;
+    // } else {
+    this.ctx.fillStyle = this.color;
+    // }
 
     this.ctx.fill();
   }
@@ -132,6 +133,8 @@ export const dotsAnimation = (selector: string, showLines: boolean) => {
         const dot1 = this.dots[i];
         dot1.paint();
 
+        if (dot1.y > this.#height - window.scrollY) continue;
+
         for (let j = i + 1; j < this.dots.length; j++) {
           const dot2 = this.dots[j];
 
@@ -151,18 +154,16 @@ export const dotsAnimation = (selector: string, showLines: boolean) => {
               this.#ctx.moveTo(dot1.x, dot1.y);
               this.#ctx.lineTo(dot2.x, dot2.y);
 
-              // Increase fill color fade the further you are from the mouse
-              const mp = mousePosition;
+              // Decrease line opacity as dot becomes farther from the mouse
+              const mouse = mousePosition;
 
               let distanceRatio = (
-                // Dot distance from mouse
-                (((dot1.x - mp.x) ** 2 + (dot1.y - mp.y) ** 2) ** 0.5)
+                (((dot1.x - mouse.x) ** 2 + (dot1.y - mouse.y) ** 2) ** 0.5)
                 /
                 this.#dotsConfiguration.d_radius
               );
 
-              // Prevent it from fading out completely
-              distanceRatio = Math.max(distanceRatio - 0.3, 0);
+              distanceRatio = Math.max(distanceRatio - 0.25, 0);
 
               this.#ctx.strokeStyle = `rgb(81, 162, 233, ${1 - distanceRatio})`;
 
@@ -192,13 +193,7 @@ export const dotsAnimation = (selector: string, showLines: boolean) => {
         this.#ctx.clearRect(0, 0, this.#width, this.#height);
 
         if (this.#showLines) this.calculateLines();
-
-        else this.dots.forEach((d, i) => {
-          if (
-            d.y >= window.innerHeight - window.scrollY
-            || i > this.dots.length * .7
-          ) d.paint();
-        });
+        else this.dots.forEach((d) => { d.paint(); });
 
         this.setNextDotPositions();
 
@@ -218,7 +213,7 @@ export const dotsAnimation = (selector: string, showLines: boolean) => {
 
   window.addEventListener("mousemove", function (e) {
     dotsAnimation.dots[0].x = e.clientX;
-    dotsAnimation.dots[0].y = e.clientY + window.scrollY;
+    dotsAnimation.dots[0].y = e.clientY;
   });
 
   dotsAnimation.animate(0);

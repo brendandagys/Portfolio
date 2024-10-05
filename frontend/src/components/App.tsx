@@ -14,8 +14,7 @@ import { useEffect } from "react";
 
 export const App: React.FC = () => {
   useEffect(() => {
-    dotsAnimation(".canvas-1", true);
-    dotsAnimation(".canvas-2", false);
+    dotsAnimation(".canvas", true);
     initializeContentAnimations();
   }, []);
 
@@ -24,17 +23,18 @@ export const App: React.FC = () => {
       <Navbar />
 
       <div id="home" className="hero">
-        <canvas className="canvas-1"></canvas>
         <Hero />
       </div>
 
       <div className="main-bg">
         <div>
-          <canvas className="canvas-2"></canvas>
+          <canvas className="canvas">
+            Your browser does not support the canvas element.
+          </canvas>
         </div>
       </div>
 
-      <div id="about">
+      <div id="about" className="mt-9">
         <AboutSection />
       </div>
       <div id="work">
