@@ -139,16 +139,20 @@ export const dotsAnimation = (selector: string, showLines: boolean) => {
           const dot2 = this.dots[j];
 
           if (
-            dot1.x - dot2.x < this.#dotsConfiguration.distance &&
-            dot1.x - dot2.x > -this.#dotsConfiguration.distance &&
-            dot1.y - dot2.y < this.#dotsConfiguration.distance &&
-            dot1.y - dot2.y > -this.#dotsConfiguration.distance
+            dot1.x - dot2.x < this.#dotsConfiguration.dotsLinkRadius &&
+            dot1.x - dot2.x > -this.#dotsConfiguration.dotsLinkRadius &&
+            dot1.y - dot2.y < this.#dotsConfiguration.dotsLinkRadius &&
+            dot1.y - dot2.y > -this.#dotsConfiguration.dotsLinkRadius
           ) {
             if (
-              dot1.x - mousePosition.x < this.#dotsConfiguration.d_radius &&
-              dot1.x - mousePosition.x > -this.#dotsConfiguration.d_radius &&
-              dot1.y - mousePosition.y < this.#dotsConfiguration.d_radius &&
-              dot1.y - mousePosition.y > -this.#dotsConfiguration.d_radius
+              // eslint-disable-next-line max-len
+              dot1.x - mousePosition.x < this.#dotsConfiguration.linkRadiusFromMouse &&
+              // eslint-disable-next-line max-len
+              dot1.x - mousePosition.x > -this.#dotsConfiguration.linkRadiusFromMouse &&
+              // eslint-disable-next-line max-len
+              dot1.y - mousePosition.y < this.#dotsConfiguration.linkRadiusFromMouse &&
+              // eslint-disable-next-line max-len
+              dot1.y - mousePosition.y > -this.#dotsConfiguration.linkRadiusFromMouse
             ) {
               this.#ctx.beginPath();
               this.#ctx.moveTo(dot1.x, dot1.y);
@@ -160,7 +164,7 @@ export const dotsAnimation = (selector: string, showLines: boolean) => {
               let distanceRatio = (
                 (((dot1.x - mouse.x) ** 2 + (dot1.y - mouse.y) ** 2) ** 0.5)
                 /
-                this.#dotsConfiguration.d_radius
+                this.#dotsConfiguration.linkRadiusFromMouse
               );
 
               distanceRatio = Math.max(distanceRatio - 0.25, 0);
