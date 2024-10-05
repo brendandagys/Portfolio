@@ -21,17 +21,17 @@ const dotsConfiguration: Record<number, DotsConfiguration> = {
     linkRadiusFromMouse: 250,
   },
   800: {
-    nb: 200,
-    dotsLinkRadius: 0,
-    linkRadiusFromMouse: 0,
-  },
-  600: {
     nb: 175,
     dotsLinkRadius: 0,
     linkRadiusFromMouse: 0,
   },
+  600: {
+    nb: 150,
+    dotsLinkRadius: 0,
+    linkRadiusFromMouse: 0,
+  },
   0: {
-    nb: 125,
+    nb: 80,
     dotsLinkRadius: 0,
     linkRadiusFromMouse: 0,
   }
