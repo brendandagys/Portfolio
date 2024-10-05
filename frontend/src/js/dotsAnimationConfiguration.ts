@@ -6,32 +6,32 @@ export interface DotsConfiguration {
 
 const dotsConfiguration: Record<number, DotsConfiguration> = {
   1600: {          // Minimum width
-    nb: 600,       // Number of dots
+    nb: 400,       // Number of dots
     distance: 70,  // Maximum distance between dots to link them
     d_radius: 300, // Radius from mouse location within which dots will link
   },
   1300: {
-    nb: 575,
+    nb: 300,
     distance: 60,
     d_radius: 280,
   },
   1100: {
-    nb: 500,
+    nb: 250,
     distance: 55,
     d_radius: 250,
   },
   800: {
-    nb: 300,
-    distance: 0,
-    d_radius: 0,
-  },
-  600: {
     nb: 200,
     distance: 0,
     d_radius: 0,
   },
+  600: {
+    nb: 175,
+    distance: 0,
+    d_radius: 0,
+  },
   0: {
-    nb: 100,
+    nb: 125,
     distance: 0,
     d_radius: 0,
   }
@@ -45,29 +45,3 @@ export const getDotsAnimationConfiguration = (): DotsConfiguration => ({
     .find((width) => window.innerWidth >= width) ?? 0
   ]
 });
-
-
-// decided to turn off connecting dots under 1100px
-
-// } else if (window.innerWidth > 650) {
-//   dots = {
-//     nb: 400,
-//     distance: 50,
-//     d_radius: 185,
-//     array: [],
-//   };
-// } else if (window.innerWidth > 500) {
-//   dots = {
-//     nb: 325,
-//     distance: 45,
-//     d_radius: 170,
-//     array: [],
-//   };
-// } else {
-//   dots = {
-//     nb: 270,
-//     distance: 45,
-//     d_radius: 140,
-//     array: [],
-//   };
-// }
