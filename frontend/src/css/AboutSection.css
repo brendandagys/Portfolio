@@ -116,7 +116,7 @@
 }
 
 .about-icon-cluster-aws img {
-  width: 120px;
+  width: 130px;
 
   opacity: 0;
 
@@ -145,11 +145,17 @@
   }
 
   .about-icon-cluster-aws img {
-    width: 110px;
+    width: 120px;
   }
 
   .aws-icons-title-container {
     font-size: 1.13rem;
+  }
+}
+
+@media (max-width: 1065px) {
+  .about-icon-cluster-aws img {
+    width: 109px;
   }
 }
 
@@ -171,7 +177,7 @@
   }
 
   .about-icon-cluster-aws img {
-    width: 100px;
+    width: 110px;
   }
 
   .aws-icons-title-container {
