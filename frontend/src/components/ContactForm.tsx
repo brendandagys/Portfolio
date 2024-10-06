@@ -1,5 +1,7 @@
-import { ChangeEvent, FormEvent, useState } from "react";
+import { ChangeEvent, MouseEvent, useState } from "react";
 import "../css/ContactForm.css";
+import { AnimatedButton } from "./animated-button/AnimatedButton";
+import { GradientOverride } from "./animated-button/enums";
 
 interface FormData {
   name: string;
@@ -23,7 +25,7 @@ export const ContactForm: React.FC = () => {
   const [alertMessage, setAlertMessage] = useState<string | null>(null);
   const [alertState, setAlertState] = useState(AlertState.none);
 
-  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (e: MouseEvent<HTMLSpanElement>) => {
     e.preventDefault();
 
     try {
@@ -68,11 +70,7 @@ export const ContactForm: React.FC = () => {
           </p>
         </div>
 
-        <form
-          onSubmit={(e) => {
-            void onSubmit(e);
-          }}
-        >
+        <form>
           <div className="contact-form-row">
             <div className="contact-form-col">
               <input
@@ -116,9 +114,16 @@ export const ContactForm: React.FC = () => {
             ></textarea>
           </div>
 
-          <button type="submit" className="button">
-            Send Message
-          </button>
+          <div className="mt-2">
+            <AnimatedButton
+              customStylesContainer={{ width: "9.68rem" }}
+              gradientOverride={GradientOverride.purple}
+              text="Send message"
+              onClick={(e) => {
+                void onSubmit(e);
+              }}
+            />
+          </div>
         </form>
 
         <div className={`contact-form-alert contact-form-alert--${alertState}`}>

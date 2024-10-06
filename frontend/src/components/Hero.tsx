@@ -2,7 +2,7 @@ import "../css/Hero.css";
 
 import { useScrollTo } from "../hooks/useScrollTo.tsx";
 import { useState } from "react";
-import { AnimatedButton } from "./AnimatedButton.tsx";
+import { AnimatedButton } from "./animated-button/AnimatedButton.tsx";
 
 export const Hero: React.FC = () => {
   const [configs] = useState({
@@ -21,8 +21,15 @@ export const Hero: React.FC = () => {
             {"I'm a software engineer and AWS architect."}
           </h2>
         </div>
-        {/* prettier-ignore */}
-        <AnimatedButton onClick={() => { scrollTo("work"); }} />
+        <div className="mt-5">
+          <AnimatedButton
+            customStylesContainer={{ width: "8.85rem" }}
+            text="See my work"
+            onClick={() => {
+              scrollTo("work");
+            }}
+          />
+        </div>
       </div>
     </>
   );
