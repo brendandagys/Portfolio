@@ -33,6 +33,8 @@ const awsIcons = [
   "icon-ccp",
 ];
 
+let aboutSectionTopAnimationsRan = false;
+
 function aboutSectionTopAnimations(
   entries: IntersectionObserverEntry[],
   observer: IntersectionObserver
@@ -61,6 +63,8 @@ function aboutSectionTopAnimations(
       if (aboutCard) aboutCard.style.animationName = "slide-from-left";
 
       observer.unobserve(entry.target);
+
+      setTimeout(() => { aboutSectionTopAnimationsRan = true; }, 3000);
     }
   });
 }
@@ -79,7 +83,9 @@ function aboutSectionAwsAnimations(
           iconElement.style.animationName =
             "subtle-wobble, bounce-in-from-right";
 
-          const bounceDuration = 1 + i * 0.04;
+          const bounceDuration =
+            (aboutSectionTopAnimationsRan ? 0 : 1) + i * 0.04;
+
           iconElement.style.animationDelay =
             `${bounceDuration + 0.2 + Math.random() * 3}s, ${bounceDuration}s`;
         }
@@ -90,7 +96,8 @@ function aboutSectionAwsAnimations(
 
       if (awsTitleElement) {
         awsTitleElement.style.animationName = "fade-in";
-        awsTitleElement.style.animationDelay = "2.5s";
+        awsTitleElement.style.animationDelay =
+          `${aboutSectionTopAnimationsRan ? 1 : 2}.5s`;
       }
 
       observer.unobserve(entry.target);
