@@ -6,11 +6,12 @@
   right: 0;
 }
 
-.hero-content>h1 {
+.hero-content__title {
   animation-name: slide-from-left;
   animation-duration: 1.2s;
   animation-fill-mode: forwards;
   animation-timing-function: cubic-bezier(0.21, 1.11, 0.81, 0.99);
+  transition: text-shadow 1.5s ease;
 }
 
 .hero-content__subtitle-container {
@@ -25,7 +26,7 @@
 }
 
 @media (max-width: 575px) {
-  .hero-content h1 {
+  .hero-content__title {
     font-size: 2.5rem;
   }
 

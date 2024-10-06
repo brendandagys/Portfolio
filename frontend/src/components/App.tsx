@@ -17,7 +17,9 @@ export const App: React.FC = () => {
   useEffect(() => {
     dotsAnimation(".canvas", true);
     initializeContentAnimations();
-    initializeTextGlowAnimation();
+    setTimeout(() => {
+      initializeTextGlowAnimation();
+    }, 1100);
   }, []);
 
   return (
