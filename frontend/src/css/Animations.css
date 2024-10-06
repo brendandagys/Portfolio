@@ -126,46 +126,6 @@
   }
 }
 
-/* @keyframes wobble {
-
-  0%,
-  100% {
-    transform: translateX(0);
-  }
-
-  25% {
-    transform: translateX(-5px) rotate(-.5deg);
-  }
-
-  75% {
-    transform: translateX(5px) rotate(.5deg);
-  }
-} */
-
-/* @keyframes gentle-float {
-
-  0%,
-  100% {
-    transform: translateY(0) rotate(0deg);
-  }
-
-  50% {
-    transform: translateY(-10px) rotate(2deg);
-  }
-} */
-
-/* @keyframes hover-sway {
-
-  0%,
-  100% {
-    transform: translateX(0) scale(1);
-  }
-
-  50% {
-    transform: translateX(10px) scale(1.05);
-  }
-} */
-
 @keyframes slow-bobbing {
 
   0%,

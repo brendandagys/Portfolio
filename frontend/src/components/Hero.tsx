@@ -15,9 +15,12 @@ export const Hero: React.FC = () => {
     <>
       <div className="hero-content">
         <h1 className="hero-content__title">{"Hello, I'm Brendan."}</h1>
-        <h2 className="text-gray--dark mt-2">
-          {"I'm a software engineer and AWS architect."}
-        </h2>
+
+        <div className="hero-content__subtitle-container">
+          <h2 className="text-gray--dark mt-2">
+            {"I'm a software engineer and AWS architect."}
+          </h2>
+        </div>
         {/* prettier-ignore */}
         <AnimatedButton onClick={() => { scrollTo("work"); }} />
       </div>
