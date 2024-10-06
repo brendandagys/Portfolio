@@ -16,7 +16,7 @@ export const Hero: React.FC = () => {
       <div className="hero-content">
         <h1 className="hero-content__title">{"Hello, I'm Brendan."}</h1>
 
-        <div className="hero-content__subtitle-container">
+        <div className="hero-content__subtitle-container mb-2">
           <h2 className="text-gray--dark mt-2">
             {"I'm a software engineer and AWS architect."}
           </h2>
