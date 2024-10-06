@@ -116,7 +116,7 @@ export const ContactForm: React.FC = () => {
 
           <div className="mt-2">
             <AnimatedButton
-              customStylesContainer={{ width: "9.68rem" }}
+              customStylesContainer={{ width: "10.3rem" }}
               gradientOverride={GradientOverride.purple}
               text="Send message"
               onClick={(e) => {

@@ -16,6 +16,10 @@
   display: block;
 }
 
+.button-span--purple {
+  border-radius: 30px;
+}
+
 .button-span-inner {
   background-color: black;
   border-radius: 6px;
@@ -29,6 +33,8 @@
 
 .button-span--purple .button-span-inner {
   background-color: rgba(0, 0, 0, 0.75);
+  border-radius: 25px;
+  padding: 1rem 1.3rem;
 }
 
 .button-span::before {
