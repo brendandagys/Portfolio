@@ -1,4 +1,5 @@
 import { getDotsAnimationConfiguration } from "./dotsAnimationConfiguration";
+import { getGradientColor, GradientColor } from "./utilities";
 
 const mousePosition = { x: 0, y: 0 };
 
@@ -8,11 +9,17 @@ window.addEventListener("mousemove", function (e) {
 });
 
 const colorDot = [
-  'rgb(255, 77, 90)',
+  "rgb(255, 77, 90)",
   "rgb(126, 96, 191)",
   "rgb(228, 177, 240)",
   "rgb(255, 225, 255)",
-  'rgb(81, 162, 233)',
+  "rgb(81, 162, 233)",
+];
+
+const colorLine: [GradientColor, GradientColor, GradientColor] = [
+  [0, 255, 170, 1],
+  [26, 204, 195, 1],
+  [52, 152, 219, 1],
 ];
 
 class Dot {
@@ -53,23 +60,7 @@ class Dot {
   paint() {
     this.ctx.beginPath();
     this.ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI, false);
-
-    // if (
-    //   this.appearOnlyNearMouse && this.y < this.canvasHeight - window.scrollY
-    // ) {
-    //   const dotDistance = (
-    //     Math.sqrt(
-    //       (this.x - mousePosition.x) ** 2
-    //       + (this.y - mousePosition.y + window.scrollY) ** 2
-    //     )
-    //   );
-
-    //   const distanceRatio = dotDistance / (window.innerWidth / 2);
-    //   this.ctx.fillStyle = this.color.slice(0, -1) +`,${1 - distanceRatio})`;
-    // } else {
     this.ctx.fillStyle = this.color;
-    // }
-
     this.ctx.fill();
   }
 }
@@ -128,47 +119,56 @@ export const dotsAnimation = (selector: string, showLines: boolean) => {
     }
 
     calculateLines() {
+      const {
+        dotsLinkRadius,
+        lineOpacityBoost,
+        linkRadiusFromMouse,
+      } = this.#dotsConfiguration;
+
       for (let i = 0; i < this.dots.length; i++) {
         const dot1 = this.dots[i];
         dot1.paint();
 
-        if (dot1.y > this.#height - window.scrollY) continue;
+        if (dot1.y > this.#height - window.scrollY)
+          continue;
 
         for (let j = i + 1; j < this.dots.length; j++) {
           const dot2 = this.dots[j];
 
           if (
-            dot1.x - dot2.x < this.#dotsConfiguration.dotsLinkRadius &&
-            dot1.x - dot2.x > -this.#dotsConfiguration.dotsLinkRadius &&
-            dot1.y - dot2.y < this.#dotsConfiguration.dotsLinkRadius &&
-            dot1.y - dot2.y > -this.#dotsConfiguration.dotsLinkRadius
+            dot1.x - dot2.x < dotsLinkRadius &&
+            dot1.x - dot2.x > -dotsLinkRadius &&
+            dot1.y - dot2.y < dotsLinkRadius &&
+            dot1.y - dot2.y > -dotsLinkRadius
           ) {
             if (
-              // eslint-disable-next-line max-len
-              dot1.x - mousePosition.x < this.#dotsConfiguration.linkRadiusFromMouse &&
-              // eslint-disable-next-line max-len
-              dot1.x - mousePosition.x > -this.#dotsConfiguration.linkRadiusFromMouse &&
-              // eslint-disable-next-line max-len
-              dot1.y - mousePosition.y < this.#dotsConfiguration.linkRadiusFromMouse &&
-              // eslint-disable-next-line max-len
-              dot1.y - mousePosition.y > -this.#dotsConfiguration.linkRadiusFromMouse
+              dot1.x - mousePosition.x < linkRadiusFromMouse &&
+              dot1.x - mousePosition.x > -linkRadiusFromMouse &&
+              dot1.y - mousePosition.y < linkRadiusFromMouse &&
+              dot1.y - mousePosition.y > -linkRadiusFromMouse
             ) {
               this.#ctx.beginPath();
               this.#ctx.moveTo(dot1.x, dot1.y);
               this.#ctx.lineTo(dot2.x, dot2.y);
 
-              // Decrease line opacity as dot becomes farther from the mouse
-              const mouse = mousePosition;
+              const distanceFromMouse =
+                Math.sqrt(
+                  (dot1.x - mousePosition.x) ** 2 +
+                  (dot1.y - mousePosition.y) ** 2);
 
-              let distanceRatio = (
-                Math.sqrt((dot1.x - mouse.x) ** 2 + (dot1.y - mouse.y) ** 2)
-                /
-                this.#dotsConfiguration.linkRadiusFromMouse
+              let distanceRatio = distanceFromMouse / linkRadiusFromMouse;
+
+              distanceRatio = Math.max(0, distanceRatio - 0.25);
+
+              const colorLineFinal = colorLine.map<GradientColor>((l) => (
+                [l[0], l[1], l[2], 1 - lineOpacityBoost - distanceRatio]
+              ));
+
+              this.#ctx.strokeStyle = getGradientColor(
+                distanceFromMouse,
+                linkRadiusFromMouse,
+                [colorLineFinal[0], colorLineFinal[1], colorLineFinal[2]],
               );
-
-              distanceRatio = Math.max(distanceRatio - 0.25, 0);
-
-              this.#ctx.strokeStyle = `rgb(81, 162, 233, ${1 - distanceRatio})`;
 
               this.#ctx.stroke();
               this.#ctx.closePath();
@@ -224,6 +224,7 @@ export const dotsAnimation = (selector: string, showLines: boolean) => {
   let resizeTimeout: number;
 
   window.addEventListener("resize", function () {
+    // Debounce window resizes so dots don't flicker due to random x/y position
     this.clearTimeout(resizeTimeout);
 
     resizeTimeout = setTimeout(() => {
