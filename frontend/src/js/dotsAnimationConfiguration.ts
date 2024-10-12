@@ -7,17 +7,17 @@ export interface DotsConfiguration {
 const dotsConfiguration: Record<number, DotsConfiguration> = {
   1600: {                     // Minimum width
     nb: 400,                  // Number of dots
-    dotsLinkRadius: 70,       // Maximum distance between dots to link them
-    linkRadiusFromMouse: 300, // Radius from mouse within which dots will link
+    dotsLinkRadius: 85,       // Maximum distance between dots to link them
+    linkRadiusFromMouse: 270, // Radius from mouse within which dots will link
   },
   1300: {
     nb: 300,
-    dotsLinkRadius: 60,
-    linkRadiusFromMouse: 280,
+    dotsLinkRadius: 85,
+    linkRadiusFromMouse: 260,
   },
   1100: {
     nb: 250,
-    dotsLinkRadius: 55,
+    dotsLinkRadius: 75,
     linkRadiusFromMouse: 250,
   },
   800: {
