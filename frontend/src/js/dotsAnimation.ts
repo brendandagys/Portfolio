@@ -87,7 +87,7 @@ export const dotsAnimation = (selector: string, showLines: boolean) => {
     #height;
     #dotsConfiguration;
     dots: Dot[] = [];
-    #showLines: boolean;
+    showLines: boolean;
     #lastTimestamp: number;
     #timer: number;
     #interval: number;
@@ -102,7 +102,7 @@ export const dotsAnimation = (selector: string, showLines: boolean) => {
       this.#width = width;
       this.#height = height;
       this.#dotsConfiguration = getDotsAnimationConfiguration();
-      this.#showLines = showLines;
+      this.showLines = showLines;
       this.#lastTimestamp = 0;
       this.#timer = 0;
       this.#interval = 1000 / 60;
@@ -113,7 +113,7 @@ export const dotsAnimation = (selector: string, showLines: boolean) => {
     createDots() {
       for (let i = 0; i < this.#dotsConfiguration.nb; i++) {
         this.dots.push(
-          new Dot(this.#ctx, this.#width, this.#height, this.#showLines));
+          new Dot(this.#ctx, this.#width, this.#height, this.showLines));
       }
     }
 
@@ -179,7 +179,7 @@ export const dotsAnimation = (selector: string, showLines: boolean) => {
 
     setNextDotPositions() {
       // Don't animate the first dot; it will follow mouse
-      for (const dot of this.dots.slice(1)) {
+      for (const dot of this.dots.slice(Number(window.innerWidth >= 1100))) {
         if (dot.y < 0 || dot.y > this.#height) dot.vy *= -1;
         else if (dot.x < 0 || dot.x > this.#width) dot.vx *= -1;
 
@@ -194,7 +194,7 @@ export const dotsAnimation = (selector: string, showLines: boolean) => {
       if (this.#timer > this.#interval) {
         this.#ctx.clearRect(0, 0, this.#width, this.#height);
 
-        if (this.#showLines) this.calculateLines();
+        if (this.showLines) this.calculateLines();
         else this.dots.forEach((d) => { d.paint(); });
 
         this.setNextDotPositions();
@@ -214,8 +214,10 @@ export const dotsAnimation = (selector: string, showLines: boolean) => {
   );
 
   window.addEventListener("mousemove", function (e) {
-    dotsAnimation.dots[0].x = e.clientX;
-    dotsAnimation.dots[0].y = e.clientY;
+    if (window.innerWidth >= 1100) {
+      dotsAnimation.dots[0].x = e.clientX;
+      dotsAnimation.dots[0].y = e.clientY;
+    }
   });
 
   dotsAnimation.animate(0);
