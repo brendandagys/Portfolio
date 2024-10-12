@@ -8,7 +8,7 @@ window.addEventListener("mousemove", function (e) {
   mousePosition.y = e.clientY;
 });
 
-const colorDot = [
+const dotColors = [
   "rgb(255, 77, 90)",
   "rgb(126, 96, 191)",
   "rgb(228, 177, 240)",
@@ -16,7 +16,7 @@ const colorDot = [
   "rgb(81, 162, 233)",
 ];
 
-const colorLine: [GradientColor, GradientColor, GradientColor] = [
+const lineGradient: [GradientColor, GradientColor, GradientColor] = [
   [0, 255, 170, 1],
   [26, 204, 195, 1],
   [52, 152, 219, 1],
@@ -54,7 +54,7 @@ class Dot {
 
     this.radius = Math.max(0.5, Math.random() * 1.75);
 
-    this.color = colorDot[Math.floor(Math.random() * colorDot.length)];
+    this.color = dotColors[Math.floor(Math.random() * dotColors.length)];
   }
 
   paint() {
@@ -160,7 +160,7 @@ export const dotsAnimation = (selector: string, showLines: boolean) => {
 
               distanceRatio = Math.max(0, distanceRatio - 0.25);
 
-              const colorLineFinal = colorLine.map<GradientColor>((l) => (
+              const colorLineFinal = lineGradient.map<GradientColor>((l) => (
                 [l[0], l[1], l[2], 1 - lineOpacityBoost - distanceRatio]
               ));
 
