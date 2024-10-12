@@ -79,7 +79,6 @@ export const dotsAnimation = (selector: string, showLines: boolean) => {
   canvas.style.display = 'block';
 
   ctx.lineWidth = 0.3;
-  ctx.strokeStyle = 'rgb(81, 162, 233)';
 
 
   class DotsAnimation {
