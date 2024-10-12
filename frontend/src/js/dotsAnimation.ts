@@ -96,7 +96,7 @@ export const dotsAnimation = (selector: string, showLines: boolean) => {
       ctx: CanvasRenderingContext2D,
       width: number,
       height: number,
-      showLines: boolean
+      showLines: boolean,
     ) {
       this.#ctx = ctx;
       this.#width = width;
@@ -191,6 +191,7 @@ export const dotsAnimation = (selector: string, showLines: boolean) => {
     animate(timestamp: number) {
       const deltaTime = timestamp - this.#lastTimestamp;
       this.#lastTimestamp = timestamp;
+
       if (this.#timer > this.#interval) {
         this.#ctx.clearRect(0, 0, this.#width, this.#height);
 
@@ -198,7 +199,6 @@ export const dotsAnimation = (selector: string, showLines: boolean) => {
         else this.dots.forEach((d) => { d.paint(); });
 
         this.setNextDotPositions();
-
         this.#timer = 0;
       } else {
         this.#timer += deltaTime;
