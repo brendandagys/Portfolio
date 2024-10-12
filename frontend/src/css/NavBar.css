@@ -27,15 +27,15 @@
 }
 
 /* Desktop Links */
-.nav-links>button {
-  color: white;
-  text-decoration: none;
-  font-size: 1rem;
-  transition: color 0.3s ease;
-  border: none;
-  cursor: pointer;
+.nav-links button {
   background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 1rem;
   padding: .9rem 1.25rem;
+  text-decoration: none;
+  transition: color 0.3s ease;
 }
 
 .nav-links>button.nav-button--active {
@@ -43,7 +43,7 @@
   cursor: auto;
 }
 
-.nav-links>button:hover:not(.nav-button--active) {
+.nav-links button:hover:not(.nav-button--active) {
   transform: scale(1.05);
   transition: transform 100ms;
   transition-timing-function: ease-in;

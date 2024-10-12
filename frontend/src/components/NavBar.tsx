@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useScrollTo } from "../hooks/useScrollTo";
 import "../css/Navbar.css";
-// import resumePdf from "../documents/brendan-dagys-resume.pdf";
+import resumePdf from "../documents/brendan-dagys-resume.pdf";
 
 export const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -57,9 +57,9 @@ export const Navbar: React.FC = () => {
             Contact
           </button>
 
-          {/* <a href={resumePdf} rel="noreferrer" target="_blank">
-            <button className="nav-button">Resume</button>
-          </a> */}
+          <a href={resumePdf} rel="noreferrer" target="_blank">
+            <button>Resume</button>
+          </a>
         </div>
         {/* prettier-ignore */}
         <div
