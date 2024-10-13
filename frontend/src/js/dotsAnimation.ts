@@ -1,7 +1,7 @@
 import { getDotsAnimationConfiguration } from "./dotsAnimationConfiguration";
 import { getGradientColor, GradientColor } from "./utilities";
 
-const mousePosition = { x: 0, y: 0 };
+export const mousePosition = { x: 0, y: 0 };
 
 window.addEventListener("mousemove", function (e) {
   mousePosition.x = e.clientX;
