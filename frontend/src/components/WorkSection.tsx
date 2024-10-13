@@ -1,7 +1,7 @@
 import "../css/WorkSection.css";
 import cCompiler from "../images/c-compiler.png";
 import vacationRentalSiteScreenshot from "../images/vacation-rental-site-screenshot.png"; // eslint-disable-line max-len
-import textEditorScreenshot from "../images/text-editor-screenshot.png";
+import textEditorGif from "../images/text-editor.gif";
 import serverlessMergeSortScreenshot from "../images/serverless-merge-sort-screenshot.png"; // eslint-disable-line max-len
 import financesScreenshot from "../images/finances-app-screenshot.png";
 import { Pills } from "./Pills";
@@ -53,7 +53,7 @@ export const WorkSection: React.FC = () => {
 
           <div className="work-card">
             <div className="work-image-card">
-              <img src={textEditorScreenshot} alt="Text editor" />
+              <img src={textEditorGif} alt="Text editor" />
             </div>
 
             <div className="work-text-card">
