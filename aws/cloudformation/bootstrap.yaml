@@ -85,7 +85,9 @@ Resources:
                 Resource: !Sub arn:aws:iam::${AWS::AccountId}:role/*
                 Condition:
                   StringEquals:
-                    iam:PassedToService: cloudformation.amazonaws.com
+                    iam:PassedToService:
+                      - cloudformation.amazonaws.com
+                      - lambda.amazonaws.com
               - Effect: Allow
                 Action:
                   - cloudformation:DescribeStacks
@@ -151,12 +153,26 @@ Resources:
                   - s3:PutBucketAcl
                 Resource: !Sub arn:aws:s3:::${AWS::AccountId}-cloudfront-logs
               - Effect: Allow
+                Action:
+                  - s3:*
+                Resource:
+                  - !Sub arn:aws:s3:::${AWS::AccountId}-portfolio-lambda-binary
+                  - !Sub arn:aws:s3:::${AWS::AccountId}-portfolio-lambda-binary/*
+              - Effect: Allow
                 Action: secretsmanager:GetSecretValue
                 Resource: !Sub arn:aws:secretsmanager:${AWS::Region}:${AWS::AccountId}:secret:*
               - Effect: Allow
                 Action:
                   - sns:*
                 Resource: !Sub arn:aws:sns:${AWS::Region}:${AWS::AccountId}:*
+              - Effect: Allow
+                Action:
+                  - lambda:*
+                Resource: !Sub arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:function:*
+              - Effect: Allow
+                Action:
+                  - codestar-connections:PassConnection
+                Resource: !Sub arn:aws:codeconnections:${AWS::Region}:${AWS::AccountId}:connection/*
 
   Pipeline:
     Type: AWS::CodePipeline::Pipeline

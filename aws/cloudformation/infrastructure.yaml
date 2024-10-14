@@ -222,6 +222,12 @@ Resources:
                   - codebuild:StartBuild
                   - codebuild:BatchGetBuilds
                 Resource: !Sub arn:aws:codebuild:${AWS::Region}:${AWS::AccountId}:project/*
+              - Effect: Allow
+                Action: codestar-connections:UseConnection
+                Resource: '{{resolve:secretsmanager:my-secrets:SecretString:GITHUB_CODE_CONNECTION_ARN}}'
+                Condition:
+                  ForAllValues:StringEquals:
+                    codeconnections:PassedToService: codepipeline.amazonaws.com
 
   
   CodePipeline:
