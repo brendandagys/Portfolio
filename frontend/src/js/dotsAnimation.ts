@@ -69,6 +69,10 @@ class Dot {
     let rotation = Math.PI / 2 * 3;
     const step = Math.PI / spikes;  // Angle between each point
 
+    this.ctx.shadowBlur = 40;
+    this.ctx.shadowColor = this.color;
+    // this.ctx.shadowOffsetX = 0;
+
     this.ctx.beginPath();
     this.ctx.moveTo(this.x, this.y - outerRadius);
 
@@ -90,6 +94,10 @@ class Dot {
     this.ctx.closePath();
     this.ctx.fillStyle = this.color;
     this.ctx.fill();
+
+    // Reset shadow settings
+    this.ctx.shadowBlur = 0;
+    this.ctx.shadowColor = "transparent";
   }
 
   paint() {
