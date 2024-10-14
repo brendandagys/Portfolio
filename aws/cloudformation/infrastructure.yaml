@@ -163,7 +163,7 @@ Resources:
       Environment:
         ComputeType: BUILD_GENERAL1_SMALL
         Type: LINUX_CONTAINER
-        Image: aws/codebuild/standard:4.0
+        Image: aws/codebuild/amazonlinux2-aarch64-standard:nodejs20
       Source:
         Type: CODEPIPELINE
         BuildSpec: !Sub |
@@ -173,8 +173,6 @@ Resources:
           #     INLINE_RUNTIME_CHUNK: "false"
           phases:
             install:
-              runtime-versions:
-                nodejs: latest
               commands:
                 - cd frontend
                 - npm install
@@ -235,6 +233,7 @@ Resources:
   CodePipeline:
     Type: AWS::CodePipeline::Pipeline
     Properties:
+      PipelineType: V2
       ArtifactStore:
         Location: !Sub ${AWS::AccountId}-pipeline-artifacts
         Type: S3

@@ -135,6 +135,7 @@ Resources:
               - Effect: Allow
                 Action:
                   - codebuild:CreateProject
+                  - codebuild:UpdateProject
                   - codebuild:DeleteProject
                 Resource: !Sub arn:aws:codebuild:${AWS::Region}:${AWS::AccountId}:project/*
               - Effect: Allow
