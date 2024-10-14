@@ -46,13 +46,18 @@ Resources:
               Service: lambda.amazonaws.com
             Action: sts:AssumeRole
       Policies:
-        - PolicyName: LambdaSNSPublishPolicy
+        - PolicyName: LambdaPolicy
           PolicyDocument:
             Version: 2012-10-17
             Statement:
               - Effect: Allow
                 Action: sns:Publish
                 Resource: !Ref SnsTopic
+              - Effect: Allow
+                Action: 
+                  - s3:GetObject
+                  - s3:ListBucket
+                Resource: !Sub arn:aws:s3:::${ZippedRustBinaryBucket}/*
 
   LambdaFunction:
     Type: AWS::Lambda::Function
