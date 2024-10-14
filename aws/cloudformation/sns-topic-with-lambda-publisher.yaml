@@ -7,6 +7,10 @@ Description: >
   to process an HTTP request and invoke the SNS Publish API.
 
 Parameters:
+  ProjectName:
+    Type: String
+    Description: The name of the project
+
   SnsTopicName:
     Type: String
     Description: The name of the SNS topic
