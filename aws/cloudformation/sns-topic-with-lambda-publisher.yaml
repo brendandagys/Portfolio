@@ -10,6 +10,10 @@ Parameters:
   ProjectName:
     Type: String
     Description: The name of the project
+  
+  Domain:
+    Type: String
+    Description: The domain name of the application
 
   SnsTopicName:
     Type: String
@@ -81,3 +85,7 @@ Resources:
     Properties:
       AuthType: NONE
       TargetFunctionArn: !GetAtt LambdaFunction.Arn
+      Cors:
+        AllowMethods: ["POST"]
+        AllowOrigins: [!Sub https://${Domain}]
+        MaxAge: 86400

@@ -59,6 +59,7 @@ Resources:
     Properties:
       Parameters:
         ProjectName: portfolio
+        Domain: !Ref Domain
         SnsTopicName: portfolio-contact-form
         TopicSubscriber1: brendandagys@gmail.com
         ZippedRustBinaryBucket: portfolio-lambda-binary
