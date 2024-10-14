@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useScrollTo } from "../hooks/useScrollTo";
-import "../css/Navbar.css";
+import "../css/NavBar.css";
 import resumePdf from "../documents/brendan-dagys-resume.pdf";
 
 export const Navbar: React.FC = () => {
