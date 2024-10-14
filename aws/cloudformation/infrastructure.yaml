@@ -221,7 +221,7 @@ Resources:
                   - s3:PutObject
                 Resource:
                   - !ImportValue PipelineArtifactsBucketArn
-                  - !Sub !Sub ['${Arn}/*', Arn: !ImportValue PipelineArtifactsBucketArn]
+                  - !Sub ['${Arn}/*', Arn: !ImportValue PipelineArtifactsBucketArn]
                   # - !Sub arn:aws:s3:::${AWS::AccountId}-pipeline-artifacts
                   # - !Sub arn:aws:s3:::${AWS::AccountId}-pipeline-artifacts/*
               - Effect: Allow
