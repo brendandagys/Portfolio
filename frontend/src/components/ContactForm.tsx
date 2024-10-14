@@ -29,10 +29,13 @@ export const ContactForm: React.FC = () => {
     e.preventDefault();
 
     try {
-      await fetch("https://endpoint.com", {
-        method: "POST",
-        body: JSON.stringify(formData),
-      });
+      await fetch(
+        "https://z3roxfyqutwlywxyeesdhnjrne0phebf.lambda-url.us-east-1.on.aws/",
+        {
+          method: "POST",
+          body: JSON.stringify(formData),
+        }
+      );
 
       setAlertState(AlertState.success);
       setAlertMessage("Thank you! I will get back to you soon.");
@@ -120,6 +123,18 @@ export const ContactForm: React.FC = () => {
               gradientOverride={GradientOverride.purple}
               text="Send message"
               onClick={(e) => {
+                if (!formData.name || !formData.email || !formData.message) {
+                  setAlertState(AlertState.error);
+                  setAlertMessage("Please fill out all fields.");
+
+                  setTimeout(() => {
+                    setAlertState(AlertState.none);
+                    setAlertMessage(null);
+                  }, 3000);
+
+                  return;
+                }
+
                 void onSubmit(e);
               }}
             />

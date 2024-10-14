@@ -38,7 +38,7 @@
 .contact-form-alert {
   border-radius: 12px;
   margin-top: 25px;
-  min-height: 70px;
+  /* min-height: 70px; */
   padding: 1rem;
   transition: background-color 0.3s ease, opacity 0.3s ease;
 }
