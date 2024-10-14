@@ -75,3 +75,9 @@ Resources:
       Environment:
         Variables:
           SNS_TOPIC_ARN: !Ref SnsTopic
+  
+  LambdaFunctionUrl:
+    Type: AWS::Lambda::Url
+    Properties:
+      AuthType: NONE
+      TargetFunctionArn: !GetAtt LambdaFunction.Arn

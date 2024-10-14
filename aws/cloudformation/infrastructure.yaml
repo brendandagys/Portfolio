@@ -173,6 +173,8 @@ Resources:
           #     INLINE_RUNTIME_CHUNK: "false"
           phases:
             install:
+              runtime-versions:
+                nodejs: latest
               commands:
                 - cd frontend
                 - npm install
