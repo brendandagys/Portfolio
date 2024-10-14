@@ -223,16 +223,7 @@ export const dotsAnimation = (selector: string, showLines: boolean) => {
       }
     }
 
-    setNextDotPositions() {
-      // Don't animate the first dot; it will follow mouse
-      for (const dot of this.dots.slice(Number(window.innerWidth >= 1100))) {
-        if (dot.y <= 0 || dot.y >= this.#height) dot.vy *= -1;
-        if (dot.x <= 0 || dot.x >= this.#width) dot.vx *= -1;
-
-        dot.x += 2 * dot.vx;
-        dot.y += dot.vy;
-      }
-
+    #setNextStarPositions() {
       for (const [i, star] of [
         this.shootingStar1, this.shootingStar2, this.shootingStar3,
       ].entries()) {
@@ -251,6 +242,40 @@ export const dotsAnimation = (selector: string, showLines: boolean) => {
       }
     }
 
+    #setNextDotPositions() {
+      // Don't animate the first dot; it will follow mouse
+      for (const dot of this.dots.slice(Number(window.innerWidth >= 1100))) {
+        if (dot.y <= 0 || dot.y >= this.#height) dot.vy *= -1;
+        if (dot.x <= 0 || dot.x >= this.#width) dot.vx *= -1;
+
+        dot.x += 2 * dot.vx;
+        dot.y += dot.vy;
+      }
+    }
+
+    #animateStars() {
+      for (const [i, star] of [
+        this.shootingStar1, this.shootingStar2, this.shootingStar3
+      ].entries()) {
+        if (star) star.paint();
+        else if (Math.floor(Math.random() * this.#STAR_FREQ_ATTENUATOR) === 42) {
+          // @ts-expect-error ts(7053)...
+          const star = this[`shootingStar${i + 1}`] =
+            new Dot(this.#ctx, this.#width, this.#height, true);
+
+          const fromLeft = Math.random() >= 0.5;
+
+          star.x = fromLeft ? 1 : this.#width - 1;
+
+          star.vx =
+            this.#STAR_BASE_VELOCITY +
+            (this.#STAR_VELOCITY_FACTOR * (fromLeft ? 1 : -1)) * Math.random();
+
+          star.radius = Math.max(0.5, Math.random() * this.#STAR_RADIUS_FACTOR);
+        }
+      }
+    }
+
     animate(timestamp: number) {
       const deltaTime = timestamp - this.#lastTimestamp;
       this.#lastTimestamp = timestamp;
@@ -261,27 +286,10 @@ export const dotsAnimation = (selector: string, showLines: boolean) => {
         if (this.showLines) this.calculateLines();
         else this.dots.forEach((d) => { d.paint(); });
 
-        for (const [i, star] of [
-          this.shootingStar1, this.shootingStar2, this.shootingStar3
-        ].entries()) {
-          if (star) star.paint();
-          else if (Math.floor(Math.random() * this.#STAR_FREQ_ATTENUATOR) === 42) {
-            // @ts-expect-error ts(7053)...
-            const star = this[`shootingStar${i + 1}`] =
-              new Dot(this.#ctx, this.#width, this.#height, true);
+        this.#animateStars();
 
-            const fromLeft = Math.random() >= 0.5;
-
-            star.x = fromLeft ? 1 : this.#width - 1;
-
-            star.vx =
-              this.#STAR_BASE_VELOCITY +
-              (this.#STAR_VELOCITY_FACTOR * (fromLeft ? 1 : -1)) * Math.random();
-            star.radius = Math.max(0.5, Math.random() * this.#STAR_RADIUS_FACTOR);
-          }
-        }
-
-        this.setNextDotPositions();
+        this.#setNextDotPositions();
+        this.#setNextStarPositions();
         this.#timer = 0;
       } else {
         this.#timer += deltaTime;
@@ -289,7 +297,7 @@ export const dotsAnimation = (selector: string, showLines: boolean) => {
 
       animation = requestAnimationFrame(this.animate.bind(this));
     }
-  }
+  };
 
 
   let dotsAnimation = new DotsAnimation(ctx, canvas.width, canvas.height, showLines);
