@@ -205,14 +205,6 @@ Resources:
           PolicyDocument:
             Version: 2012-10-17
             Statement:
-              # - Effect: Allow
-              #   Action:
-              #     - codecommit:UploadArchive
-              #     - codecommit:GetCommit
-              #     - codecommit:GetUploadArchiveStatus
-              #     - codecommit:GetBranch
-              #     - codecommit:CancelUploadArchive
-              #   Resource: !Sub arn:aws:codecommit:${AWS::Region}:${AWS::AccountId}:${Repository}
               - Effect: Allow
                 Action:
                   - s3:GetObject
