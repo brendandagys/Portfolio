@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import { getDotsAnimationConfiguration } from "./dotsAnimationConfiguration";
 import { getGradientColor, GradientColor } from "./utilities";
 
@@ -32,19 +33,17 @@ class Dot {
   color: string;
   canvasWidth: number;
   canvasHeight: number;
-  appearOnlyNearMouse: boolean;
+  #isStar: boolean;
 
   constructor(
     ctx: CanvasRenderingContext2D,
     canvasWidth: number,
     canvasHeight: number,
-    appearOnlyNearMouse: boolean
+    isStar = false,
   ) {
     this.ctx = ctx;
     this.canvasWidth = canvasWidth;
     this.canvasHeight = canvasHeight;
-
-    this.appearOnlyNearMouse = appearOnlyNearMouse;
 
     this.x = Math.random() * canvasWidth;
     this.y = Math.random() * canvasHeight;
@@ -54,10 +53,51 @@ class Dot {
 
     this.radius = Math.max(0.5, Math.random() * 1.75);
 
-    this.color = dotColors[Math.floor(Math.random() * dotColors.length)];
+    this.color = (
+      isStar
+        ? "#ffd700"
+        : dotColors[Math.floor(Math.random() * dotColors.length)]
+    );
+
+    this.#isStar = isStar;
+  }
+
+  #paintStar() {
+    const spikes = 5;
+    const outerRadius = this.radius;
+    const innerRadius = this.radius / 2;
+    let rotation = Math.PI / 2 * 3;
+    const step = Math.PI / spikes;  // Angle between each point
+
+    this.ctx.beginPath();
+    this.ctx.moveTo(this.x, this.y - outerRadius);
+
+    for (let i = 0; i < spikes; i++) {
+      this.ctx.lineTo(  // Outer vertex (point of the star)
+        this.x + Math.cos(rotation) * outerRadius,
+        this.y + Math.sin(rotation) * outerRadius
+      );
+      rotation += step;
+
+      this.ctx.lineTo(  // Inner vertex (between the points of the star)
+        this.x + Math.cos(rotation) * innerRadius,
+        this.y + Math.sin(rotation) * innerRadius
+      );
+      rotation += step;
+    }
+
+    this.ctx.lineTo(this.x, this.y - outerRadius);  // Close the shape
+    this.ctx.closePath();
+    this.ctx.fillStyle = this.color;
+    this.ctx.fill();
   }
 
   paint() {
+    if (this.#isStar) {
+      this.#paintStar();
+      return;
+    }
+
     this.ctx.beginPath();
     this.ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI, false);
     this.ctx.fillStyle = this.color;
@@ -87,6 +127,13 @@ export const dotsAnimation = (selector: string, showLines: boolean) => {
     #height;
     #dotsConfiguration;
     dots: Dot[] = [];
+    shootingStar1: Dot | null = null;
+    shootingStar2: Dot | null = null;
+    shootingStar3: Dot | null = null;
+    #STAR_FREQ_ATTENUATOR = 300;
+    #STAR_BASE_VELOCITY = 15;
+    #STAR_VELOCITY_FACTOR = 40;
+    #STAR_RADIUS_FACTOR = 7.5;
     showLines: boolean;
     #lastTimestamp: number;
     #timer: number;
@@ -112,8 +159,7 @@ export const dotsAnimation = (selector: string, showLines: boolean) => {
 
     createDots() {
       for (let i = 0; i < this.#dotsConfiguration.nb; i++) {
-        this.dots.push(
-          new Dot(this.#ctx, this.#width, this.#height, this.showLines));
+        this.dots.push(new Dot(this.#ctx, this.#width, this.#height));
       }
     }
 
@@ -180,11 +226,28 @@ export const dotsAnimation = (selector: string, showLines: boolean) => {
     setNextDotPositions() {
       // Don't animate the first dot; it will follow mouse
       for (const dot of this.dots.slice(Number(window.innerWidth >= 1100))) {
-        if (dot.y < 0 || dot.y > this.#height) dot.vy *= -1;
-        else if (dot.x < 0 || dot.x > this.#width) dot.vx *= -1;
+        if (dot.y <= 0 || dot.y >= this.#height) dot.vy *= -1;
+        if (dot.x <= 0 || dot.x >= this.#width) dot.vx *= -1;
 
         dot.x += 2 * dot.vx;
         dot.y += dot.vy;
+      }
+
+      for (const [i, star] of [
+        this.shootingStar1, this.shootingStar2, this.shootingStar3,
+      ].entries()) {
+        if (star === null) continue;
+
+        if (
+          star.y <= 0 || star.y >= this.#height ||
+          star.x <= 0 || star.x >= this.#width
+        ) {
+          // @ts-expect-error ts(7053)...
+          this[`shootingStar${i + 1}`] = null;
+        } else {
+          star.x += star.vx;
+          star.y += star.vy;
+        }
       }
     }
 
@@ -198,6 +261,26 @@ export const dotsAnimation = (selector: string, showLines: boolean) => {
         if (this.showLines) this.calculateLines();
         else this.dots.forEach((d) => { d.paint(); });
 
+        for (const [i, star] of [
+          this.shootingStar1, this.shootingStar2, this.shootingStar3
+        ].entries()) {
+          if (star) star.paint();
+          else if (Math.floor(Math.random() * this.#STAR_FREQ_ATTENUATOR) === 42) {
+            // @ts-expect-error ts(7053)...
+            const star = this[`shootingStar${i + 1}`] =
+              new Dot(this.#ctx, this.#width, this.#height, true);
+
+            const fromLeft = Math.random() >= 0.5;
+
+            star.x = fromLeft ? 1 : this.#width - 1;
+
+            star.vx =
+              this.#STAR_BASE_VELOCITY +
+              (this.#STAR_VELOCITY_FACTOR * (fromLeft ? 1 : -1)) * Math.random();
+            star.radius = Math.max(0.5, Math.random() * this.#STAR_RADIUS_FACTOR);
+          }
+        }
+
         this.setNextDotPositions();
         this.#timer = 0;
       } else {
@@ -209,9 +292,7 @@ export const dotsAnimation = (selector: string, showLines: boolean) => {
   }
 
 
-  let dotsAnimation = (
-    new DotsAnimation(ctx, canvas.width, canvas.height, showLines)
-  );
+  let dotsAnimation = new DotsAnimation(ctx, canvas.width, canvas.height, showLines);
 
   window.addEventListener("mousemove", function (e) {
     if (window.innerWidth >= 1100) {
@@ -230,14 +311,12 @@ export const dotsAnimation = (selector: string, showLines: boolean) => {
 
     resizeTimeout = setTimeout(() => {
       cancelAnimationFrame(animation);
-
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
 
-      dotsAnimation = (
+      (dotsAnimation = (
         new DotsAnimation(ctx, canvas.width, canvas.height, showLines)
-      );
-      dotsAnimation.animate(0);
+      )).animate(0);
     }, 250);
   });
 };
