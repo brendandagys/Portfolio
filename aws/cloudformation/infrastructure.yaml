@@ -225,6 +225,8 @@ Resources:
   
   CodePipeline:
     Type: AWS::CodePipeline::Pipeline
+    DependsOn:
+      - CodeBuildFrontend
     Properties:
       ArtifactStore:
         Location: !Sub ${AWS::AccountId}-pipeline-artifacts
