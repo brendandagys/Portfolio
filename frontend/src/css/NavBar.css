@@ -84,7 +84,7 @@
 
     align-items: center;
     background-color: #0a1930;
-    height: calc(102vh - 55px);
+    height: 95vh;
     transform: translateX(100%);
     width: 100%;
   }
