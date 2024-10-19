@@ -38,13 +38,13 @@ export const App: React.FC = () => {
         </div>
       </div>
 
-      <div id="about" className="mt-9">
+      <div id="about">
         <AboutSection />
       </div>
       <div id="work">
         <WorkSection />
       </div>
-      <div id="contact" className="mt-15 mb-8">
+      <div id="contact">
         <ContactForm />
       </div>
 
