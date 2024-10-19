@@ -7,8 +7,8 @@ function getDistance(x1: number, y1: number, x2: number, y2: number) {
 }
 
 
-let phase = 0;
-const frequency = 0.02;
+let PHASE = 0;
+const FREQUENCY = 0.015;
 
 
 function renderTextShadow(
@@ -23,9 +23,13 @@ function renderTextShadow(
   const maxDistance = window.innerWidth / 3; // Scaling factor
   const glowIntensity = Math.max(0, 1 - distance / maxDistance);
 
-  const glowIntensityWave = (Math.cos(phase) + 1) / 2;
+  const glowIntensityWave = (Math.cos(PHASE) + 1) / 2;
 
-  phase += frequency;
+  PHASE += FREQUENCY;
+
+  if (PHASE > Math.PI * 2) {
+    PHASE = 0;
+  }
 
   // Base blur: 15, oscillating +/- 10
   const glowBlur = 10 + (10 * glowIntensityWave) + (140 * glowIntensity);
