@@ -11,7 +11,7 @@
 .work-cards {
   display: flex;
   flex-direction: column;
-  gap: 6rem 2rem;
+  gap: 5rem 2rem;
 }
 
 .work-card {
