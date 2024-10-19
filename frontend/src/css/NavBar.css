@@ -14,6 +14,12 @@
   }
 }
 
+@media (max-width: 400px) {
+  .navbar {
+    background-color: #1e1e1e;
+  }
+}
+
 .navbar-container {
   display: flex;
   justify-content: flex-end;
@@ -32,8 +38,8 @@
   border: none;
   color: white;
   cursor: pointer;
-  font-size: 1rem;
-  padding: .9rem 1.25rem;
+  font-size: 1.1rem;
+  padding: 1.2rem 1.5rem;
   text-decoration: none;
   transition: color 0.3s ease;
 }
@@ -66,7 +72,7 @@
 }
 
 /* Responsive Styles */
-@media (max-width: 768px) {
+@media (max-width: 500px) {
   .nav-links {
     position: absolute;
     top: 52px;
