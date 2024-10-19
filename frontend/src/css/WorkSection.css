@@ -148,6 +148,35 @@
   }
 
   .work-text-card p {
-    font-size: 1.15rem;
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .work-section h1 {
+    font-size: 3em;
+    margin-bottom: 1.25rem;
+  }
+
+  .work-cards {
+    gap: 3rem 2rem;
+  }
+
+  .work-card {
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 450px) {
+  .work-section h1 {
+    font-size: 2.8em;
+  }
+
+  .work-text-card h3 {
+    font-size: 1.75rem;
+  }
+
+  .work-text-card p {
+    font-size: 1rem;
   }
 }
