@@ -87,5 +87,7 @@ Resources:
       TargetFunctionArn: !GetAtt LambdaFunction.Arn
       Cors:
         AllowMethods: ["POST"]
-        AllowOrigins: [!Sub 'https://${Domain}']
+        AllowOrigins:
+          - !Sub 'https://${Domain}'
+          - !Sub 'https://www.${Domain}'
         MaxAge: 86400
