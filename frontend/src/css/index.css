@@ -17,7 +17,6 @@
   --link-color: #646cff;
   --link-color-hover: #535bf2;
   --background-color: #24242414;
-  /* --background-color: #242424; */
   --button-border-color: #8b90e8;
   --button-border-color-hover: #646cff;
   --font: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -27,7 +26,7 @@
 
   line-height: 1.5;
 
-  color-scheme: light dark;
+  color-scheme: only dark;
   color: var(--text-white);
   background-color: var(--background-color);
 
