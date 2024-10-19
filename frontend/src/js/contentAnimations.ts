@@ -110,7 +110,7 @@ function contactSectionAnimations(
   observer: IntersectionObserver
 ) {
   entries.forEach((entry) => {
-    if (entry.isIntersecting) {
+    if (entry.isIntersecting && window.innerWidth > 635) {
       const contactElement = document.querySelector<HTMLDivElement>("#contact");
       if (contactElement) {
         contactElement.style.animationName = "bounce";
