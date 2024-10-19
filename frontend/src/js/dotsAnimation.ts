@@ -266,18 +266,20 @@ export const dotsAnimation = (selector: string, showLines: boolean) => {
         this.shootingStar1, this.shootingStar2, this.shootingStar3
       ].entries()) {
         if (star) star.paint();
-        else if (Math.floor(Math.random() * this.#STAR_FREQ_ATTENUATOR) === 42) {
+        else if (Math.floor(Math.random() * this.#STAR_FREQ_ATTENUATOR) === 1) {
           // @ts-expect-error ts(7053)...
           const star = this[`shootingStar${i + 1}`] =
             new Dot(this.#ctx, this.#width, this.#height, true);
+
+          star.vy += (11.5 * Math.random());
 
           const fromLeft = Math.random() >= 0.5;
 
           star.x = fromLeft ? 1 : this.#width - 1;
 
-          star.vx =
-            this.#STAR_BASE_VELOCITY +
-            (this.#STAR_VELOCITY_FACTOR * (fromLeft ? 1 : -1)) * Math.random();
+          star.vx = (
+            this.#STAR_BASE_VELOCITY + (this.#STAR_VELOCITY_FACTOR * Math.random())
+          ) * (fromLeft ? 1 : -1);
 
           star.radius = Math.max(0.5, Math.random() * this.#STAR_RADIUS_FACTOR);
         }
