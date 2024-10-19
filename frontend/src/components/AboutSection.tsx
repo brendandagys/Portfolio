@@ -36,7 +36,7 @@ export const AboutSection: React.FC = () => {
       <section className="about-section-container">
         <div className="about-top-section">
           <div className="about-card">
-            <h2>About Me</h2>
+            <h1>About Me</h1>
             <p>
               {
                 "I'm a passionate developer with a love for creating dynamic and innovative web applications. Let's build something amazing together!"

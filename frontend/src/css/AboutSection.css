@@ -51,14 +51,16 @@
   animation-timing-function: ease-in-out;
 }
 
-.about-card h2 {
-  font-size: 1.7em;
-  margin-bottom: 15px;
+.about-card h1 {
+  margin-bottom: 1.65rem;
 }
 
 .about-card p,
 .aws-icons-title-container p {
+  font-size: 1.3rem;
   line-height: 1.6;
+  margin: auto;
+  max-width: 640px;
 }
 
 .about-icon-clusters {
@@ -149,10 +151,6 @@
     font-size: 1.15rem;
   }
 
-  .about-card h2 {
-    font-size: 1.67em;
-  }
-
   .about-icon-cluster-aws img {
     width: 120px;
   }
@@ -165,6 +163,14 @@
 @media (max-width: 1065px) {
   .about-icon-cluster-aws img {
     width: 109px;
+  }
+
+  .about-card p {
+    font-size: 1.2rem;
+  }
+
+  .aws-icons-title-container p {
+    font-size: 1.2rem;
   }
 }
 
@@ -181,8 +187,12 @@
     font-size: 1.05rem;
   }
 
-  .about-card h2 {
-    font-size: 1.6em;
+  .about-card p {
+    font-size: 1.15rem;
+  }
+
+  .aws-icons-title-container p {
+    font-size: 1.15rem;
   }
 
   .about-icon-cluster-aws img {
@@ -215,12 +225,13 @@
     max-width: unset;
   }
 
-  .about-card h2 {
-    font-size: 2em;
+  .about-card p {
+    font-size: 1.25rem;
+    margin-top: 2rem;
   }
 
-  .about-card p {
-    margin-top: 2rem;
+  .aws-icons-title-container p {
+    font-size: 1.25rem;
   }
 
   .about-icon-cluster-aws img {
@@ -248,8 +259,16 @@
     margin: 0 0 0.5rem;
   }
 
-  .about-card h2 {
-    font-size: 1.75em;
+  .about-card h1 {
+    font-size: 3em;
+  }
+
+  .about-card p {
+    font-size: 1.15rem;
+  }
+
+  .aws-icons-title-container p {
+    font-size: 1.15rem;
   }
 
   .about-icon-cluster-aws {
@@ -283,8 +302,16 @@
     font-size: 1.05rem;
   }
 
-  .about-card h2 {
-    font-size: 1.5em;
+  .about-card h1 {
+    font-size: 2.8em;
+  }
+
+  .about-card p {
+    font-size: 1.05rem;
+  }
+
+  .aws-icons-title-container p {
+    font-size: 1.05rem;
   }
 
   .aws-icons-title-container {
