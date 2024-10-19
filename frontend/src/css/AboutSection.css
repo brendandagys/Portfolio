@@ -241,10 +241,15 @@
 
   .about-card {
     font-size: 1.1rem;
+    margin: 0 0 0.5rem;
   }
 
   .about-card h2 {
     font-size: 1.75em;
+  }
+
+  .about-icon-cluster-aws {
+    margin: 1.5rem 0 7rem;
   }
 
   .about-icon-cluster-aws img {
@@ -253,6 +258,7 @@
 
   .aws-icons-title-container {
     font-size: 1.07rem;
+    margin: 1.55rem auto 2.5rem;
   }
 }
 
