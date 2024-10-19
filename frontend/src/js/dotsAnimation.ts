@@ -313,7 +313,7 @@ export const dotsAnimation = (selector: string, showLines: boolean) => {
   let dotsAnimation = new DotsAnimation(ctx, canvas.width, canvas.height, showLines);
 
   window.addEventListener("mousemove", function (e) {
-    if (window.innerWidth >= 1100) {
+    if (window.innerWidth >= 1100) {  // Under this, there are no lines to connect
       dotsAnimation.dots[0].x = e.clientX;
       dotsAnimation.dots[0].y = e.clientY;
     }
@@ -321,12 +321,15 @@ export const dotsAnimation = (selector: string, showLines: boolean) => {
 
   dotsAnimation.animate(0);
 
+  let previousHeight = window.innerHeight;
   let resizeTimeout: number;
 
+  // Debounce window resizes so dots don't flicker due to random x/y position
   window.addEventListener("resize", function () {
-    // Debounce window resizes so dots don't flicker due to random x/y position
-    this.clearTimeout(resizeTimeout);
+    if (window.innerWidth < 500 && window.innerHeight !== previousHeight) return;
+    previousHeight = window.innerHeight;
 
+    this.clearTimeout(resizeTimeout);
     resizeTimeout = setTimeout(() => {
       cancelAnimationFrame(animation);
       canvas.width = window.innerWidth;
