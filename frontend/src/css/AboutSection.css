@@ -329,3 +329,10 @@
     width: 45px;
   }
 }
+
+@media (max-width: 375px) {
+  .about-icon-cluster-tech img {
+    margin: 0.62rem;
+    width: 45px;
+  }
+}
