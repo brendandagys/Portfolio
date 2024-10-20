@@ -53,6 +53,57 @@ export const WorkSection: React.FC = () => {
 
           <div className="work-card">
             <div className="work-image-card">
+              <img
+                src={serverlessMergeSortScreenshot}
+                alt="Serverless merge sort application"
+              />
+            </div>
+
+            <div className="work-text-card">
+              <h3>Serverless Merge Sort Application</h3>
+              <p>
+                A serverless application that performs a merge sort on the
+                provided input array. Deployed using AWS SAM and a front-end
+                written in Rust.
+              </p>
+              <a
+                href={"https://sort.brendandagys.com"}
+                target="_blank"
+                rel="noreferrer"
+              >
+                Try the merge sort function!
+              </a>
+              <a
+                href={
+                  "https://github.com/brendandagys/" +
+                  "Serverless-Merge-Sort-Frontend-Yew-App"
+                }
+                target="_blank"
+                rel="noreferrer"
+              >
+                View the front-end on GitHub
+              </a>
+              <a
+                href={
+                  "https://github.com/brendandagys/" +
+                  "Serverless-Merge-Sort-with-AWS-SAM"
+                }
+                target="_blank"
+                rel="noreferrer"
+                style={{ marginTop: 1 }}
+              >
+                View the back-end on GitHub
+              </a>
+
+              <div className="mt-4"></div>
+              <Pills
+                content={["Rust", "AWS SAM", "AWS CloudFormation", "Yew"]}
+              />
+            </div>
+          </div>
+
+          <div className="work-card">
+            <div className="work-image-card">
               <img src={textEditorGif} alt="Text editor" />
             </div>
 
@@ -105,56 +156,6 @@ export const WorkSection: React.FC = () => {
             </div>
           </div>
 
-          <div className="work-card">
-            <div className="work-image-card">
-              <img
-                src={serverlessMergeSortScreenshot}
-                alt="Serverless merge sort application"
-              />
-            </div>
-
-            <div className="work-text-card">
-              <h3>Serverless Merge Sort Application</h3>
-              <p>
-                A serverless application that performs a merge sort on the
-                provided input array. Deployed using AWS SAM and a front-end
-                written in Rust.
-              </p>
-              <a
-                href={"https://sort.brendandagys.com"}
-                target="_blank"
-                rel="noreferrer"
-              >
-                Try the merge sort function!
-              </a>
-              <a
-                href={
-                  "https://github.com/brendandagys/" +
-                  "Serverless-Merge-Sort-Frontend-Yew-App"
-                }
-                target="_blank"
-                rel="noreferrer"
-              >
-                View the front-end on GitHub
-              </a>
-              <a
-                href={
-                  "https://github.com/brendandagys/" +
-                  "Serverless-Merge-Sort-with-AWS-SAM"
-                }
-                target="_blank"
-                rel="noreferrer"
-                style={{ marginTop: 1 }}
-              >
-                View the back-end on GitHub
-              </a>
-
-              <div className="mt-4"></div>
-              <Pills
-                content={["Rust", "AWS SAM", "AWS CloudFormation", "Yew"]}
-              />
-            </div>
-          </div>
           <div className="work-card">
             <div className="work-image-card">
               <img src={financesScreenshot} alt="Finances tracker" />
