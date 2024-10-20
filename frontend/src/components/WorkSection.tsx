@@ -34,7 +34,7 @@ export const WorkSection: React.FC = () => {
                 target="_blank"
                 rel="noreferrer"
               >
-                View Website
+                Visit Website
               </a>
 
               <div className="mt-4"></div>
@@ -117,9 +117,16 @@ export const WorkSection: React.FC = () => {
               <h3>Serverless Merge Sort Application</h3>
               <p>
                 A serverless application that performs a merge sort on the
-                provided input array. Deployed using AWS SAM and front-end
+                provided input array. Deployed using AWS SAM and a front-end
                 written in Rust.
               </p>
+              <a
+                href={"https://sort.brendandagys.com"}
+                target="_blank"
+                rel="noreferrer"
+              >
+                Try the merge sort function!
+              </a>
               <a
                 href={
                   "https://github.com/brendandagys/" +
@@ -137,7 +144,7 @@ export const WorkSection: React.FC = () => {
                 }
                 target="_blank"
                 rel="noreferrer"
-                style={{ marginTop: 6 }}
+                style={{ marginTop: 1 }}
               >
                 View the back-end on GitHub
               </a>
