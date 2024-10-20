@@ -215,6 +215,7 @@
   }
 
   .about-top-section {
+    flex-direction: column;
     gap: 1rem;
     padding: 1rem;
   }
@@ -328,11 +329,5 @@
   .about-icon-cluster-tech img {
     margin: 0.85rem;
     width: 45px;
-  }
-}
-
-@media (max-width: 768px) {
-  .about-top-section {
-    flex-direction: column;
   }
 }
