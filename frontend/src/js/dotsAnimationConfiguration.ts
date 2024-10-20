@@ -37,7 +37,7 @@ const dotsConfiguration: Record<number, DotsConfiguration> = {
     lineOpacityBoost: 0,
   },
   0: {
-    nb: 80,
+    nb: 50,
     dotsLinkRadius: 0,
     linkRadiusFromMouse: 0,
     lineOpacityBoost: 0,
