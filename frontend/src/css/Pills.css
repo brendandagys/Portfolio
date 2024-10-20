@@ -2,15 +2,9 @@
   align-items: center;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.49rem;
+  gap: 0.5rem;
   justify-content: center;
   margin-top: 1rem;
-}
-
-@media (max-width: 576px) {
-  .pills-container {
-    margin-top: 0;
-  }
 }
 
 .pill {
@@ -19,4 +13,16 @@
   font-size: 0.85rem;
   margin-top: 0.1rem;
   padding: 0.25rem 0.8rem;
+}
+
+@media (max-width: 576px) {
+  .pills-container {
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 350px) {
+  .pill {
+    font-size: 0.75rem;
+  }
 }
