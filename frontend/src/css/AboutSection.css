@@ -35,7 +35,6 @@
 }
 
 .about-card {
-  color: white;
   max-width: 40%;
   padding: 20px;
   background-color: rgba(0, 0, 0, 0);
@@ -57,6 +56,7 @@
 
 .about-card p,
 .aws-icons-title-container p {
+  color: var(--text-gray);
   font-size: 1.3rem;
   line-height: 1.6;
   margin: auto;
