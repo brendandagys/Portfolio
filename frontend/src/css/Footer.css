@@ -1,8 +1,8 @@
 .footer {
-  position: relative;
   background: black;
+  padding: 3rem 0;
+  position: relative;
   min-height: 125px;
-  padding: 2rem 0 3rem;
 }
 
 .footer-row {
@@ -22,7 +22,8 @@
 }
 
 .footer-hover-grow {
-  display: inline-block;
+  display: flex;
+  align-items: center;
   -webkit-transform: translateZ(0);
   transform: scale(0.96) translateZ(0) translateX(0%) translateY(0%);
   -webkit-transition: transform 100ms;

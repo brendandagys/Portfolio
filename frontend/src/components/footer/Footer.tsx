@@ -15,8 +15,9 @@ export const Footer = () => {
           );
         })}
       </div>
+
       <div className="footer-row">
-        <p className="text-gray mt-2">Copyright &copy; Brendan Dagys</p>
+        <p className="text-gray mt-2">Brendan Dagys &copy; 2024</p>
       </div>
     </footer>
   );
