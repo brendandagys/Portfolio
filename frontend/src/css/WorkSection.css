@@ -42,10 +42,6 @@
   max-width: 500px;
 }
 
-.work-text-card a {
-  font-size: 1.2rem;
-}
-
 @media (max-width: 1200px) {
   .work-text-card {
     max-width: 400px;
@@ -87,13 +83,13 @@
 
 .work-text-card p {
   color: var(--text-gray);
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   margin: 1rem 0;
-  /* text-align: justify; */
 }
 
 .work-text-card a {
   color: var(--link-color);
+  font-size: 1.1rem;
   margin-top: 1rem;
   text-decoration: none;
 }
@@ -113,7 +109,7 @@
   }
 
   .work-text-card a {
-    font-size: 1.1rem;
+    font-size: 1.05rem;
   }
 }
 
@@ -128,7 +124,7 @@
   }
 
   .work-text-card a {
-    font-size: 1.05rem;
+    font-size: 1rem;
   }
 }
 
