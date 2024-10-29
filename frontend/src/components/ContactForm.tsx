@@ -64,7 +64,7 @@ export const ContactForm: React.FC = () => {
     <>
       <section className="contact-form">
         <div>
-          <h1 className="mb-3">Get In Touch</h1>
+          <h1 className="mb-3">Get In Touch!</h1>
           <p className="mb-5 text-gray">
             {
               "Have a question or want to work together? Leave your details \
