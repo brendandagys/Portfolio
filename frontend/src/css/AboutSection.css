@@ -19,8 +19,8 @@
 }
 
 .aws-icons-title-container {
+  margin: 6rem auto 2.5rem;
   max-width: 800px;
-  margin: 7rem auto 2.5rem;
   padding: 0 4rem;
   text-align: center;
 
@@ -238,6 +238,7 @@
 
   .aws-icons-title-container {
     font-size: 1.12rem;
+    margin: 5rem auto 2.5rem;
   }
 }
 
