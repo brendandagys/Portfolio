@@ -126,7 +126,7 @@ export const dotsAnimation = (selector: string, showLines: boolean) => {
   canvas.height = window.innerHeight;
   canvas.style.display = 'block';
 
-  ctx.lineWidth = 0.3;
+  ctx.lineWidth = 1;
 
 
   class DotsAnimation {
