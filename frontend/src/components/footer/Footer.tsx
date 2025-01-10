@@ -17,7 +17,9 @@ export const Footer = () => {
       </div>
 
       <div className="footer-row">
-        <p className="text-gray mt-2">Brendan Dagys &copy; 2024</p>
+        <p className="text-gray mt-2">
+          Brendan Dagys &copy; {new Date().getFullYear()}
+        </p>
       </div>
     </footer>
   );
