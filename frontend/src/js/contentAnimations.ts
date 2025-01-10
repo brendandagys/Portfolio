@@ -138,7 +138,7 @@ function navButtonHighlight(entries: IntersectionObserverEntry[]) {
   });
 }
 
-export const initializeContentAnimations = () => {
+export function initializeContentAnimations() {
   const config = { root: null, rootMargin: "0px", threshold: 1 };
 
   const aboutTopSection = document.querySelector(".about-top-section");

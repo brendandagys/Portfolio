@@ -41,7 +41,7 @@ function renderTextShadow(
 }
 
 
-export const initializeTextGlowAnimation = () => {
+export function initializeTextGlowAnimation() {
   const heroContentDiv =
     document.querySelector<HTMLDivElement>('.hero-content__title');
   if (!heroContentDiv) return;
