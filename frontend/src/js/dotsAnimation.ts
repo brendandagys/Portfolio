@@ -138,7 +138,7 @@ export const dotsAnimation = (selector: string, showLines: boolean) => {
     shootingStar1: Dot | null = null;
     shootingStar2: Dot | null = null;
     shootingStar3: Dot | null = null;
-    #STAR_FREQ_ATTENUATOR = 350;
+    #STAR_FREQ_ATTENUATOR = 400;
     #STAR_BASE_VELOCITY = 15;
     #STAR_VELOCITY_FACTOR = 40;
     #STAR_RADIUS_FACTOR = 7.5;
