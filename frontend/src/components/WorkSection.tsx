@@ -61,7 +61,7 @@ export const WorkSection: React.FC = () => {
             </div>
           </div>
 
-          <div className="work-card">
+          {/* <div className="work-card">
             <div className="work-image-card">
               <img
                 src={vacationRentalSiteScreenshot}
@@ -114,7 +114,7 @@ export const WorkSection: React.FC = () => {
                 ]}
               />
             </div>
-          </div>
+          </div> */}
 
           <div className="work-card">
             <div className="work-image-card">
