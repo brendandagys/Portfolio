@@ -38,9 +38,15 @@ export const AboutSection: React.FC = () => {
           <div className="about-card">
             <h1>About Me</h1>
             <p>
-              {
-                "I'm a passionate developer with a love for creating dynamic and innovative web applications. Let's build something amazing together!"
-              }
+              I hold a B.Eng in Biomedical Engineering and have been
+              working professionally as a software engineer for 3+ years.
+            </p>
+            <br />
+            <p>{"I'm always working to better myself, be it with a new project, certification, or skill!"}</p>
+            <br />
+            <p>
+              My professional and personal journey has given me experience with
+              varied technologies.
             </p>
           </div>
 
@@ -49,7 +55,6 @@ export const AboutSection: React.FC = () => {
               <div className="about-icon-column">
                 <img src={aws} className="icon-aws" alt="AWS icon" />
                 <img src={react} className="spin icon-react" alt="React icon" />
-                {/* prettier-ignore */}
                 <img src={terraform} className="icon-terraform" alt="Terraform icon" />
                 <img src={cpp} className="icon-cpp" alt="C++ icon" />
               </div>
@@ -61,23 +66,17 @@ export const AboutSection: React.FC = () => {
               </div>
               <div className="about-icon-column">
                 <img src={rust} className="spin icon-rust" alt="Rust icon" />
-                {/* prettier-ignore */}
                 <img src={graphql} className="icon-graphql" alt="GraphQL icon" />
-                {/* prettier-ignore */}
                 <img src={kubernetes} className="spin-reverse icon-k8" alt="Kubernetes icon" />
-                {/* prettier-ignore */}
                 <img src={bootstrap} className="icon-bootstrap" alt="Bootstrap icon" />
               </div>
               <div className="about-icon-column">
-                {/* prettier-ignore */}
                 <img src={typescript} className="icon-typescript" alt="TypeScript icon" />
                 <img src={django} className="icon-django" alt="Django icon" />
-                {/* prettier-ignore */}
                 <img src={postgresql} className="icon-postgresql" alt="PostgreSQL icon" />
                 <img src={html} className="icon-html" alt="HTML icon" />
               </div>
               <div className="about-icon-column">
-                {/* prettier-ignore */}
                 <img src={javascript} className="icon-javascript" alt="JavaScript icon" />
                 <img src={nodejs} className="icon-nodejs" alt="NodeJS icon" />
                 <img src={git} className="icon-git" alt="Git icon" />
@@ -88,28 +87,19 @@ export const AboutSection: React.FC = () => {
         </div>
 
         <div className="aws-icons-title-container">
-          <p>
-            {
-              "I'm a huge AWS fan and use services including CloudFront, ECS, Lambda, API Gateway, and Route 53 to build my projects. I hold the following certifications:"
-            }
-          </p>
+          <p>{"I'm a fan of AWS and have experience building solutions with Lambda, ECS, EC2, CloudFront, API Gateway, AWS SAM, and other services."}</p>
+          <br />
+          <p>I hold the following certifications:</p>
         </div>
 
         <div className="about-icon-cluster-aws">
           <div className="about-icon-row">
-            {/* prettier-ignore */}
             <img src={sapBadge} className="icon-sap" alt="Solutions Architect - Professional" />
-            {/* prettier-ignore */}
             <img src={dopBadge} className="icon-dop" alt="DevOps Engineer - Professional" />
-            {/* prettier-ignore */}
             <img src={scsBadge} className="icon-scs" alt="Security - Specialty" />
-            {/* prettier-ignore */}
             <img src={saaBadge} className="icon-saa" alt="Solutions Architect - Associate" />
-            {/* prettier-ignore */}
             <img src={dvaBadge} className="icon-dva" alt="Developer - Associate" />
-            {/* prettier-ignore */}
             <img src={soaBadge} className="icon-soa" alt="SysOps Administrator - Associate" />
-            {/* prettier-ignore */}
             <img src={ccpBadge} className="icon-ccp" alt="Cloud Practitioner - Foundational" />
           </div>
         </div>
