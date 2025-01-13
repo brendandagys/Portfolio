@@ -7,6 +7,11 @@
   margin-top: 1rem;
 }
 
+.pills-title {
+  flex-basis: 100%;
+  font-size: 0.9rem;
+}
+
 .pill {
   background: rgba(64, 64, 70, 0.95);
   border-radius: 15px;
