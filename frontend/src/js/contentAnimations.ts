@@ -175,7 +175,7 @@ export function initializeContentAnimations() {
   if (contactSection) observerNav.observe(contactSection);
 
   const observerNavProjects =
-    new IntersectionObserver(navButtonHighlight, { ...config, threshold: 0.3 });
+    new IntersectionObserver(navButtonHighlight, { ...config, threshold: 0.2 });
 
   const workSection = document.querySelector("#work");
 
