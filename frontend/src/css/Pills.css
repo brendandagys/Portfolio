@@ -10,6 +10,7 @@
 .pills-title {
   flex-basis: 100%;
   font-size: 0.9rem;
+  margin-bottom: 0.25rem;
 }
 
 .pill {
