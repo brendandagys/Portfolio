@@ -15,6 +15,54 @@ export const WorkSection: React.FC = () => {
         <div className="work-cards">
           <div className="work-card">
             <div className="work-image-card">
+              <img src={textEditorGif} alt="Text editor" />
+            </div>
+
+            <div className="work-text-card">
+              <h3>Text Editor</h3>
+              <p>
+                A fast and lightweight Unix-based text editor built with C, and
+                then re-written in Rust with a full suite of unit tests.
+              </p>
+              <p>
+                It was designed for ease-of-use, efficiency, safety, and future
+                extensibility.
+              </p>
+              <p>
+                <b>Features</b>: syntax highlighting, search, go-to-line, Vim
+                keybindings, line numbers, an informative status bar, and user
+                prompts.
+              </p>
+              <a
+                href="https://medium.com/@brendandagys_91079/what-i-learned-from-building-a-text-editor-from-scratch-deea53fffc79"  // eslint-disable-line max-len
+                target="_blank"
+                rel="noreferrer"
+              >
+                Read my Medium article about the experience
+              </a>
+              <a
+                href="https://github.com/brendandagys/Text-Editor-Rust"
+                target="_blank"
+                rel="noreferrer"
+              >
+                View the Rust code & binary on GitHub
+              </a>
+              <a
+                href="https://github.com/brendandagys/Text-Editor-C"
+                target="_blank"
+                rel="noreferrer"
+                style={{ marginTop: 3 }}
+              >
+                View the C code & binary on GitHub
+              </a>
+
+              <div className="mt-4"></div>
+              <Pills content={["Rust", "C", "Make"]} />
+            </div>
+          </div>
+
+          <div className="work-card">
+            <div className="work-image-card">
               <img
                 src={vacationRentalSiteScreenshot}
                 alt="Vacation rental site"
@@ -24,10 +72,18 @@ export const WorkSection: React.FC = () => {
             <div className="work-text-card">
               <h3>Vacation Rental Website</h3>
               <p>
-                A vacation rental site that details the rental property and
-                manages inquiries and calendar updates by an administrator.
-                Built with a serverless Rust backend using DynamoDB, this
-                full-stack application costs less than $1 to run each month.
+                A real vacation rental website built for a client who rents out
+                their overseas property year-round.
+              </p>
+              <p>
+                Deployed with a serverless Rust backend and using DynamoDB, this
+                full-stack application costs less than $1 to run each month!
+              </p>
+              <p>
+                <b>Features</b>: booking management, administrator portal,
+                custom-built calendar widget detailing current prices &
+                availability, full support for 5 languages, contact form, tiled
+                image gallery, video tour, and property/amenities information.
               </p>
               <a
                 href="https://calaceite.holiday"
@@ -35,6 +91,14 @@ export const WorkSection: React.FC = () => {
                 rel="noreferrer"
               >
                 Visit Website
+              </a>
+              <a
+                href="https://github.com/brendandagys/Vacation-Rental-Property-Site"  // eslint-disable-line max-len
+                target="_blank"
+                rel="noreferrer"
+                style={{ marginTop: 3 }}
+              >
+                View code on GitHub
               </a>
 
               <div className="mt-4"></div>
@@ -44,6 +108,7 @@ export const WorkSection: React.FC = () => {
                   "React",
                   "Rust",
                   "AWS SAM",
+                  "AWS Lambda",
                   "Bootstrap",
                   "Google Analytics",
                 ]}
@@ -63,8 +128,12 @@ export const WorkSection: React.FC = () => {
               <h3>Serverless Merge Sort Application</h3>
               <p>
                 A serverless application that performs a merge sort on the
-                provided input array. Deployed using AWS SAM and a front-end
-                written in Rust.
+                provided list of numbers. Created as a mini-project for a tech
+                talk that I gave to a team of developers on the subject of Rust.
+              </p>
+              <p>
+                Deployed using AWS SAM and with a front-end written in Rust
+                (Yew)!
               </p>
               <a
                 href={"https://sort.brendandagys.com"}
@@ -74,54 +143,26 @@ export const WorkSection: React.FC = () => {
                 Try the merge sort function!
               </a>
               <a
-                href={
-                  "https://github.com/brendandagys/" +
-                  "Serverless-Merge-Sort-Frontend-Yew-App"
-                }
+                href="https://github.com/brendandagys/Serverless-Merge-Sort-Frontend-Yew-App"   // eslint-disable-line max-len
                 target="_blank"
                 rel="noreferrer"
+                style={{ marginTop: 22 }}
               >
-                View the front-end on GitHub
+                View the front-end code on GitHub
               </a>
               <a
-                href={
-                  "https://github.com/brendandagys/" +
-                  "Serverless-Merge-Sort-with-AWS-SAM"
-                }
+                href="https://github.com/brendandagys/Serverless-Merge-Sort-with-AWS-SAM"   // eslint-disable-line max-len
                 target="_blank"
                 rel="noreferrer"
-                style={{ marginTop: 1 }}
+                style={{ marginTop: 3 }}
               >
-                View the back-end on GitHub
+                View the back-end code on GitHub
               </a>
 
               <div className="mt-4"></div>
               <Pills
                 content={["Rust", "AWS SAM", "AWS CloudFormation", "Yew"]}
               />
-            </div>
-          </div>
-
-          <div className="work-card">
-            <div className="work-image-card">
-              <img src={textEditorGif} alt="Text editor" />
-            </div>
-
-            <div className="work-text-card">
-              <h3>Text Editor</h3>
-              <p>
-                A text editor with syntax highlighting and search capabilities.
-              </p>
-              <a
-                href="https://github.com/brendandagys/Text-Editor"
-                target="_blank"
-                rel="noreferrer"
-              >
-                View on GitHub
-              </a>
-
-              <div className="mt-4"></div>
-              <Pills content={["C", "Make"]} />
             </div>
           </div>
 
@@ -148,7 +189,7 @@ export const WorkSection: React.FC = () => {
                 target="_blank"
                 rel="noreferrer"
               >
-                View on GitHub
+                View code on GitHub
               </a>
 
               <div className="mt-4"></div>
@@ -164,26 +205,33 @@ export const WorkSection: React.FC = () => {
             <div className="work-text-card">
               <h3>Finances Tracker</h3>
               <p>
-                A tool to manage, track and visualize spending habits. Built
-                with a Node.js back-end deployed on AWS Fargate, and a React
-                TypeScript front-end served from CloudFront edge locations.
+                One of my first full-stack projects from a few years ago, this
+                was a tool I built to visualize, track, and manage my spending
+                habits and asset growth.
+              </p>
+              <p>
+                It ran on a Node.js back-end deployed via AWS Fargate, and had a
+                React front-end served from CloudFront edge locations.
               </p>
               <a
-                href="https://github.com/brendandagys/Text-Editor"
+                href="https://github.com/brendandagys/Finances-Tracker"
                 target="_blank"
                 rel="noreferrer"
               >
-                View on GitHub
+                View code on GitHub
               </a>
 
               <div className="mt-4"></div>
               <Pills
                 content={[
                   "React",
-                  "TypeScript",
-                  "Bootstrap",
+                  "JavaScript",
                   "Node.js",
+                  "AWS Fargate",
+                  "AWS CloudFront",
+                  "AWS S3",
                   "Docker",
+                  "Bootstrap",
                 ]}
               />
             </div>
