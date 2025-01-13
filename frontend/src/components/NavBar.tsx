@@ -9,7 +9,7 @@ export const Navbar: React.FC = () => {
   const [configs] = useState({
     configs: [
       { targetId: "home", offset: -100 },
-      { targetId: "about", offset: -125 },
+      { targetId: "about", offset: -90 },
       { targetId: "work", offset: -100 },
       { targetId: "contact", offset: -100 },
     ],
