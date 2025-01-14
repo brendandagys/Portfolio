@@ -71,6 +71,12 @@
   border-radius: 3px;
 }
 
+@media (max-width: 575px) {
+  .nav-links button {
+    padding: 1.2rem 1.1rem;
+  }
+}
+
 /* Responsive Styles */
 @media (max-width: 500px) {
   .nav-links {
