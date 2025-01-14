@@ -144,7 +144,7 @@ export function initializeContentAnimations() {
   const aboutTopSection = document.querySelector(".about-top-section");
   if (aboutTopSection) {
     (new IntersectionObserver(
-      aboutSectionTopAnimations, { ...config, threshold: 0.9 }))
+      aboutSectionTopAnimations, { ...config, threshold: 0.75 }))
       .observe(aboutTopSection);
   }
 
