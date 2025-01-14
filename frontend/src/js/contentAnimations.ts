@@ -165,7 +165,10 @@ export function initializeContentAnimations() {
 
   // Highlight appropriate NavBar link
   const observerNav =
-    new IntersectionObserver(navButtonHighlight, { ...config, threshold: 0.5 });
+    new IntersectionObserver(
+      navButtonHighlight,
+      { ...config, threshold: window.innerWidth < 769 ? 0.4 : 0.6 }
+    );
 
   const homeSection = document.querySelector("#home");
   const aboutSection = document.querySelector("#about");
