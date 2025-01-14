@@ -144,19 +144,21 @@ export function initializeContentAnimations() {
   const aboutTopSection = document.querySelector(".about-top-section");
   if (aboutTopSection) {
     (new IntersectionObserver(
-      aboutSectionTopAnimations, { ...config, threshold: 0.75 }))
-      .observe(aboutTopSection);
+      aboutSectionTopAnimations,
+      { ...config, threshold: window.innerWidth < 415 ? 0.7 : 0.75 })
+    ).observe(aboutTopSection);
   }
 
   const awsSection = document.querySelector(".about-icon-cluster-aws");
   if (awsSection) {
     (new IntersectionObserver(
       aboutSectionAwsAnimations,
-      { ...config, threshold: window.innerWidth < 415 ? 0.25 : 1 }
+      { ...config, threshold: window.innerWidth < 415 ? 0.1 : 0.75 }
     )).observe(awsSection);
   }
 
   const contactSection = document.querySelector("#contact");
+
   if (contactSection) {
     (new IntersectionObserver(
       contactSectionAnimations, { ...config, threshold: 1 })
