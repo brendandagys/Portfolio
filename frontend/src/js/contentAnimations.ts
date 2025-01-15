@@ -145,7 +145,7 @@ export function initializeContentAnimations() {
   if (aboutTopSection) {
     (new IntersectionObserver(
       aboutSectionTopAnimations,
-      { ...config, threshold: window.innerWidth < 415 ? 0.7 : 0.75 })
+      { ...config, threshold: window.innerWidth < 415 ? 0.6 : 0.75 })
     ).observe(aboutTopSection);
   }
 
@@ -180,7 +180,10 @@ export function initializeContentAnimations() {
   if (contactSection) observerNav.observe(contactSection);
 
   const observerNavProjects =
-    new IntersectionObserver(navButtonHighlight, { ...config, threshold: 0.2 });
+    new IntersectionObserver(
+      navButtonHighlight,
+      { ...config, threshold: window.innerWidth < 769 ? 0.15 : 0.2 }
+    );
 
   const workSection = document.querySelector("#work");
 
