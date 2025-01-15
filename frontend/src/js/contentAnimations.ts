@@ -64,7 +64,7 @@ function aboutSectionTopAnimations(
 
       observer.unobserve(entry.target);
 
-      setTimeout(() => { aboutSectionTopAnimationsRan = true; }, 3000);
+      setTimeout(() => { aboutSectionTopAnimationsRan = true; }, 1000);
     }
   });
 }
@@ -83,8 +83,9 @@ function aboutSectionAwsAnimations(
           iconElement.style.animationName =
             "subtle-wobble, bounce-in-from-right";
 
-          const bounceDuration =
-            (aboutSectionTopAnimationsRan ? 0 : 1) + i * 0.04;
+          const bounceDuration = (
+            (aboutSectionTopAnimationsRan || window.innerWidth < 769) ? 0 : 1
+          ) + i * 0.04;
 
           iconElement.style.animationDelay =
             `${bounceDuration + 0.2 + Math.random() * 3}s, ${bounceDuration}s`;
@@ -96,8 +97,14 @@ function aboutSectionAwsAnimations(
 
       if (awsTitleElement) {
         awsTitleElement.style.animationName = "fade-in";
-        awsTitleElement.style.animationDelay =
-          `${aboutSectionTopAnimationsRan ? 1 : 2}.5s`;
+
+        if (window.innerWidth < 769) {
+          awsTitleElement.style.animationDelay = '0';
+        } else if (aboutSectionTopAnimationsRan) {
+          awsTitleElement.style.animationDelay = '1.5s';
+        } else {
+          awsTitleElement.style.animationDelay = '2.5s';
+        }
       }
 
       observer.unobserve(entry.target);
@@ -145,7 +152,7 @@ export function initializeContentAnimations() {
   if (aboutTopSection) {
     (new IntersectionObserver(
       aboutSectionTopAnimations,
-      { ...config, threshold: window.innerWidth < 415 ? 0.6 : 0.75 })
+      { ...config, threshold: window.innerWidth < 769 ? 0.6 : 0.75 })
     ).observe(aboutTopSection);
   }
 
@@ -153,7 +160,7 @@ export function initializeContentAnimations() {
   if (awsSection) {
     (new IntersectionObserver(
       aboutSectionAwsAnimations,
-      { ...config, threshold: window.innerWidth < 415 ? 0.1 : 0.75 }
+      { ...config, threshold: window.innerWidth < 769 ? 0.1 : 0.75 }
     )).observe(awsSection);
   }
 
