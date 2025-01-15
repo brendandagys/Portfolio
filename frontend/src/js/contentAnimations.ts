@@ -176,7 +176,7 @@ export function initializeContentAnimations() {
   const observerNav =
     new IntersectionObserver(
       navButtonHighlight,
-      { ...config, threshold: window.innerWidth < 769 ? 0.3 : 0.6 }
+      { ...config, threshold: window.innerWidth < 769 ? 0.2 : 0.6 }
     );
 
   const homeSection = document.querySelector("#home");
