@@ -77,7 +77,7 @@ export const WorkSection: React.FC = () => {
               </p>
               <p>
                 Deployed with a serverless Rust backend and using DynamoDB, this
-                full-stack application costs less than $1 to run each month!
+                full-stack application costs less than $1/month to run!
               </p>
               <p>
                 <b>Features</b>: booking management, administrator portal,
