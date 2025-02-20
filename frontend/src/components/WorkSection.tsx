@@ -1,6 +1,6 @@
 import "../css/WorkSection.css";
 import cCompiler from "../images/c-compiler.png";
-// import vacationRentalSiteScreenshot from "../images/vacation-rental-site-screenshot.png"; // eslint-disable-line max-len
+import vacationRentalSiteScreenshot from "../images/vacation-rental-site-screenshot.png"; // eslint-disable-line max-len
 import textEditorGif from "../images/text-editor.gif";
 import serverlessMergeSortScreenshot from "../images/serverless-merge-sort-screenshot.png"; // eslint-disable-line max-len
 import financesScreenshot from "../images/finances-app-screenshot.png";
@@ -25,7 +25,7 @@ export const WorkSection: React.FC = () => {
                 then re-written in Rust with a full suite of unit tests.
               </p>
               <p>
-                It was designed for ease-of-use, efficiency, safety, and future
+                It was designed for ease of use, efficiency, safety, and future
                 extensibility.
               </p>
               <p>
@@ -34,7 +34,7 @@ export const WorkSection: React.FC = () => {
                 prompts.
               </p>
               <a
-                href="https://medium.com/@brendandagys_91079/what-i-learned-from-building-a-text-editor-from-scratch-deea53fffc79"  // eslint-disable-line max-len
+                href="https://medium.com/@brendandagys_91079/what-i-learned-from-building-a-text-editor-from-scratch-deea53fffc79" // eslint-disable-line max-len
                 target="_blank"
                 rel="noreferrer"
               >
@@ -61,7 +61,7 @@ export const WorkSection: React.FC = () => {
             </div>
           </div>
 
-          {/* <div className="work-card">
+          <div className="work-card">
             <div className="work-image-card">
               <img
                 src={vacationRentalSiteScreenshot}
@@ -93,7 +93,7 @@ export const WorkSection: React.FC = () => {
                 Visit Website
               </a>
               <a
-                href="https://github.com/brendandagys/Vacation-Rental-Property-Site"  // eslint-disable-line max-len
+                href="https://github.com/brendandagys/Vacation-Rental-Property-Site" // eslint-disable-line max-len
                 target="_blank"
                 rel="noreferrer"
                 style={{ marginTop: 3 }}
@@ -114,7 +114,7 @@ export const WorkSection: React.FC = () => {
                 ]}
               />
             </div>
-          </div> */}
+          </div>
 
           <div className="work-card">
             <div className="work-image-card">
@@ -143,7 +143,7 @@ export const WorkSection: React.FC = () => {
                 Try the merge sort function!
               </a>
               <a
-                href="https://github.com/brendandagys/Serverless-Merge-Sort-Frontend-Yew-App"   // eslint-disable-line max-len
+                href="https://github.com/brendandagys/Serverless-Merge-Sort-Frontend-Yew-App" // eslint-disable-line max-len
                 target="_blank"
                 rel="noreferrer"
                 style={{ marginTop: 22 }}
@@ -151,7 +151,7 @@ export const WorkSection: React.FC = () => {
                 View the front-end code on GitHub
               </a>
               <a
-                href="https://github.com/brendandagys/Serverless-Merge-Sort-with-AWS-SAM"   // eslint-disable-line max-len
+                href="https://github.com/brendandagys/Serverless-Merge-Sort-with-AWS-SAM" // eslint-disable-line max-len
                 target="_blank"
                 rel="noreferrer"
                 style={{ marginTop: 3 }}
