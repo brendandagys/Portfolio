@@ -72,12 +72,12 @@ export const WorkSection: React.FC = () => {
             <div className="work-text-card">
               <h3>Vacation Rental Website</h3>
               <p>
-                A real vacation rental website built for a client who rents out
-                their overseas property year-round.
+                A professional business website built for a client who owns a
+                vacation rental property in Spain.
               </p>
               <p>
-                Deployed with a serverless Rust backend and using DynamoDB, this
-                full-stack application costs less than $1/month to run!
+                Deployed with a serverless Rust back-end and using DynamoDB,
+                this full-stack application costs less than $1/month to run!
               </p>
               <p>
                 <b>Features</b>: booking management, administrator portal,
@@ -131,10 +131,7 @@ export const WorkSection: React.FC = () => {
                 provided list of numbers. Created as a mini-project for a tech
                 talk that I gave to a team of developers on the subject of Rust.
               </p>
-              <p>
-                Deployed using AWS SAM and with a front-end written in Rust
-                (Yew)!
-              </p>
+              <p>Deployed using AWS SAM. The front-end is written in Rust!</p>
               <a
                 href={"https://sort.brendandagys.com"}
                 target="_blank"
