@@ -1,6 +1,7 @@
 import "../css/WorkSection.css";
 import cCompiler from "../images/c-compiler.png";
 import vacationRentalSiteScreenshot from "../images/vacation-rental-site-screenshot.png"; // eslint-disable-line max-len
+import chessScreenshot from "../images/chess-screenshot.png"; // eslint-disable-line max-len
 import textEditorGif from "../images/text-editor.gif";
 import serverlessMergeSortScreenshot from "../images/serverless-merge-sort-screenshot.png"; // eslint-disable-line max-len
 import financesScreenshot from "../images/finances-app-screenshot.png";
@@ -13,6 +14,60 @@ export const WorkSection: React.FC = () => {
         <h1 className="mb-5">My Work</h1>
 
         <div className="work-cards">
+          <div className="work-card">
+            <div className="work-image-card">
+              <img src={chessScreenshot} alt="Chess platform" />
+            </div>
+
+            <div className="work-text-card">
+              <h3>Online Chess Platform</h3>
+              <p>
+                A WebSocket-powered service for playing chess against friends
+                online.
+              </p>
+              <p>
+                Create any number of games, or join existing ones. You can play
+                as many simultaneous games as you like.
+              </p>
+              <p>
+                Supports custom game modes with random or duplicate pieces, as
+                well as custom board sizes. Also has a rich rule implementation
+                that enables en passant capture, castling, and promotion.
+              </p>
+              <p>
+                Built using a serverless WebSocket API on AWS, it costs less
+                than $1/month to run.
+              </p>
+
+              <a
+                href="https://chess.brendandagys.com"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Visit Website
+              </a>
+              <a
+                href="https://github.com/brendandagys/Chess" // eslint-disable-line max-len
+                target="_blank"
+                rel="noreferrer"
+                style={{ marginTop: 3 }}
+              >
+                View code on GitHub
+              </a>
+
+              <div className="mt-4"></div>
+              <Pills
+                content={[
+                  "Rust",
+                  "TypeScript",
+                  "React",
+                  "AWS SAM",
+                  "AWS Lambda",
+                ]}
+              />
+            </div>
+          </div>
+
           <div className="work-card">
             <div className="work-image-card">
               <img src={textEditorGif} alt="Text editor" />
@@ -85,6 +140,7 @@ export const WorkSection: React.FC = () => {
                 availability, full support for 5 languages, contact form, tiled
                 image gallery, video tour, and property/amenities information.
               </p>
+
               <a
                 href="https://calaceite.holiday"
                 target="_blank"
@@ -109,6 +165,7 @@ export const WorkSection: React.FC = () => {
                   "Rust",
                   "AWS SAM",
                   "AWS Lambda",
+                  "AWS SNS",
                   "Bootstrap",
                   "Google Analytics",
                 ]}
@@ -132,6 +189,7 @@ export const WorkSection: React.FC = () => {
                 talk that I gave to a team of developers on the subject of Rust.
               </p>
               <p>Deployed using AWS SAM. The front-end is written in Rust!</p>
+
               <a
                 href={"https://sort.brendandagys.com"}
                 target="_blank"
@@ -210,6 +268,7 @@ export const WorkSection: React.FC = () => {
                 It ran on a Node.js back-end deployed via AWS Fargate, and had a
                 React front-end served from CloudFront edge locations.
               </p>
+
               <a
                 href="https://github.com/brendandagys/Finances-Tracker"
                 target="_blank"
