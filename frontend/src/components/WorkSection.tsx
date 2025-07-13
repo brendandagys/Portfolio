@@ -127,8 +127,8 @@ export const WorkSection: React.FC = () => {
             <div className="work-text-card">
               <h3>Vacation Rental Website</h3>
               <p>
-                A professional business website built for a client who owns a
-                vacation rental property in Spain.
+                {"A professional business website built for a client's " +
+                  "vacation rental property."}
               </p>
               <p>
                 Deployed with a serverless Rust back-end and using DynamoDB,
