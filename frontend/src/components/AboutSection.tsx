@@ -39,7 +39,7 @@ export const AboutSection: React.FC = () => {
             <h1>About Me</h1>
             <p>
               I hold a B.Eng in Biomedical Engineering and have been
-              working professionally as a software engineer for 3+ years.
+              working professionally as a software engineer for over 4 years.
             </p>
             <br />
             <p>{"I'm always working to better myself, be it with a new project, certification, or skill!"}</p>
