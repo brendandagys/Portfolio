@@ -2,6 +2,7 @@ import "../css/WorkSection.css";
 import cCompiler from "../images/c-compiler.png";
 import vacationRentalSiteScreenshot from "../images/vacation-rental-site-screenshot.png"; // eslint-disable-line max-len
 import chessScreenshot from "../images/chess-screenshot.png"; // eslint-disable-line max-len
+import chessEngineScreenshot from "../images/chess-engine-screenshot.png"; // eslint-disable-line max-len
 import textEditorGif from "../images/text-editor.gif";
 import serverlessMergeSortScreenshot from "../images/serverless-merge-sort-screenshot.png"; // eslint-disable-line max-len
 import financesScreenshot from "../images/finances-app-screenshot.png";
@@ -14,6 +15,68 @@ export const WorkSection: React.FC = () => {
         <h1 className="mb-5">My Work</h1>
 
         <div className="work-cards">
+          <div className="work-card">
+            <div className="work-image-card">
+              <img src={chessEngineScreenshot} alt="Chess engine" />
+            </div>
+
+            <div className="work-text-card">
+              <h3>Chess Engine</h3>
+              <p>A chess engine built from scratch in Rust.</p>
+              <p>
+                Implements the minimax algorithm with alpha-beta pruning to find
+                the best move in any position. Uses Principle Variation Search
+                to further optimize, and quiescence search to mitigate the
+                horizon effect.
+              </p>
+              <p>
+                Written as a library, but also includes a command-line interface
+                for playing against the engine in the terminal.
+              </p>
+              <p>
+                Currently available on crates.io:{" "}
+                <a
+                  href="https://crates.io/crates/bitboard_chess_engine"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  bitboard_chess_engine
+                </a>
+              </p>
+              <p>
+                Includes Perft testing, and unit tests for all components of the
+                engine, including move generation, move making/unmaking, and
+                board evaluation.
+              </p>
+
+              <a
+                href="https://chess.brendandagys.com"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Try it on my chess platform!
+              </a>
+              <a
+                href="https://medium.com/@brendandagys_91079/what-i-learned-from-building-a-chess-engine-from-scratch-e3f6f8966d36" // eslint-disable-line max-len
+                target="_blank"
+                rel="noreferrer"
+              >
+                Read my Medium article about the experience
+              </a>
+              <a
+                href="https://github.com/brendandagys/Chess-Engine" // eslint-disable-line max-len
+                target="_blank"
+                rel="noreferrer"
+                style={{ marginTop: 3 }}
+              >
+                View code on GitHub
+              </a>
+
+              <div className="mt-4"></div>
+              <Pills content={["Rust, Make"]} />
+            </div>
+          </div>
+
           <div className="work-card">
             <div className="work-image-card">
               <img src={chessScreenshot} alt="Chess platform" />
@@ -45,6 +108,13 @@ export const WorkSection: React.FC = () => {
                 rel="noreferrer"
               >
                 Visit Website
+              </a>
+              <a
+                href="https://medium.com/@brendandagys_91079/what-i-learned-from-building-an-online-chess-platform-from-scratch-99edb0297fd6" // eslint-disable-line max-len
+                target="_blank"
+                rel="noreferrer"
+              >
+                Read my Medium article about the experience
               </a>
               <a
                 href="https://github.com/brendandagys/Chess" // eslint-disable-line max-len
