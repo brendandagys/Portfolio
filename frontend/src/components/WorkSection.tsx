@@ -25,13 +25,13 @@ export const WorkSection: React.FC = () => {
               <p>A chess engine built from scratch in Rust.</p>
               <p>
                 Implements the minimax algorithm with alpha-beta pruning to find
-                the best move in any position. Uses Principle Variation Search
-                to further optimize, and quiescence search to mitigate the
-                horizon effect.
+                the best move in any position. Uses the Principle Variation
+                Search optimization, as well as quiescence search to mitigate
+                the horizon effect.
               </p>
               <p>
-                Written as a library, but also includes a command-line interface
-                for playing against the engine in the terminal.
+                Written as a library, but also includes a CLI for playing
+                against the engine in the terminal.
               </p>
               <p>
                 Currently available on crates.io:{" "}
@@ -44,9 +44,9 @@ export const WorkSection: React.FC = () => {
                 </a>
               </p>
               <p>
-                Includes Perft testing, and unit tests for all components of the
-                engine, including move generation, move making/unmaking, and
-                board evaluation.
+                Perft tested, with unit tests for all components of the engine,
+                including move generation, move making/unmaking, and board
+                evaluation.
               </p>
 
               <a
@@ -73,7 +73,7 @@ export const WorkSection: React.FC = () => {
               </a>
 
               <div className="mt-4"></div>
-              <Pills content={["Rust, Make"]} />
+              <Pills content={["Rust", "Make"]} />
             </div>
           </div>
 
